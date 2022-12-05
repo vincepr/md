@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'vincepr-markdown-docs',
   tagline: 'Just storing whatever is recent',
-  url: 'https://vincepr.github.io/',
-  baseUrl: '/',
+  url: 'https://vincepr.github.io',
+  baseUrl: '/md/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
