@@ -10,7 +10,7 @@
 - Bei IGRP werden die besten Wege zu einem Ziel über die berechnete Metrik bestimmt.      
 - Die Metrik einer Verbindung setzt sich aus Verzögerung, Bandbreite, Leistungszuverlässigkeit und Leistungsauslastung zusammen:
 
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/8e126457ef4379d9452d92a74f9455ceb694cac5)
+https://wikimedia.org/api/rest_v1/media/math/render/svg/8e126457ef4379d9452d92a74f9455ceb694cac5
 
 - Ergebniss des Protokolls: Die gewichteten Eigenschaften der Verbindungsmerkmale "lenken" den traffic durch das Netz.
 - Zur Vermeidung von Routingschleifen kommen Split-Horizon-Verfahren, Holddown Timer, Route Poisoning und Triggered Updates zum Einsatz
