@@ -1,6 +1,7 @@
 # Aufgabenstellung
 
-Projektaufgabe:
+# Projektarbeit Datenbanken
+## Krankenhaus Anforderungen:
 **Krankenhaus Abteilungsverwaltung**
 In einem Krankenhaus soll eine Datenbank zur Abteilungsverwaltung eingerichtet werden. Wichtige
 Informationen über Patienten, Ärtze und Schwestern sollen damit abfragbar sein.

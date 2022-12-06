@@ -1,6 +1,4 @@
-https://excalidraw.com/
-
-## SQL - Mitschrift - robotron 2022
+## SQL - Mitschrift  2022
 # mySQL with MariaDB
 mysql -u root -p
 
