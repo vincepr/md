@@ -1,6 +1,6 @@
 # Auto Deploying Docosaurus on Github-Pages
 
-- 
+- [https://vincepr.github.io/md/](https://vincepr.github.io/md/)
 
 ## setup
 1. install a new version of npm (ubuntu apt version is out dated. So get it from nodejs.org directly or update it)
