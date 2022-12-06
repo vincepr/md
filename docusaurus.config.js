@@ -24,8 +24,14 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'de',
+    locales: ['de'],
+    localeConfigs: {
+      de: {
+        label: "Deutsch",
+        htmlLang: "de",
+      },
+    },
   },
 
   presets: [
@@ -39,14 +45,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/vincepr/md/blob/main/docs/',
+            'https://github.com/vincepr/md/blob/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/vincepr/md/blob/main/docs/',
+            'https://github.com/vincepr/md/blob/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -110,7 +116,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} vincepr. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
