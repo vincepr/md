@@ -1,5 +1,3 @@
-# Aufgabenstellung
-
 # Projektarbeit Datenbanken
 ## Krankenhaus Anforderungen:
 **Krankenhaus Abteilungsverwaltung**

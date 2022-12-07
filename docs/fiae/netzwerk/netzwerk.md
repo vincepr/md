@@ -729,6 +729,11 @@ extra abschirmung- F/UTP F/STP...
 - Ketegorien 1-8
     - heutzutage sollen im LAN-Bereich 6 & 6A eingesetz werden (bzw 7 & 7A für mehr Durchsatz)
 
+# Litzenkabel - Litze
+- stranded wire
+- aus dünnen Einzeldrähten bestehender und daher leicht zu biegender elektrischer Leiter.
+- oft aus kupfer
+
 # RJ-45 / GG-45 Stecker
 - LAN-kabel am pc etc.
 - ab Kategorie 7 wird Gg-45 verwendet
@@ -737,7 +742,7 @@ extra abschirmung- F/UTP F/STP...
 1-8 grob die größenräume können
 
 
-# Lichtwellenkabel
+# Glasfaßerkabel - LWL - Lichtwellenleiter
 Licht ist durch Reflexion zwischen kern und Mantel bedingt.
 - Dämpfung des lichts in der Glasfaser fällt sehr unterschiedlich aus und ist abhängig von der Wellenlänge.
 - Monomode, ist der Kern glein genug (z.B. 3-9ym), dann kann sich nur eine Welle in der Faser ausbreiten
@@ -751,4 +756,25 @@ Licht ist durch Reflexion zwischen kern und Mantel bedingt.
 ![](./img/verteilung.svg)
 
 ## Sicherheits-Leitungen
-Vermaschte oder Vollvermaschte Sicherheitsleitungen können zusätzlich als failback gelegt werden, z.B. zwischen einzelnen EVs. Für den fall eines Ausfalls.
+Vermaschte oder Vollvermaschte Sicherheitsleitungen können zusätzlich als failback gelegt werden, z.B. zwischen einzelnen EVs. Im Falle eines Ausfalls.
+
+# Fachbegriffe (S.181-192)
+- Bandbreite
+    - (maximale) Übertragungsrate in Datenverbindungen. Bit/Sekunde
+    - durchschnittliche Internetanschluss in Deutschland hat Bandbreite von 15 Mbit/s
+    - Glasfaseranschlüsse schaffen locker 1 Gbit/s
+- Datenrate
+    - (aktuelle) Übertragungsrate in Datenverbindungen.
+- Bitfehlerrate
+    - Verhältnis der Anzahl der binären Signalelemente, die bei der Übertragung verfälscht wurden, zur Gesamtzahl.
+- Reflexion
+    - Reflexion git es in elektrischen Wellen(Leitungen) und LWLs.
+    - häufig an Leitungsenden und Übergängen
+    - Reflektionen führen dazu, das ein und dasselbe Signal beim Empfänger zweimal (zeitlich verzögert) eintrifft.
+- Rauschen
+    - unerwartete Störung eines Nutzsignales
+    - elektronisches Rauschen
+    - Thermisches Rauschen
+    - Intermodulationsrauschen
+- Nebensprechen / crosstalk
+    - koppeln -> Feld eines Leiters überträgt ein signal in Feld eines anderen Leiters. Z.B. fremde Stimmen im Funk "mithören"
