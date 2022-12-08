@@ -1,4 +1,5 @@
-## Netzwerke
+# Netzwerke - Grundlagen
+
 # Überblick
 
 ## Vorteile von Netzwerken:

@@ -1,5 +1,4 @@
-# Ab 07.12.2022
-## Internet
+# Internet
 
 # isdn
 - unterschieden zwischen Basisanschluss und Primärmultiplexanschluss.

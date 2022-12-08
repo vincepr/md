@@ -1,4 +1,4 @@
-## Kabel Wlan etc.
+# Kabel Wlan etc.
 
 # Leitergebundene Übertragung
 - Ein Kabel besteht aus mindestens einer leitenden Ader/Faser.

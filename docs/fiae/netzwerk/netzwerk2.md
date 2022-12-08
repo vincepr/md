@@ -1,4 +1,4 @@
-## IPs und Subnetting
+# IPs und Subnetting
 
 # IPv4-Adressen
 - besteht aus 32 bit -> 2^32 maximale Ip-Adressen
@@ -185,7 +185,7 @@ Ausserdem wrsl. nicht wie eingezeichnet mit 14 sondern direkt mit 16 (oder 18) e
 
 
 
-# ipb6 Subnetting:
+# ipv6 Subnetting:
 
 - /32 wird quasi nur von Internet-Providern genutzt. Da extrem viele Subnetze.
 - ab ca. /64 -> 256
