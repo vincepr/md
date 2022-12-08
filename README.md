@@ -2,7 +2,7 @@
 
 - [https://vincepr.github.io/md/](https://vincepr.github.io/md/)
 
-## setup
+# setup
 1. install a new version of npm (ubuntu apt version is out dated. So get it from nodejs.org directly or update it)
 	- in theory you could uninstall npm after doing step 2 once. If you never plan to run it on your localhost. The actual github-pages server will handle the npm-deployment.
 2. init the docusaurs-presets
@@ -134,7 +134,7 @@ git push
 ![](./github_screenshot.png)
 
 
-## make the Docs the Main Page:
+# make the Docs the Main Page:
 1. remove/rename: src/pages/index.js -> old_index.js
 2. edit docusaurus.config.js -> add routeBasePath
 ```
@@ -155,4 +155,28 @@ presets: [
 slug: /
 ---
 
+```
+
+
+# add search bar
+- in the project directory run:
+```
+npm install --save @easyops-cn/docusaurus-search-local
+```
+- add to the docusaurus.config.js inside const config = { } just before the closing bracket:
+```
+themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        indexBlog: false,                         // remove Blogs from the search
+        language: ["en", "de"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: "/"                    // because we are in Docs-Only-Mode we need to overwrite the default
+      }),
+    ],
+  ],
 ```

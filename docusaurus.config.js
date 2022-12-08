@@ -134,11 +134,11 @@ const config = {
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       ({
         hashed: true,
-        indexBlog: false,
+        indexBlog: false,                         // remove Blogs from the search
         language: ["en", "de"],
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
-        docsRouteBasePath: "/"                    // because we are in Docs-Only-Mode change to default if using main-page
+        docsRouteBasePath: "/"                    // because we are in Docs-Only-Mode we need to overwrite the default
       }),
     ],
   ],
