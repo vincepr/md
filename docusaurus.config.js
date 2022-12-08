@@ -127,6 +127,22 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+
+  plugins: [
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        // Options here
+        indexDocs: true,
+        indexBlog: false,
+        language: ["en", "de"]
+
+      },
+    ],
+  ],
+
+
 };
 
 module.exports = config;
