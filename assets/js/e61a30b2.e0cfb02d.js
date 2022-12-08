@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmd=self.webpackChunkmd||[]).push([[393],{4245:e=>{e.exports=JSON.parse('{"title":"webdev","slug":"/category/webdev","permalink":"/md/category/webdev","navigation":{"previous":{"title":"wirtschaft_grundlagen","permalink":"/md/fiae/wirtschaft_grundlagen/"},"next":{"title":"expressjs","permalink":"/md/webdev/expressjs"}}}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmd=self.webpackChunkmd||[]).push([[214],{5425:e=>{e.exports=JSON.parse('{"title":"fiae - Mitschriften","slug":"/category/fiae---mitschriften","permalink":"/md/category/fiae---mitschriften","navigation":{"previous":{"title":"Wilkommen","permalink":"/md/"},"next":{"title":"netzwerk","permalink":"/md/fiae/netzwerk/"}}}')}}]);
