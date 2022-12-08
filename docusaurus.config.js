@@ -128,20 +128,20 @@ const config = {
       },
     }),
 
-
-  plugins: [
+  themes: [
     [
-      require.resolve("@cmfcmf/docusaurus-search-local"),
-      {
-        // Options here
-        indexDocs: true,
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
         indexBlog: false,
-        language: ["en", "de"]
-
-      },
+        language: ["en", "de"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: "/"                    // because we are in Docs-Only-Mode change to default if using main-page
+      }),
     ],
   ],
-
 
 };
 
