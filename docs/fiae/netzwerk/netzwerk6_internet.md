@@ -13,11 +13,11 @@
 
 ## rechenbeispiel:
 
-| | up| down|-> |
-|---|---|---|---|---|
-|adsl|10mbit|10mbit||
-|vdsl|50mbit|5mbit||
-|isdn|1Mbit|1mbit||
+| | up| down|
+|---|---|---|
+|adsl|10mbit|10mbit|
+|vdsl|50mbit|5mbit|
+|isdn|1Mbit|1mbit|
 
 90 Gbite sollen in 5h gesendet werden. -> 3,5h im ersten, 7h für 2nd -> nur erstes in Frage. Oder so in etwa.
 
