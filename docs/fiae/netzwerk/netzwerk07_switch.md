@@ -52,7 +52,7 @@ keine Fehlerkorrektur aber Counter der im Nachhinein Fehler zählt|
 ## Kaskadierung
 - Verkettung von Switches
 
-## Ulink -Downlink
+## Uplink -Downlink
 - downlink: normaler port
 - uplink: schnelleren port mit langsameren (downlink) verbinden
 
@@ -77,13 +77,11 @@ Algorithmus Ablauf:
 0. Switch mit der Niedrigsten Id wird zum Root. (bei gleicher ID entscheidet niedrigste MAC-Adresse)
 1. Root-Switch hat alle Ports auf forward
 2. Jeder nicht-Root-Switch öffnet Ports mit dem niedrigsten kosten zum Root-Switch. Blockt rest.
-3. mehrere Switche kommen in Frage -> Vergleichen der Ports -> niedrigste Kosten- >forward -> designierter Switch am designierten Port.
+3. mehrere Switche kommen in Frage -> Vergleichen der Ports -> niedrigste Kosten- > forward -> designierter Switch am designierten Port.
 
 Benutzt insgesamt fünf verschiedene Portzustände:
 - Forwarding
 - Blocking 
-- Learning
-- Listening
 - Disabled
 
 |Charakteristik der Ports|StP Zustand|Beschreibung|
@@ -94,10 +92,20 @@ Benutzt insgesamt fünf verschiedene Portzustände:
 |alle anderen Ports|Blocking|sollen zur Weiterleitung momentan nicht benutzt werden|
 |vom admin deaktiviert oder ohne Kabel|Disabled|stehen nicht zur Verfügung|
 
-# RSTP und MSTP
+# STP-Timer - Selbstregulation des Netztes
+- Alle 2 Sekunden sendet Root ein Hello-Signal. -> so kann auf Veränderungen reagiert werden
+- Sollte das Signal ausbleiben -> nach hello-Intervall (2sek) * 10 wird das StP mit einem neuen Root aufgebaut
+- Jeder Sendet ein Hello-Signal aus mit der Station von der ich annehme, das sie mein (neuer) Root ist -> neues StP wird gebildet
+
+# RSTP (Rapid-) und MSTP
 Ürsprüngliche StP besitzt lange Konvergenzzeiten 
 - RSTP ist Weiterentwicklung und benutzt bei Neuberechnung den alten Tree weiter bis der neue fertig ist
 - MSTP erweiterung von RSTP für VLANS.
 
+# Switch Stacking
+2+ Switche werden zu einer logischen Einheit Kombiniert -> mehr zu verfügung stehende Ports
+
+# Switch trunking
 
 
+# Switch uplink
