@@ -11,17 +11,17 @@
 7. **GmbH** - Gesellschaft mit beschränkter Haftung
 9. **AG** - Aktiengesellschaft
 
-|kürzel|Langform|Gründeranzahl|Haftung|Stammkapital|Gründungsprozess|
-|---|---|---|---|---|---|
-|___||||||
-|**Einzelunternehmen**||1|nicht beschränkt|nicht benötigt| einfach, kostengünstig, formlos|
-|___||||||
-|**GbR**|>=2||nciht beschränkt|nicht benötigt|einfach, kostengünstig, formlos, **ohne** notarielle Beglaubigung|
-|**OHG**|Offene Handelsgesellschaft|>=2|nicht beschränkt|nicht benötigt|einfach, kostengünstig, formlos, **ohne** notarielle Beglaubigung|
-|**KG**|Kommanditgesellschaft|>=2|auf Einlage beschränkt|nicht benötigt|einfach, kostengünstig, formlos, **mit** notarielle Beglaubigung|
-| ___| |||||
-|**GmbH**|Gesellschaft mit beschränkter Haftung|>=1|beschränkt|25k€|aufwändig, zeitintensiv, kostenintensiv, Gesellschaftsvertrag mit notarieller Beglaubigung|
-|**AG**|Aktiengesellschaft|>=1|beschränkt|50k€|formal, zeitintensiv, kostenintensiv|
+|kürzel|Langform|Gründeranzahl|Haftung|Stammkapital|Gründungsprozess|Gewinnverteilung|
+|---|---|---|---|---|---|---|
+|___|||||||
+|**Einzelunternehmen**||1|nicht beschränkt|nicht benötigt| einfach, kostengünstig, formlos|alles an Inhaber|
+|___|||||||
+|**GbR**|>=2||nciht beschränkt|nicht benötigt|einfach, kostengünstig, formlos, **ohne** notarielle Beglaubigung|nach Vertrag oder nach Köpfen|
+|**OHG**|Offene Handelsgesellschaft|>=2|nicht beschränkt|nicht benötigt|einfach, kostengünstig, formlos, **ohne** notarielle Beglaubigung|4% Einlage, Rest nach Köpfen|
+|**KG**|Kommanditgesellschaft|>=2|auf Einlage beschränkt|nicht benötigt|einfach, kostengünstig, formlos, **mit** notarielle Beglaubigung|4% Einlage, nach Abzug des Jahresgehalts des Koplementärs Rest anteilmäßig|
+| ___| ||||||
+|**GmbH**|Gesellschaft mit beschränkter Haftung|>=1|beschränkt|25k€|aufwändig, zeitintensiv, kostenintensiv, Gesellschaftsvertrag mit notarieller Beglaubigung|im Verhältnis der Gesellschaftsanteile|
+|**AG**|Aktiengesellschaft|>=1|beschränkt|50k€|formal, zeitintensiv, kostenintensiv|gemäß Hauptversammlung|
 
 ## Gründe für die Bildung einer Gesellschaft sind vielfältig:
 
@@ -120,3 +120,42 @@ Ist eine Person die kein Istkaufmann ist, jedoch trozdem die Eintragung ins Hand
 
 ## Formkaufmann
 Ist automatisch auf Grund seiner gewählten Rechtsform Kaufmann: z.B. KG, Genossenschaften
+
+# Verteilungsrechnen:
+```
+An einer GmbH sind die Gesellschafter A mit 60.000 und B mit 150.000 und C mit 90.000 beteiligt. Der Gewinn von 100.000 soll nach der gesetzlichen Vorschrift nach dem Verhältnis der Stammeinlage verteilt werden. (gmbH)
+```
+- Case a: normal (bsp )
+    1.  A+B+C=300k      
+    ->      
+    2. A bekommt: 100*60/300 -> 20k 
+    3. B bekommt: 100*150/300 -> 50k
+    4. C bekommt: 100*90/300 -> 30k
+
+- Case b: 4% auf Stammeinlage -> rest gleich nach Köpfen Verteilt (bsp OhG)
+    1. 60k*0.04 = 2.5k
+    2. 150*0.04 = 6.0k
+    3. 90*0.04 = 3.6k
+    4. REST = 100k -2.5-6.0-3.6 = 87.9
+    4. 87.9/3 = 29.3 (ges = 29.3+2.5=**31.8k**)
+    5. 87.9/3 = 29.3 (ges = 29.3+6.0=**35.3k**)
+    6. 87.9/3 = 29.3 (ges = 29.3+3.6=**32.9k**)
+
+# Das Unternehmensleitbild
+
+- Definiton Unternehmensleitbild
+Das Unternehmensleitbild ist ein Gefüge von Normen, Werten, Verhalts und Arbeitsweisen eines Unternehmens. Es enthält Leitlinien und Ziele für die Handelnden des Unternehmens.
+
+- Aus dem Unternehmensleitbild lassen sich die Unternehmensziele ableiten. Aus der Unternehmenskultur erwächst die Unternehmensidentität (Corporate Identity)
+
+
+# Wirtschaftlichkeitsprinzip - Ökonomisches Prinzip
+Wirtschaftlichkeit ist Maß möglichst günstiges Verhältnis von Aufwand und Ertrag, bzw. Kosten und.
+- Maximalprinzip
+Wenn mit gegebenen Mitteln der größtmögliche Erfolg erzielt wird.
+- Minimalprinzip
+Wenn ein bestimmter Erfolg mit geringsten Mitteln erzielt wird.
+
+## Soll und Istgröße
+- Sollkosten und Istkosten
+- Wirtschaftlichkeit umso höher je größer der Wert des Quotient

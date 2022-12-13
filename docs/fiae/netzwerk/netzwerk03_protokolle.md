@@ -33,8 +33,9 @@
 - TCO bittet Error Recovery. Hierfür muss TCP die Daten Bytes mithelfe der Felder Sequence und Akknowledgement.
 - TCP erzielt Zuverlässigkeit in beide Richtungen, indem es das Feld Sequence Number der einen Richtung in Kombination mit dem Feld Acknowledgement der anderen Richtung nutzt.
 - Window/Fenster ist die Anzahl an Packeten. Startet klein und wird größer (wenn Verbindung gut ist).
-![](./img/tcp_fehlerkorrektur.png)
-![](./img/tcp_Fehlerkorrektur2.png)
+![](./excalidraw/tcp1.svg)
+![](./excalidraw/tcp2.svg)
+
 ## zu Multiplexing
 - Multiplexing durch TCP und UDP ist das Prinzip mit ports.
 - Standadisierte Ports: 0-1023 - gängige Ports mit "festen" Portnummern
