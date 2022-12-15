@@ -191,3 +191,7 @@ Ausserdem wrsl. nicht wie eingezeichnet mit 14 sondern direkt mit 16 (oder 18) e
 - ab ca. /64 -> 256
 
 ![](./hexa_subnetting/hexa_subnet.png)
+
+
+# ipv6 cheat sheet
+![](./netzwerk/IPv6_cheat_sheet.pdf)
