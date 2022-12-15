@@ -157,6 +157,10 @@ Jedes Mitglied ist mit **allen** anderen Mitgliedern vernetzt.
 |2|Sicherung / Data Link|Ethernet (IEEE 802.3), ARP, WLAN (WLAN ja, LAN nein)|Bridge, Layer-2-Switch, WirelessAcessPoint|Frames|
 |1|Bitübertragung / Physical|1000BASE-T, Token Ring|Kabel, Repeater(=Verstärker), Hub|Bits|
 
+## Kopplungselemente
+### Kabel : Layer 1
+- das einzige passive Kopplungselement (alle anderen sind aktive Kopplungselemente)
+
 ### Repeater : Layer 1
 - verstärkt Sendesignal um verlängerung der Kabellänge über physikalisches Maxium.
 - 5-4-3 Regel. Begrenzt Reichweite => mittlerweile in kabelgebundenen Netzwerken fast vollständig verdrängt. (effektiv übernehmen Kopplungselemente in Schichten 2-3 die Signalauffrischung, da diese nicht mit 5-4-3 Regel beschränkt sind)
