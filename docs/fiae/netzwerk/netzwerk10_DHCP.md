@@ -54,5 +54,8 @@ Der Domain-Namensraum hat eine baumförmige Struktur. Ein Domainname wird immer 
 
 ## Hierarchische Struktur
 
-<p><a href="https://commons.wikimedia.org/wiki/File:Dns-raum.svg#/media/File:Dns-raum.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Dns-raum.svg/1200px-Dns-raum.svg.png" alt="Dns-raum.svg"></a><br><a href="https://creativecommons.org/licenses/by-sa/2.5" title="Creative Commons Attribution-Share Alike 2.5">CC BY-SA 2.5</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=556580">Link</a></p>
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Dns-raum.svg/1200px-Dns-raum.svg.png)
+
+[Creative Commons Attribution-Share Alike 2.5 CC BY-SA 2.5](https://commons.wikimedia.org/w/index.php?curid=556580 "Wikipedia") https://creativecommons.org/licenses/by-sa/2.5  
+
 
