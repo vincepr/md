@@ -1,5 +1,9 @@
 # Protokolle
 
+# RFC Request for Comments
+- Standartisierung und Festlegung von Protokollen, Konzepten etc. des Internets.
+- Die Verwaltung der RFCs erfolgt durch die IETF (Internet Engineering Task Force). Ein Großteil der im Internet verwendeten Standards ist in RFCs veröffentlicht.
+
 # ARP - Adress Resolution Protocol (ethernet Cache)
 
 Übersetzungstabellen für IP-Adressen/physische Adressen.        
@@ -99,8 +103,6 @@ vorher keinen Nachrichtenaustausch und keine zuvor hergestellte WEchselbeziehung
 - bei erneuten HTTP-Requests zum selben Webserver -> Browser schickt cookies mit. -> webserver kann client zuordnen
 - HTTP- ist ein **zustandsloses** Protokoll (server kann nicht zwischen mehreren HTTP-requests zusammenhang herstellen)
     - wenn website anwendungsorientiert -> Unterscheidung nötig -> cookies "nötig"
-
-
 
 ![https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/](https://media.geeksforgeeks.org/wp-content/uploads/20191203183429/HTTP-Connection.png)
 https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/ under CCBY-SA
