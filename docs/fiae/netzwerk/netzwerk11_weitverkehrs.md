@@ -88,3 +88,12 @@ Im Zusammenhang mit Multiplexverfahren wird von Multiplexing und auch von Multip
     - Übertragungsgeschwindigkeit, Fehlerkorrektur, Datenkompression, Protokolle
     - dann beginnt die eigentliche Datenübertragung
 
+# PPP - Point to Point Protokoll
+- Auf Layer 2
+- Verkapselt Packete von höheren Schichten
+- Protokoll für Einwahl ins Internet über leitungsvermittelnde Netze.
+## PPPtP - Point to Point Tunneling Protocol
+- z.B. für VPNs
+- Unsicher aber wird noch benutzt
+## SSTP - Secure socket Tunneling Protocol
+- MS nachfolger zu PPPtP. Nutzt verschlüsseltes HTTP auf Port 443.
