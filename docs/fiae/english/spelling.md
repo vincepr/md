@@ -51,7 +51,7 @@
 | \ | backslash|
 |()|opening bracket, closing bracket, in parentheses|
 |[]|square brackets|
-|<>|angle(d) brackets|
+|\<\>|angle(d) brackets|
 |{}|curly brackets|
 | =|equals|
 | ´|tick, acute-accent|
@@ -61,7 +61,7 @@
 |\||pipe, bar|
 | '|apostrophe|
 | +|plus|
-| ~|tilde [tild]|
+| ~|tilde \[tild\]|
 | *|asterisk, star|
 | µ|micro|
 
