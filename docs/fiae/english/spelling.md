@@ -51,7 +51,7 @@
 | \ | backslash|
 |()|opening bracket, closing bracket, in parentheses|
 |[]|square brackets|
-|\<\>|angle(d) brackets|
+|\<\> | angle(d) brackets|
 |{}|curly brackets|
 | =|equals|
 | ´|tick, acute-accent|
