@@ -67,8 +67,8 @@
 
 |||
 |---|---|
-|$4^2$|4 squared|
-|$3^3$|3 cubed|
-|$5^4$|5 to the power of 4|
+|$ 4^2 $|4 squared|
+|$ 3^3 $|3 cubed|
+|$ 5^4 $|5 to the power of 4|
 |$ \sqrt{4} $|square root|
 |$ 3\sqrt{x} $|root of 3|
