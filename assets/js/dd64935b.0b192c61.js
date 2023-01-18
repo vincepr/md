@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmd=self.webpackChunkmd||[]).push([[7898],{8051:e=>{e.exports=JSON.parse('{"title":"Netzwerk","slug":"/category/netzwerk","permalink":"/md/category/netzwerk","navigation":{"previous":{"title":"English pronaunciation","permalink":"/md/fiae/english/spelling"},"next":{"title":"Pr\xe4sentation - IGRP","permalink":"/md/fiae/netzwerk/IGRP/"}}}')}}]);
