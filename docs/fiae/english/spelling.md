@@ -29,6 +29,7 @@
 | Y | Yankee|
 | Z | Zulu|
 
+
 |symbol|pronaunciation|
 |---|---|
 | .|dot (für punkt im txt) (point für Zahlen 3.75 = .75)|
