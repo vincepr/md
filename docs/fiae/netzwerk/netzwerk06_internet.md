@@ -27,6 +27,7 @@
 
 ### Vectoring / Supervectoring
 - erhöht auf Kupferleitungen die maximale Datenrate im Down/Upload
+- indem es Störungen durch Übersprechen "beseitig"
 - bis zu 250Mbit
 
 ## rechenbeispiel:

@@ -11,7 +11,7 @@
 - (**Vom Internet aus nicht sehbar**). Kein ungeregelter Übergang in öffentliche Zweige möglich. Firewalls kontrollieren logische Schnittstellen zum Internet. 
 
 ## Extranet
-- erweiterung des Intranets um eine Komponente, die nur von einer festgelegten Gruppe externer Benutzer verwendet werden kann.
+- Erweiterung des Intranets um eine Komponente, die nur von einer festgelegten Gruppe externer Benutzer verwendet werden kann.
 - Bereitstellung von Informationen über z.B. Unternehmensgrenzen hinweg. (Zulieferer Portal etc.)
 
 
@@ -58,7 +58,7 @@
 |Abrechnung/Kosten|Datenmenge/Datenvolumen|Zeiteinheit|
 
 # Netzneutralität
-gleichberechtigte neutrale Übertragung von Daten im Internet. Ohne bevorzugung/diskriminierung von z.B. Gaming/Video Packeten.
+gleichberechtigte neutrale Übertragung von Daten im Internet. Ohne Bevorzugung/Diskriminierung von z.B. Gaming/Video Paketen.
 
 # Duplex
 
@@ -81,10 +81,10 @@ Im Zusammenhang mit Multiplexverfahren wird von Multiplexing und auch von Multip
 ## Modem (analog)
 - Wandelt digitale Signale von der Computerschnittstelle in analoge Signale per Modulation um. (Fürs Telefonnetz)
 - Modulation um das übertragende Signal in eine Form zu bekommen die sich für Übertragung über weite Strecken eignet 
-    - digitale signale Eignen sich nicht, da sie schon nach kurzer Strecke verfälscht sind
+    - digitale Signale Eignen sich nicht, da sie schon nach kurzer Strecke verfälscht sind
 - Beim Modem im Telefonnetz Speziell im Frequenzbereichen zwischen 300 un 3400 Herz
 ### Modem-Steuerung
-- AT-Befhele steuern Modem. Beim Wählprogramm wird dies automatisch erledigt. -> Übertragungsparameter werden abgestimmt:
+- AT-Befehle steuern Modem. Beim Wählprogramm wird dies automatisch erledigt. -> Übertragungsparameter werden abgestimmt:
     - Übertragungsgeschwindigkeit, Fehlerkorrektur, Datenkompression, Protokolle
     - dann beginnt die eigentliche Datenübertragung
 
@@ -97,3 +97,86 @@ Im Zusammenhang mit Multiplexverfahren wird von Multiplexing und auch von Multip
 - Unsicher aber wird noch benutzt
 ## SSTP - Secure socket Tunneling Protocol
 - MS nachfolger zu PPPtP. Nutzt verschlüsseltes HTTP auf Port 443.
+
+# Bluetooth
+
+## Anwendungszwecke
+- Multimedia
+- Musik
+- Headset/Kopfhörer etc.
+
+## Verbindungsablauf
+1.  Geräteverbindung: Die beteiligten Geräte müssen eine Verbindung herstellen, indem sie ihre Bluetooth-Adressen austauschen und eine sichere Verbindung aufbauen.
+2.	Dienstsuche: Das Empfängergerät nutzt SDP, um zu ermitteln, welche Dienste auf dem Sendergerät verfügbar sind.
+3.	Kanalaufbau: Über L2CAP wird ein logischer Kanal für die Datenübertragung eingerichtet.
+4.	Übertragung: Die eigentliche Übertragung der Daten erfolgt über RFCOMM.
+5.	Überprüfung: Während der Übertragung werden die Daten überprüft, um sicherzustellen, dass keine Daten verloren gehen.
+6.	Fertigstellung: Nach erfolgreicher Übertragung werden die Verbindung und der logische Kanal geschlossen.
+
+
+## Datenübertragungsrate:
+- Bluetooth 1.0 und 1.1: 721 Kbps
+- Bluetooth 2.0 + EDR: 2 Mbps
+- Bluetooth 3.0 + HS: 24 Mbps
+- Bluetooth 4.0 (Low Energy): 1 Mbps
+- Bluetooth 5.0: 2 Mbps (Low Energy), maximal 2 Mbps (Classic)
+
+## Reichweite:
+- Bluetooth 1.0 und 1.1: 10 Meter
+- Bluetooth 2.0 + EDR: 10 Meter
+- Bluetooth 3.0 + HS: 50 Meter
+- Bluetooth 4.0 (Low Energy): bis zu 50 Meter
+- Bluetooth 5.0: bis zu 400 Meter (Low Energy), bis zu 100 Meter (Classic)
+
+
+# DECT
+- Digital Enhanced Cordless Telecommunications
+- EU internationaler Standard für Funktechnik
+-	verbindungsortientiert
+-	Die Übertragung basiert auf folgenden Verfahren:
+    -	Time-Division-Duplex
+    -	Time-Division-Multiple-Access
+    -	Frequency-Division-Multiple-Access
+
+## Vorteile:
+-	Reichweite 30 - 50m innerhalb Gebäuden, bis 300 m im Freien
+-	Hohe Abhörsicherheit
+-	Sehr energiesparend
+-	Eigener, vom WLAN unabhängiger     Frequenzbereich
+-	Bessere Tonqualität als     vorhergehende Standards
+-	Vielseitiger Einsatz
+-	Gleichzeitige Nutzung mehrerer   Mobilteile möglich
+-	Kostenlose interne Gespräche
+-	Mobilteile sind an mehreren Basisstationen nutzbar
+
+# VoIP - Voice over IP 
+- Internet-Telefonie
+- Layer 3 OSI
+- IP Adresse Sender - Empfänger
+- SiP (Session Inititiation Protokoll) 
+    - SiP-Identifier: 123562435@Test.com
+
+# Mobilfunknetz
+
+## GSM/GRPS - 2G
+- bis max. 50Kbit/s
+- SMS und MMS eingeführt
+
+## 3G - UMTS
+- WCDMA = 384 Kbps
+- HSPA 7,2 Mbps
+- HSPA+ 21,6 Mbps
+
+## LTE - 4G
+- Mindestgeschwindigkeit 100Mbps bis 1 Gbps
+- Ausreichend für HD-TV, HD-VOD, Spiele etc#
+- 10-15km Entfernung
+
+## WiMAX (4G)
+- (in Deutschland gescheiterte) "alternative" zu LTE
+- bis zu 40km Entfernung 
+- geringere Latenzzeiten (wie 5G)
+- Funktioniert gut in langläufigen Ländischen Gebieten USA, Afrika, Russland ...
+
+## 5G
+- erwartete Geschwindigkeit von 20 Gbit/s bis 10Gbit/s
