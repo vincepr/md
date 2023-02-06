@@ -9,19 +9,19 @@
 - Einsatz von Email, Messengern... ermöglicht instant, persistant Kommunikation
 - Zentral abgespeicherte Daten können geteilt Verwendet/Zugegriffen werden.
 - Zentralisierung
-- Kosteneinspaarung
+- Kosteneinsparung
 - Steigerung der Effektivität
 - Automatisierung
-- Standartisierung, z.B.Versionierung von Daten
+- Standardisierung, z.B.Versionierung von Daten
 - Datensicherung
-- Gemeinsamme Nutzung von Ressourcen (z.B. geteilter Drucker)
+- Gemeinsame Nutzung von Ressourcen (z.B. geteilter Drucker)
 - Absicherung der Verfügbarkeit: im Verfügbarkeitsverbund kann durch Aufbau von Redundanzen/Failover auch im Ausfall einzelner Komponenten arbeitsfähig bleiben
 - Lastverbund (Cluster)
 - Optimierung der Wartung: z.B. Remote Zugriff
 - Mobilität: Arbeiten von Unterwegs/Homeoffice
 
 ## Nachteile von Netzwerken
-- Kosten: evtl. teure Investionen müssen ökonomischen / unternehmerischen Vorteile aufwiegen. Aufbau, Wartung, Pflege, Instandhaltung erzeugt kosten.
+- Kosten: evtl. teure Investitionen müssen ökonomischen / unternehmerischen Vorteile aufwiegen. Aufbau, Wartung, Pflege, Instandhaltung erzeugt kosten.
 
 # Geografische Ausdehnung
 - zentrale vs dezentrale
@@ -36,17 +36,17 @@
 - GAN
 
 ## PAN
-- USB, FireWire, Blootooth
+- USB, FireWire, Bluetooth
 - wenige Meter, maximal Nebenraum
 
 ## LAN (local area network)
 - mindestens 2 Geräte im Verbund
 - auch Ortznetz genannt. Bis ca. Grundstücksfläche.
-- standartmäßig Ethernet
+- standardmäßig Ethernet
 
 ## WLAN (wireless local area network)
 - werden durch Normenfamilie IEEE 802.11 definiert
-- geräte bequem in Heim- oder Unternehmensnetz einbinden
+- Geräte bequem in Heim- oder Unternehmensnetz einbinden
 - geringerer Datendurchsatz als LAN
 
 ## MAN (metropolian area network)
@@ -63,22 +63,22 @@
 - GANs nutzen die Glasfaserinfrastruktur, Seekabel oder Satellitenübertragung.
 
 # Zentralisierung vs Dezentralisierung
-- gleichberechtigt vs hierarchische struktur
-- zwei Grunkonzepte Client-server Peer-to-Peer
+- gleichberechtigt vs hierarchische Struktur
+- zwei Grundkonzepte Client-server Peer-to-Peer
 
 ## Peer-to-Peer
 - von peer (engl. Gleichgestellter)
 - prinzipiell alle Computersysteme gleichberechtigt
 - im lokalen: Drucker- oder Netzlaufwerksfreigaben
-- im globalen: Filesharing-Netzte z.B. **Torrent**, Grid- oder CloudComputing
+- im globalen: Filesharing-Netze z.B. **Torrent**, Grid- oder CloudComputing
 
 *Vorteile:* keine Extrakosten für Server  
-*Nachteile:* Sicherheitsrichtlinen nur sehr eingeschränkt umsetzbar. Keine Zentrale Verwaltung.  
+*Nachteile:* Sicherheitsrichtlinien nur sehr eingeschränkt umsetzbar. Keine Zentrale Verwaltung.  
 
 ## Client-Server
 - Server-Anwendung welches über Netzwerkverbindung eine Dienstleistungen/Ressourcen bereitstellt und passiv auf Anfragen wartet.
 - Client-Programm kommuniziert mit dem Server über eindeutige "Sprache", dem **Protokoll**. Bsp, HTTP und Webserver.
-- sobald ein Netzwerk größere Dimensionen annimt, wird PeerToPeer unübersichtlich und schwer zu administrieren.
+- sobald ein Netzwerk größere Dimensionen annimmt, wird PeerToPeer unübersichtlich und schwer zu administrieren.
 - Je nach Protokoll ist eine Anmeldung nicht erforderlich (z.B. Web- DNS- und DHCP-Server)
 
 *Vorteile:* Zentralisierte Sicherheitsfreigaben. Erhöhte Sicherheit. Spezialisierung des Servers nach Anforderungen möglich. Redundanz möglich für z.B. Ausfälle oder Loadbalancing.  
@@ -97,22 +97,22 @@ Shared Medium ->sie hängen alle in Reihe am "selben" Kabel.
 
 Früher häufig verwendet, z.B. in Version 10Base5 oder 10Base2. Mittlerweile wird es eher vermieden.
 *Vorteile:* Günstig  
-*Nachteile:* Single point of Failure, keine wirkliche skallierbarkeit.
+*Nachteile:* Single point of Failure, keine wirkliche Skalierbarkeit.
 
 # physikalischer Stern 
 (der logisch jedoch noch Bus ist)  
 Zentraler Verteiler nimmt anfragen an und sendet aber immer an alle gleichzeitig (wie Bus)     
 Immer noch Single point of failure (Verteiler)     
-ausfall einer statiun oder defekt eines Kabels hat keine Auswirkung auf das restliche Netz.
+Ausfall einer Station oder defekt eines Kabels hat keine Auswirkung auf das restliche Netz.
 
 # logischer Stern 
 (der ebenso immer auch physikalischer Stern ist)    
-Zentraler Verteiler (Switch) stellt punkt zu punkt verbindung zwischen clients her.   
+Zentraler Verteiler (Switch) stellt Punkt zu Punkt Verbindung zwischen clients her.   
 Hat heutzutage fast vollständig den Bus verdrängt.  
 *Vorteile:*
-- Extrem Flexibel bzgl. Skallierbarkeit. Weitere Stationen und/oder Verteiler können problemlos hinzugefügt werden.   
+- Extrem Flexibel bzgl. Skalierbarkeit. Weitere Stationen und/oder Verteiler können problemlos hinzugefügt werden.   
 - Höhere Durchsatzraten, da 2 Stationen die Volle Bandbreite benützen können.     
-- allgemein wenn aktiver Verteiler (vs passiver) wird das Signalverstärkt -> größere Reichweite.    
+- allgemein wenn aktiver Verteiler (vs passiver) wird das Signal verstärkt -> größere Reichweite.    
 
 *Nachteile:* 
 - größere Kabelmenge 
@@ -132,15 +132,15 @@ Stern Topologien werden zusammengeschalten um z.B. verschiedene Abteilungen zusa
 z.B. 1 Hauptverteiler hat 3 Abteilung mit jeweils mehreren Clients. Server z.B. am Hauptverteiler angeschlossen.
 
 # (einfaches) Maschennetz Topologie
-In einem vernetzten Netzt existieren zwischen Verschiedenen Knoten mehrere Verbindungen.
-- keinen single point of failure. Da redundanzen vorhanden.
+In einem vernetzten Netz existieren zwischen Verschiedenen Knoten mehrere Verbindungen.
+- keinen single point of failure. Da Redundanzen vorhanden.
 - Vorteile überwiegen nur, wenn Sicherheit bzgl. Verfügbarkeit das höchste Gut ist.
 - Extra Leitungen können load sharing oder passiv (standby) implementiert werden
 *Nachteil:*
 - extra Kabel, Hardware braucht genug LAN Ausgänge/Eingänge -> kosten
 - Routing kann extrem komplex werden. (um feedbacks zu vermeiden etc)
 
-werden siemit switchen realisiert, sind das Spanning-Tree-Protokoll bzw. meshing-fähige Switche erforderlich.
+werden sie mit Switchen realisiert, sind das Spanning-Tree-Protokoll bzw. meshing-fähige Switche erforderlich.
 ## Vollvermaschtes netz Topologie
 Jedes Mitglied ist mit **allen** anderen Mitgliedern vernetzt.
 
@@ -162,12 +162,12 @@ Jedes Mitglied ist mit **allen** anderen Mitgliedern vernetzt.
 - das einzige passive Kopplungselement (alle anderen sind aktive Kopplungselemente)
 
 ### Repeater : Layer 1
-- verstärkt Sendesignal um verlängerung der Kabellänge über physikalisches Maxium.
+- verstärkt Sendesignal um Verlängerung der Kabellänge über physikalisches Maxium.
 - 5-4-3 Regel. Begrenzt Reichweite => mittlerweile in kabelgebundenen Netzwerken fast vollständig verdrängt. (effektiv übernehmen Kopplungselemente in Schichten 2-3 die Signalauffrischung, da diese nicht mit 5-4-3 Regel beschränkt sind)
 ### Hub : Layer 1
 - Ist ein multiport Repeater. Frischt also Signal auf wie der Repeater.   
-- Sendet Packete die ankommen an **alle** anderen Stationen. (=> physikalischer Stern Topologie mit Hub in der Mitte).    
-- Nachteile (da effektiv ein Bus) Anzahl der Stationen ist begrenzt. Geteilte Bandbreite. Heutztutage heute nicht mehr wirklich relevant.
+- Sendet Pakete die ankommen an **alle** anderen Stationen. (=> physikalischer Stern Topologie mit Hub in der Mitte).    
+- Nachteile (da effektiv ein Bus) Anzahl der Stationen ist begrenzt. Geteilte Bandbreite. Heutzutage heute nicht mehr wirklich relevant.
 - Vorteile kostengünstig.
 
 ### Bridge : Layer 2
@@ -176,8 +176,8 @@ Jedes Mitglied ist mit **allen** anderen Mitgliedern vernetzt.
 - heutzutage nicht mehr wirklich relevant.
 
 ### Layer-2-Switch : Layer 2
-- stellt Punkt zu Punkt verbindung zwischen 2 Stationen her. (logischer Stern)
-- benutzt MAC adressen um zu wissen wohin die Datenpakete müssen. Und updated diese regelmäßig.
+- stellt Punkt zu Punkt Verbindung zwischen 2 Stationen her. (logischer Stern)
+- benutzt MAC Adressen um zu wissen wohin die Datenpakete müssen. Und updated diese regelmäßig.
 - über Uplinkports können mehrere Switches miteinander kombiniert werden. Adresstable hat jedoch eine Obergrenze der maximalen Endgeräte die "bedient werden können".
 - Bandbreite ist hier nicht mehr geteilt.
 - An einem Empfänger Port ist jedoch die Bandbreite immer noch limitiert. => wenn zu viele Pakete an einen Port gehen, mehr als der Switch zwischenspeichern kann werden Pakete verworfen/gelöscht.
@@ -185,8 +185,8 @@ Jedes Mitglied ist mit **allen** anderen Mitgliedern vernetzt.
 
 ### Gateway : Layer 3-7
 Verbindet Netzwerke mit unterschiedlichen Protokollen/Systemen miteinander, die sonst nicht miteinander Kommunizieren könnten.
-- Standart-Gateway: Standart weg ins Internet, zuhause z.B. Modem-Router.
-- Router, Proxyies etc sind beispiele für Gateways.
+- Standart-Gateway: Standard weg ins Internet, zuhause z.B. Modem-Router.
+- Router, Proxys etc sind beispiele für Gateways.
 - Gateways können auf vielen Ebenen existieren. Nicht nur auf Layer 3.
 
 ### Router : Layer 3
@@ -196,13 +196,13 @@ Verbintet Netzwerke. "Wegfinder" im Internet.
 ### Layer3-Switch : Layer 3
 
 ## Kollisionsdomäne
-Teilbereich auf OSI-Schicht 1. Fangen auf einem derartigen gemeinsamen Layer-1 Segment zwei Stationen gleichzeig an zu senden (z.B. auf gleichem Kabel), kommt es zu Kollisionen. (z.B. Stationen die an einem Hub zusammengeschlossen sind.)     
+Teilbereich auf OSI-Schicht 1. Fangen auf einem derartigen gemeinsamen Layer-1 Segment zwei Stationen gleichzeitig an zu senden (z.B. auf gleichem Kabel), kommt es zu Kollisionen. (z.B. Stationen die an einem Hub zusammengeschlossen sind.)     
 - Switches z.B. haben viele Kollisionsdomänen. Eine Bridge z.B. 2 Kollisionsdomenäen.
 ![](./img/Kollisionsdomaene.svg)
 
 ## halfduplex / vollduplex
 half: gleichzeitiges senden und empfangen ist nicht möglich.     
-vollduplex: quasi 2 leitungen (in einem Kabel), die gleichzeitiges Senden und Empfangen ermöglichen.
+vollduplex: quasi 2 Leitungen (in einem Kabel), die gleichzeitiges Senden und Empfangen ermöglichen.
 - im halfduplex Betrieb werden **Zugriffsverfahren** benutzt um zu regeln wer wann senden darf:
     - CSMA/CA
     - Token Passing
@@ -211,7 +211,7 @@ vollduplex: quasi 2 leitungen (in einem Kabel), die gleichzeitiges Senden und Em
     - CDMA
 
 # Mehrfachzugriffsverfahren
-Mehrere Zeilnehmer teilen sich ein Zugriffsmedium
+Mehrere Teilnehmer teilen sich ein Zugriffsmedium
 
 ### - CSMA / CA
 carrier-sense multiple access with collision avoidance.     
@@ -225,13 +225,13 @@ Z.B. bei einem Bus / Hub Netzwerk. Aber auch wenn sich ein Übertragungsmedium w
 - **Collision Avoidance:** Ein komplexer Ablaufplan versucht dafür zu sorgen, dass zwei oder mehr Teilnehmer nicht gleichzeitig eine Übertragung beginnen. Sollte es doch mal passieren wird dies erkannt und die Übertragung abgebrochen -> erneut versucht.
 
 
-großes Problem: Hidden-Station-Problem. Wenn 2 entfernte Statiunen sich gegenseitig nicht mehr wahrnehmen können. Stationen dazwischen jedoch beide. -> beide Senden ohne das sie es merken gleichzeitig.
+großes Problem: Hidden-Station-Problem. Wenn 2 entfernte Stationen sich gegenseitig nicht mehr wahrnehmen können. Stationen dazwischen jedoch beide. -> beide Senden ohne das sie es merken gleichzeitig.
 
 -> Lösung: RTS/CTS Koordination. Request to Send/Clear
 
 #### Protokollablauf
 1. Medium abhorchen
-2. ist MNedium für die Dauer eines DIFS (Taktung die ein Datenpaket maximal gesendet werden kann) frei, wird gesendet
+2. ist Medium für die Dauer eines DIFS (Taktung die ein Datenpaket maximal gesendet werden kann) frei, wird gesendet
 3. ist das Medium belegt wird gestoppt und nach einem DIFS erneut probiert
 4. nach vollständigem Empfang des Pakets warted der Empfänger ein SIFS bevor eine Antwort gesändet wird
 5. Eine Kollion führt zum gleichzeitigen Timeout, bevor der gesamte Vorgang wiederholt werden kann.
@@ -253,29 +253,29 @@ Jeder Sender hat sein festgesetztes Zeitfenster zum Senden.
 - Zuordnung der Empfangenen Daten erfolgt alleine auf Zeitlichen Position der Daten
 - Kennen die Stationen ihren Zeitslot können Kollisionen vermieden werden.
 
-Synchrones TDMA feste Zeitslots -> viel verschwendung von Bandbreite.
-Asyncrones TDMA gibt es auch noch. -> Effizienter. Nachteil: Mehr Protokoll/Aufwand.
+Synchrones TDMA feste Zeitslots -> viel Verschwendung von Bandbreite.
+Asynchrones TDMA gibt es auch noch. -> Effizienter. Nachteil: Mehr Protokoll/Aufwand.
 
 ### - FDMA
-Frequenz-Multiplex Verfahren. Mobilfunk, Kabel-Fernsehr.
+Frequenz-Multiplex Verfahren. Mobilfunk, Kabel-Fernseher.
 - Digitales Signal wird in analoge Sinus Welle geändert.
-- Jeder Sender bekommt eigene Frequenz.(Mit kleinen Frequenz lücken um Interferenzen auszuschließen) Alle senden "Gleichzeitig".
+- Jeder Sender bekommt eigene Frequenz.(Mit kleinen Frequenz Lücken um Interferenzen auszuschließen) Alle senden "Gleichzeitig".
 - Am Empfänger werden die einzelnen Frequenzen wieder herausgefiltert.
 
 ### - Token Passing
 - Token Ring: Ich erhalte (reihum) den Token. Wenn ich senden möchte sende ich, nachdem ich den Token habe, oder reiche ihn weiter.
-- Token Bus: Nimmt logisch gesehen den nächsten Teilnehmer. (MAC adressen z.B. nach Value-sortiert)
+- Token Bus: Nimmt logisch gesehen den nächsten Teilnehmer. (MAC Adressen z.B. nach Value-sortiert)
 
 
 ## Der Aufbau eines Ethernet-v2-Rahmens nach IEEE 802.3
 - Liegt in Schichten 1 und 2 und überträgt dort Daten
-- am bekanntesten ist die Definiton des noch heute gültigen Ethernet-v2- Rahmens für den Layer 2.
+- am bekanntesten ist die Definition des noch heute gültigen Ethernet-v2- Rahmens für den Layer 2.
 
 
 ## Frames
 - MTU - Maximum transmission Unit kann bei der Konfiguration eines Netzinterfaces angegeben werden.
-- Sie definieret die maximale Größe des Datagramms. Daten die diese Länge überschreiten, werden immer in mehrere Frames aufgeteilt/fragmentiert und dann über das Netzwerk versendet.
-- Dadurch müssen bei Fehlern nur die entsprechenden Rahmen neu übertragen werden. Außerdem können mehrere Benutzer abwechselnd Rahmen verschickem. -> nahezu gleichzeitiger Netzwerkzugriff mehrere User möglich.
+- Sie definiert die maximale Größe des Datagramms. Daten die diese Länge überschreiten, werden immer in mehrere Frames aufgeteilt/fragmentiert und dann über das Netzwerk versendet.
+- Dadurch müssen bei Fehlern nur die entsprechenden Rahmen neu übertragen werden. Außerdem können mehrere Benutzer abwechselnd Rahmen verschicken. -> nahezu gleichzeitiger Netzwerkzugriff mehrere User möglich.
 - Prinzipielle Aufbau nach Rahmen nach IEEE 802.3 ist dabei immer gleich.
 
 # Header - Daten -Trailer
@@ -286,12 +286,13 @@ Schicht1:
 |8 Bytes|6 Bytes|6 Bytes|2 Bytes|46-1500 Bytes|4 Bytes|
 
 Ohne Präambel ergibt sich: 
-- min. größe: 64 Bytes
-- max. größe 1518 Bytes (= Nutzlast 1518/1522bytes)
+- min. Größe: 64 Bytes
+- max. Größe 1518 Bytes (= Nutzlast 1518/1522bytes)
 
-# ethernet
+# Ethernet
 - Ein ethernet-v2-Rahmen hat ohne VLAN-Tag eine Rahmengröße von 64 und 1518Bytes und folgenden Aufbau:
     - als Frame Kontroll Sequenz (FCS) wird ein CRC Algorithmus eingesetzt
     - unter IPv6 gibt es keine fragmentierungen mehr.
     - Ist ein Frame zu groß, erhält der Absender eine Fehlermeldung
-    - Ist ein Netzwerk übeer Switche in virtuelle Netzwerke aufgeteilt, erhält jeder Frame eim Datenteil zur Identifizierung des VLANs ein zusätzlich 4Byte großes Feld, das VLAN-Tag.
+    - Ist ein Netzwerk über Switche in virtuelle Netzwerke aufgeteilt, erhält jeder Frame eim Datenteil zur Identifizierung des VLANs ein zusätzlich 4Byte großes Feld, das VLAN-Tag.
+
