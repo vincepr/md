@@ -100,31 +100,42 @@ Alice -> Nachricht X -> Bob
 # Häufisten Angriffe
 ## DOS und DDOS - (distributed) denial of service
 - Angriffe mit dem Ziel die Verfügbarkeit eines Dienstes im Internet zu stören
+- DOS von nur einem Host, DDOS von mehreren zugleich.
 - Am häufigsten sind TCP-SYN-Flooding, Teardrop-Angriffe, Smurf-Angriffe, Ping of Death und Botnets.
 
-## Man-in-the-Middle-Angriffe
-- Bei einem MitM-Angriff schaltet sich ein Hacker in die Kommunikation zwischen einem Client und einem Server ein.
-- Am häufigsten sind Session-Hijacking, IP-Spoofing, Replay-Angriff
-
-## Phishing
+## Phishing - Spoofing
 - z.B. Emails aus offenbar vertrauenswürdigen Quellen zum ziel versenden. So an persobliche Informationen gelangen oder zu bestimmten Handlungen zu verleiten.
 
-## Drive-by-Downloads
-- Suchen nach ungesicherten Websites und Einschleusen schädlicher Skripts in Diese.
+## Abhören - sniffing and eavesdroppging
+- Hier wird der Netzwerkdatenverkehr abgefangen um Zugriff auf z.B. Kenwörter, Kreditkartennummern etc. zu erhalten
+- Die best Abwehrmethode gegen Abhören ist die Verschlüsselung von Daten.   
+    - **sniffing** (packet-sniffing) ist eine Methode zur Netzwerkdiagnose durch abhören des gesammten Netzwerkverkehrs. Mit z.B. Wireshark.
+    - **eavesdropping** ist der allgemeinere Überbegriff zum abhören von Datenpaketen auf ihrem WEg durch das Netzwerk.
 
-## Kennwortangriffe
+## Schadsoftware (Malware - malicious software)
+- Software die absichtlich entwickelt wurde um Schäden an Computern, Netzwerken etc anzurichten.
+- ua. Spyware, Adware, Ransomware, Trojaner, Dropper, Würmer, Logikbomben, Stealth-Viren, Polymorphe Viren, System-/Boot-Record-Infektoren, Dateinfektoren, Makroviren(Excel) ...
+    - Virus: zerstörerisches Miniprogramm, das von "infizierten Anwendungen oder Daten übertragen wird
+    - Wurm: bösartige Software, die sich automatisch über offene netzwerkverbindungen verbreitet.
+
+## Defacement
+- Angriff auf eine Website/-Server mit der Absicht seinen Inhalt zu verändern. z.B. zur Eigenwerbung von Hackergruppen.
+
+## Weitere:
+
+### SQL-Injection
+- Mit einer erfolgreichen SQL-Einschleusung ist es möglich, sensible Daten aus der Datenbank auszulesen. Hierbei führt ein Angreifer über die Daten, die vom Client an den Server übermittelt werden, eine SQL-Abfrage der zugrundeliegenden Datenbank aus.
+
+### Kennwortangriffe
 - Bei Brute-Force-Angriffen werden nach dem Zufallsprinzip verschiedene Kennwörter ausprobiert.
 - Bei einem Wörterbuchangriff wird z.B. statistisch häufig benutzte Kennworte oder zusammensetzung von Wörter und Ziffernblöcke getestet.
 
-## SQL-Injection
-- Mit einer erfolgreichen SQL-Einschleusung ist es möglich, sensible Daten aus der Datenbank auszulesen. Hierbei führt ein Angreifer über die Daten, die vom Client an den Server übermittelt werden, eine SQL-Abfrage der zugrundeliegenden Datenbank aus.
+### Man-in-the-Middle-Angriffe
+- Bei einem MitM-Angriff schaltet sich ein Hacker in die Kommunikation zwischen einem Client und einem Server ein.
+- Am häufigsten sind Session-Hijacking, IP-Spoofing, Replay-Angriff
 
-## Cross-Site-Scripting (XSS)
-- Angreifer schleusen dabei eine Nutzlast mit (z.B.) schädlichem Javascript in eine Website ein. Sobald ein 
+### Drive-by-Downloads
+- Suchen nach ungesicherten Websites und Einschleusen schädlicher Skripts in Diese.
 
-## Abhören
-- Hier wird der Netzwerkdatenverkehr abgefangen um Zugriff auf z.B. Kenwörter, Kreditkartennummern etc. zu erhalten
-- Die best Abwehrmethode für Abhören ist die Verschlüsselung von Daten.
-
-## Schadsoftware (Malware)
-- ua. Spyware, Adware, Ransomware, Trojaner, Dropper, Würmer, Logikbomben, Stealth-Viren, Polymorphe Viren, System-/Boot-Record-Infektoren, Dateiinfektoren, Makroviren
+### Cross-Site-Scripting (XSS)
+- Angreifer schleusen dabei eine Nutzlast mit (z.B.) schädlichem Javascript in eine Website ein.
