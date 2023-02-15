@@ -5,7 +5,7 @@ authors:
   name: Vincent
   title: Docusaurus Core Team
   url: https://github.com/wgao19
-  image_url: https://github.com/wgao19.png
+  image_url: https://github.com/vincepr.png
 tags: [hola, docusaurus]
 ---
 
