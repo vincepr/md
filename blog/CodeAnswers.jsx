@@ -8,18 +8,16 @@ export default function CodeAnswers({arr, withHelp}) {
   const [nth, setNth] = useState(0);
   const [inputField, setInputField] = useState("")
 
-  function inputChanged(event){
-    setInputField(event.target.value)
-  }
+  const inputChanged = (event)=> setInputField(event.target.value)
+  const clickedHelp = ()=> setNth(arr.length)
   function submitOneLine(){
     if(inputField===arr[nth]){
       setNth(nth+1)
       setInputField("")
     }
   }
-  function clickedHelp(){
-    setNth(arr.length)
-  }
+  
+  
   return (
     <div>
       <ol className='CodeAnswersList'>
@@ -29,16 +27,36 @@ export default function CodeAnswers({arr, withHelp}) {
             .map( (el,idx) => createList(el,idx, nth===arr.length))
         }
       </ol>
-      <input className='CodeAnswersInput' value={inputField} onChange={inputChanged} onKeyDown={ev=>{if(ev.key ==="Enter")submitOneLine()}}></input>
-      <button className='CodeAnswersButton' onClick={submitOneLine}>Check one Line</button>
-      {withHelp ? <button onClick={()=>{if(nth<arr.length)setNth(nth+1)}}>Help - reveal one line</button> : ""}
-      {withHelp ? <button style={{marginLeft: '1%'}} onClick={clickedHelp}>Help - show all</button> : ""}
+      <input className='CodeAnswersInput'
+        disabled = {(nth===arr.length)? "disabled" : ""}
+        onKeyDown={ev=>{if(ev.key ==="Enter")submitOneLine()}}
+        onChange={inputChanged} 
+        value={inputField} 
+        ></input>
+
+      <button 
+        disabled = {(nth===arr.length)? "disabled" : ""}
+        onClick={submitOneLine}
+        className='CodeAnswersButton' 
+      >Check one Line</button>
+      
+      {withHelp ? 
+        <button
+          disabled = {(nth===arr.length)? "disabled" : ""} 
+          onClick={()=>{if(nth<arr.length)setNth(nth+1)}}
+        >Help - one line</button> : ""}
+
+      {withHelp ? 
+        <button
+          disabled = {(nth===arr.length)? "disabled" : ""} 
+          onClick={clickedHelp}
+          style={{marginLeft: '1%'}} 
+        >Help - show all</button> : ""}
     </div>
   );
 }
 
 function createList(el, idx, isAllCorrect){
-
   return (
     <li
       className={isAllCorrect ? "typed-out finished" : "typed-out"}
@@ -46,6 +64,7 @@ function createList(el, idx, isAllCorrect){
     > {el} </li>
   )
 }
+
 function alreadyEntered(element, index, nth){
   return index<nth
 }
