@@ -11,6 +11,7 @@ Gesucht sind die 6 Zeilen die der ConsoleLog ausgibt. Sollten Lösbar sein wenn 
 function x(a){
   return a % 10;
 }
+
 function y(str){
   return str.length;
 }
@@ -19,33 +20,26 @@ function pr(a,b){
   console.log(a+b+c);
 }
 
-
 // 1 Block | strings and numbers
 let a = "hello world!";
 let b = x(a.length);
 let c = y(a);
-
 pr( a, b + c );
 pr( c, b + a );
-
 
 // 2 Block | charAt() und substr() JS-Hero 22-26
 a = "This_string_has_26_letters";
 b = "This_string_has_29_characters";
 c = b.charAt(23) + b.charAt(4) + b.substr(5,11) + a.charAt(16) + b.charAt(16) + a.substr(19,7);
-
 console.log(c);
 pr(c.length, "-characters-has-the-following-string:-");
-
 
 // 3 Block | Math-functions JS-Hero 32-37
 a = y("12345") + Math.random();
 b = Math.ceil(a) + Math.floor(a);
 c = c.length;
-
 console.log(b);
 pr(b,b);
-
 ```
 
 
