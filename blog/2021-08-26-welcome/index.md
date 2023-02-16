@@ -1,9 +1,10 @@
 ---
 slug: welcome
-title: Welcome
+title: AboutDocusaurusBlog
 authors: [Vincent]
-tags: [facebook, hello, docusaurus]
+tags: [hello, docusaurus]
 ---
+## Default-Info about Docusaurus blog
 
 [Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
 

@@ -1,0 +1,23 @@
+.typed-out{
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2.5s steps(50, end) forwards;
+}
+.finished{
+    color:     var(--ifm-link-color);
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+.CodeAnswersInput{
+    min-width: 69%;
+    margin-right: 1%;
+}
+.CodeAnswersButton{
+    min-width: 30%;
+}
+.CodeAnswersList {
+    background-color: var(--ifm-pre-background);
+    border-radius: 11px;
+}

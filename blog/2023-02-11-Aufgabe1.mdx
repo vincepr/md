@@ -1,0 +1,45 @@
+---
+slug: mdx-interactive1
+title: Aufgabe 1
+authors: [Vincent]
+tags: [JS-Hero]
+---
+
+Gesucht sind die 4 Zeilen die der ConsoleLog ausgibt.
+
+```js
+let aNumber;
+let anotherNumber;
+
+function changeNumber(number){
+  aNumber = number;
+  console.log(number);
+  return anotherNumber;
+}
+
+function whatDoesThisDo(xyz){
+  console.log(xyz - 100);
+  return aNumber + 1;
+  console.log(xyz + aNumber);
+}
+
+anotherNumber = 22;
+changeNumber(10);
+changeNumber(anotherNumber);
+whatDoesThisDo(100);
+anotherNumber = whatDoesThisDo(aNumber);
+
+```
+
+
+import CodeAnswers from './CodeAnswers.jsx';
+let arrCorrectAnswers = [
+    "10", 
+    "22", 
+    "0", 
+    "-78", 
+    ]
+
+<CodeAnswers arr={arrCorrectAnswers} withHelp={true}/>
+
+

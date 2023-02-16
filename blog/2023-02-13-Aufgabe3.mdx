@@ -1,0 +1,67 @@
+---
+slug: mdx-interactive3
+title: Aufgabe 3
+authors: [Vincent]
+tags: [JS-Hero]
+---
+
+Gesucht sind die 8 Zeilen die der ConsoleLog ausgibt.
+
+```js
+var x = "Hello";
+var y = 2;
+var z = 3;
+printOut();
+
+x = a();
+y = a() + b(1);
+z = x + a();
+printOut();
+
+x = c(1, 2);
+y = c(x, 4);
+z = c(z, b(y)) - 2;
+printOut();
+
+console.log(x + y + z + "");
+console.log("" + x + y + z);
+
+
+function a() {
+  let a = 1;
+  a = a + 1;
+  a += 3;
+  return a;
+}
+
+function b(base){
+  return base * base;
+}
+
+function c(a, b){
+  return x + a + b;
+}
+
+function printOut(){
+  console.log(x + y + z);
+  console.log("Ergebnis:_" + x + y+ z);
+}
+
+```
+
+
+import CodeAnswers from './CodeAnswers.jsx';
+let arrCorrectAnswers = [
+  "Hello23",
+  "Ergebnis:_Hello23",
+  "21",
+  "Ergebnis:_5610",
+  "444",
+  "Ergebnis:_820416",
+  "444",
+  "820416",
+    ]
+
+<CodeAnswers arr={arrCorrectAnswers} withHelp={true}/>
+
+
