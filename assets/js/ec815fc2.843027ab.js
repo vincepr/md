@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmd=self.webpackChunkmd||[]).push([[499],{1330:e=>{e.exports=JSON.parse('{"label":"JS-Hero","permalink":"/md/blog/tags/js-hero","allTagsPath":"/md/blog/tags","count":4}')}}]);
