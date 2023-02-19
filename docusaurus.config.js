@@ -10,6 +10,7 @@ const config = {
   tagline: 'Just storing whatever is recent',
   url: 'https://vincepr.github.io',
   baseUrl: '/md/',
+  staticDirectories: ['static'],
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

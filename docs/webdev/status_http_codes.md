@@ -21,7 +21,7 @@
 |403| forbidden| authentication sent is lacking |API-key used lacks admin|
 |404|not found| trying to acces something that is not there|ex. trying to access some API where there is none|
 
-## 4xx Server Error
+## 5xx Server Error
 | | | ||
 |---|---|---|----|
 |500|internal server error|something broke on the server| ex. database is down|
