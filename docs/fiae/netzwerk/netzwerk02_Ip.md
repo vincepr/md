@@ -194,4 +194,4 @@ Ausserdem wrsl. nicht wie eingezeichnet mit 14 sondern direkt mit 16 (oder 18) e
 
 
 # ipv6 cheat sheet
-![](./IPv6_cheat_sheet.pdf)
+[download IPv6 cheat sheet](./IPv6_cheat_sheet.pdf)
