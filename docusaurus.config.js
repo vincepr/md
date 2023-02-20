@@ -82,7 +82,9 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
+          {to: '/blog/mdx-playground', label: 'Js-Playground', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
+          
           {
             href: 'https://github.com/vincepr/md',
             label: 'GitHub',
@@ -103,11 +105,15 @@ const config = {
             ],
           },
           {
-            title: 'Github',
+            title: 'JavaScript',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/vincepr/md',
+                label: 'Aufgaben',
+                to: '/blog/tags/js-hero',
+              },
+              {
+                label: 'Playground',
+                to: '/blog/mdx-playground',
               },
             ],
           },
@@ -115,8 +121,17 @@ const config = {
             title: 'Blog',
             items: [
               {
-                label: 'Default',
+                label: 'Recent',
                 to: '/blog',
+              },
+            ],
+          },
+          {
+            title: 'Github',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/vincepr/md',
               },
             ],
           },

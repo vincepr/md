@@ -20,7 +20,7 @@ export default function RealCode({importPath, withHelp}){
                 })
                 .then((ob) => {
                     if(!ignore){
-                        // if user didnt "leave" we set the new states
+                        // CLEANUP-Check: if user didnt "leave" we set the new states
                         setJsText(ob.txt);
                         setAnswers(ob.answers);
                     }
