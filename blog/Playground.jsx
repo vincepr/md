@@ -6,10 +6,10 @@ import CodeAnswers from "./CodeAnswers.jsx"
 export default function Playground(){
     const [textArea,setTextArea] = useState(``)
     const [answers, setAnswers] = useState([])
-    const [errorMsg, setErrorMsg] = useState ("")
+    const [errorMsg, setErrorMsg] = useState ("false")
 
     let answersStr = ""
-    if (errorMsg !== "false") answersStr = errorMsg         // display error message
+    if (errorMsg !== "false") answersStr = "❌ "+errorMsg         // display error message
     else answers.forEach(line => answersStr += line + "\n") // display console.log() output with newlines inbetween
     
     // onlick event handling:

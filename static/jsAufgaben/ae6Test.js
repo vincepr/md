@@ -29,10 +29,18 @@ function test(umsatz){
 
 function doTest(testInputArr, testFunction, inputFunction ){
     let name = inputFunction.name
+    let noErrors = true
+
+    function err(txt){
+        noErrors = false
+        console.log(txt)
+        return
+    }
     
     if (inputFunction.length !== testFunction.length) {
-        if (name) throw new Error(`❌ ${name} does NOT have ${testFunction.length} arguments`)
-        else  throw new Error(`❌ can not find the required function or object`)
+        if (name) err(`❌ ${name} does NOT have ${testFunction.length} arguments`)
+        else  err(`❌ can not find the required function or object`)
+        return
     }
 
     for (let value of testInputArr) {
@@ -41,10 +49,11 @@ function doTest(testInputArr, testFunction, inputFunction ){
         if (own === test){
             console.log(`✅ ${name}(${value}) returns ${test}`)
         } else {
-            throw new Error(`❌ ${name}(${value}) does NOT return ${test}`)
+            err(`❌ ${name}(${value}) does NOT return ${test}`)
+            return
         }
     }
-    console.log("✅ all checks passed. congratulations 👌")
+    noErrors && console.log("✅ all checks passed. congratulations 👌")
 }
 
 
