@@ -2,6 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import CodeBlock from '@theme/CodeBlock';
 import CodeAnswers from './CodeAnswers';
+import TextArea from './TextArea';
 
 /**
  * returns a Playground Element, optional with a unit-Testing .js import for "Js-Hero"-like interactive Elements
@@ -11,7 +12,7 @@ export default function JsPlayground({importPath}){
     let isWithImport = false            // playground-mode
     if(importPath) isWithImport = true  // import file to run "unit-test-with"
 
-    const [textArea,setTextArea] = useState(``)
+    const [text,setText] = useState("")
     const [answers, setAnswers] = useState([])
     const [errorMsg, setErrorMsg] = useState ("false")
 
@@ -20,7 +21,7 @@ export default function JsPlayground({importPath}){
     else answers.forEach(line => answersStr += line + "\n") // display console.log() output with newlines inbetween
     
     // event handling:
-    const handleTextChange = (event) => setTextArea(event.target.value)
+    const handleTextChange = (event) => setText(event.target.value)
     /** runs code in textInput after the importFile if that exists or just in playgroundmode without */
     const runCode = () => {
 
@@ -29,28 +30,24 @@ export default function JsPlayground({importPath}){
             .then((el) => el.text())
             .then(unitTest => {
                 // run after importing File
-                let ranJs = runJs(textArea+"\n"+unitTest)
+                let ranJs = runJs(text+"\n"+unitTest)
                 setAnswers(ranJs.arr)
                 setErrorMsg(""+ranJs.error)
             })
         }
         else{
             // run without importFile in Playgroundmode
-            console.log("notImportMmode")
-            let ranJs = runJs(textArea)
+            let ranJs = runJs(text)
             setAnswers(ranJs.arr)
             setErrorMsg(""+ranJs.error)
         }
     }
 
     return(<>
-        <textarea
-            style={{width: "100%"}}
-            onChange={handleTextChange}
-            value={textArea}
-            spellCheck="false"
-            placeholder={`// input your js here\nconsole.log("the world is your oyster")`}
-            rows="25"/>
+        <TextArea
+            setText={setText}
+            text={text}
+        />
         <p></p>
         <button
             style={{float: "right"}}
@@ -58,7 +55,7 @@ export default function JsPlayground({importPath}){
         >Run Code</button>
         <ConsoleLogBlock title={"console.log"} text={answersStr}/>
         <p></p>
-        <ToggleableAnswers text={textArea} answers={answers}/>
+        <ToggleableAnswers text={text} answers={answers}/>
     </>
     )
 }
