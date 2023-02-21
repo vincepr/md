@@ -1,9 +1,16 @@
 import React from 'react'
 import {useState} from 'react'
 import CodeBlock from '@theme/CodeBlock';
+import CodeAnswers from './CodeAnswers';
 
+/**
+ * returns a Playground Element, optional with a unit-Testing .js import for "Js-Hero"-like interactive Elements
+ * @param {*} importPath ->optional import Path -> with a unitTestFile otherwise run in Playground-Mode
+ */
+export default function JsPlayground({importPath}){
+    let isWithImport = false            // playground-mode
+    if(importPath) isWithImport = true  // import file to run "unit-test-with"
 
-export default function InteractiveTest({importPath}){
     const [textArea,setTextArea] = useState(``)
     const [answers, setAnswers] = useState([])
     const [errorMsg, setErrorMsg] = useState ("false")
@@ -12,19 +19,28 @@ export default function InteractiveTest({importPath}){
     if (errorMsg !== "false") answersStr = "❌ "+errorMsg         // display error message
     else answers.forEach(line => answersStr += line + "\n") // display console.log() output with newlines inbetween
     
-    // onlick event handling:
+    // event handling:
     const handleTextChange = (event) => setTextArea(event.target.value)
+    /** runs code in textInput after the importFile if that exists or just in playgroundmode without */
     const runCode = () => {
-        fetch(importPath)
+
+        if(isWithImport){
+            fetch(importPath)
             .then((el) => el.text())
             .then(unitTest => {
-                console.log(textArea+"\n"+unitTest)
+                // run after importing File
                 let ranJs = runJs(textArea+"\n"+unitTest)
                 setAnswers(ranJs.arr)
                 setErrorMsg(""+ranJs.error)
             })
-
-            
+        }
+        else{
+            // run without importFile in Playgroundmode
+            console.log("notImportMmode")
+            let ranJs = runJs(textArea)
+            setAnswers(ranJs.arr)
+            setErrorMsg(""+ranJs.error)
+        }
     }
 
     return(<>
@@ -76,12 +92,10 @@ function runJs(text){
 }
 
 
-function ToggleableAnswers({text}){
+function ToggleableAnswers({text, answers}){
     const [isVisible, setIsVisible] = useState(false)
     const handleclickToggle = (event) => setIsVisible(!isVisible)
-    const handleClickDownload = (event) => {
-        download(text)
-    }
+    const handleClickDownload = (event) => download(text)
 
     return(<>
         <button
@@ -98,6 +112,7 @@ function ToggleableAnswers({text}){
             showLineNumbers>
                 {text || "---"}
             </CodeBlock>
+            {(answers) && <CodeAnswers arr={answers} withHelp={true}/>}
         </div>}
         
     </>

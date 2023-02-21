@@ -2,7 +2,7 @@
 // gewünschte funktion:
 function provisionsRechner(umsatz){
     if (umsatz >= 1500){
-        return umsatz * 0.5
+        return umsatz * 0.05
     } else{
         if (umsatz >= 1000){
             return umsatz * 0.04
@@ -16,7 +16,7 @@ function provisionsRechner(umsatz){
 
 function test(umsatz){
     if (umsatz >= 1500){
-        return umsatz * 0.5
+        return umsatz * 0.05
     } else{
         if (umsatz >= 1000){
             return umsatz * 0.04

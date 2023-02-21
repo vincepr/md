@@ -60,3 +60,8 @@
 ![Struktogramm Bild4](./struktogramm4.svg)
 
 ![Ablaufplan](./ablaufplan.svg)
+
+
+# Aufgabe S50
+
+![Alt text](./AES50_komplett.svg)
