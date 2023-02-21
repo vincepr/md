@@ -1,12 +1,12 @@
 import React from 'react'
 import {useState} from 'react'
 import CodeBlock from '@theme/CodeBlock';
-import CodeAnswers from './CodeAnswers';
+import AnswerGame from './AnswerGame';
 import TextArea from './TextArea';
 
 /**
- * returns a Playground Element, optional with a unit-Testing .js import for "Js-Hero"-like interactive Elements
- * @param {*} importPath ->optional import Path -> with a unitTestFile otherwise run in Playground-Mode
+ * returns a Playground Element, optional with a unit-Testing-mode .js import for "Js-Hero"-like interactive Elements
+ * @param {*} importPath? optional import Path. linking a unitTestFile otherwise runs in Playground-Mode
  */
 export default function JsPlayground({importPath}){
     let isWithImport = false            // playground-mode
@@ -109,7 +109,7 @@ function ToggleableAnswers({text, answers}){
             showLineNumbers>
                 {text || "---"}
             </CodeBlock>
-            {(answers) && <CodeAnswers arr={answers} withHelp={true}/>}
+            {(answers) && <AnswerGame arr={answers} withHelp={true}/>}
         </div>}
         
     </>

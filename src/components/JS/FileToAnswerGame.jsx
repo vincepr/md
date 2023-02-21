@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import {useState} from 'react'
 import CodeBlock from '@theme/CodeBlock';
-import CodeAnswers from "./CodeAnswers.jsx"
+import AnswerGame from "./AnswerGame.jsx"
 
-
-export default function RealCode({importPath, withHelp}){
+/**
+ * Create a full MarkdownCodeblock and AnswersGame from any .js or .txt Javascript file
+ * @param importPath : string Path to .js file
+ * @param withHelp : boolean -true and there is a solution button
+ */
+export default function FileToAnswerGame({importPath, withHelp}){
     const [jsText, setJsText] = useState()
     const [answers, setAnswers] = useState([])
 
@@ -32,7 +36,7 @@ export default function RealCode({importPath, withHelp}){
 
     return <div>
         <MarkdownCodeBlock importPath={importPath} text={jsText}/>
-        <CodeAnswers arr={answers} withHelp={withHelp}/>
+        <AnswerGame arr={answers} withHelp={withHelp}/>
     </div>
 }
 

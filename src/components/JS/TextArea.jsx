@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from "react"
 
-// https://erikmartinjordan.com/react-textarea-indent 
 
+/**
+ * extends html-textarea with Tab and Autoindentation on Enter-Key
+ * @params {setText, text} are [text, SetText]=useState("") in Parent-JSX
+ */
 export default function TextArea({setText, text}){
     const [caret, setCaret] = useState(-1)
     const [target, setTarget] = useState(null)
@@ -41,7 +44,7 @@ export default function TextArea({setText, text}){
                 // If those two aren't the same, insert whitespace to auto-indent.
                 if (selection_start != line_start){
                     event.preventDefault();
-                    // Insert newline and indented text.
+                    // Insert = newline and indented text.
                     let insert = '\n' + text.substr(line_start, Math.min(original_start, selection_start) - line_start)
                     let newText = content.substring(0, original_start) + insert + content.substring(original_start)
                     setText(newText)
@@ -59,7 +62,7 @@ export default function TextArea({setText, text}){
 
 
     return <textarea
-                style=      {{width: "100%"}}
+                style=      {{width: "100%", fontSize:"large"}}
                 onChange=   {handleChange}
                 onKeyDown=  {handleKeypress}
                 value=      {text}

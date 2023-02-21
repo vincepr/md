@@ -1,9 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
-import './CodeAnswers.css'
+import './AnswerGame.css'
 
-
-export default function CodeAnswers({arr, withHelp}) {
+/**
+ * Answer Game, try to guess the line, if right choose next
+ * @params {Array} :arr Array of Strings, each one Answer to guess
+ * @params {withHelp}:bool if True player can click button for solution
+ */
+export default function AnswerGame({arr, withHelp}) {
 
   const [nth, setNth] = useState(0);
   const [inputField, setInputField] = useState("")
@@ -38,7 +42,7 @@ export default function CodeAnswers({arr, withHelp}) {
         disabled = {(nth===arr.length)? "disabled" : ""}
         onClick={submitOneLine}
         className='CodeAnswersButton' 
-      >Check one Line</button>
+      >Check Answer</button>
       
       {withHelp ? 
         <button
