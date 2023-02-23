@@ -136,7 +136,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} vincepr. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} vincepr.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -4,6 +4,7 @@ import CodeBlock from '@theme/CodeBlock';
 import AnswerGame from './AnswerGame';
 import TextArea from './TextArea';
 
+
 /**
  * returns a Playground Element, optional with a unit-Testing-mode .js import for "Js-Hero"-like interactive Elements
  * @param {*} importPath? optional import Path. linking a unitTestFile otherwise runs in Playground-Mode
@@ -20,8 +21,6 @@ export default function JsPlayground({importPath}){
     if (errorMsg !== "false") answersStr = "❌ "+errorMsg         // display error message
     else answers.forEach(line => answersStr += line + "\n") // display console.log() output with newlines inbetween
     
-    // event handling:
-    const handleTextChange = (event) => setText(event.target.value)
     /** runs code in textInput after the importFile if that exists or just in playgroundmode without */
     const runCode = () => {
 
@@ -44,10 +43,12 @@ export default function JsPlayground({importPath}){
     }
 
     return(<>
+
         <TextArea
             setText={setText}
             text={text}
         />
+        
         <p></p>
         <button
             style={{float: "right"}}
@@ -55,7 +56,7 @@ export default function JsPlayground({importPath}){
         >Run Code</button>
         <ConsoleLogBlock title={"console.log"} text={answersStr}/>
         <p></p>
-        <ToggleableAnswers text={text} answers={answers}/>
+        <ToggleableAnswers text={text} answers={answers} setText={setText}/>
     </>
     )
 }
@@ -89,19 +90,28 @@ function runJs(text){
 }
 
 
-function ToggleableAnswers({text, answers}){
+function ToggleableAnswers({text, answers, setText}){
     const [isVisible, setIsVisible] = useState(false)
     const handleclickToggle = (event) => setIsVisible(!isVisible)
     const handleClickDownload = (event) => download(text)
 
     return(<>
         <button
-            style={{margimRight:"10px"}}
+            style={{marginRight:"10px"}}
             onClick={handleclickToggle}
         >Toggle</button>
+
         <button
+            style={{marginRight:"10px"}}
             onClick={handleClickDownload}
         >Save file</button>
+
+        <input
+            type="file"
+            accept=".js, .txt, .jsx"
+            onChange={onChange}
+        ></input>
+
         {isVisible && <div>
             <CodeBlock
             isVisible={isVisible.toString()}
@@ -114,6 +124,7 @@ function ToggleableAnswers({text, answers}){
         
     </>
     )
+
     function download(text) {
         let filename = "Aufgabe.js"
         let element = document.createElement('a')
@@ -124,6 +135,17 @@ function ToggleableAnswers({text, answers}){
         document.body.appendChild(element)
         element.click()
         document.body.removeChild(element)
+    }
+
+    function onChange(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(event) {
+          let newText = event.target.result
+          setText(newText)
+        };
+      
+        reader.readAsText(file);
     }
 }
 
