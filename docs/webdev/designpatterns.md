@@ -3,13 +3,10 @@
 with short self explanatory code examples
 
 ## Creational Patterns
-
-```py
-```
-
+-  Concern the process of object creation
 ### Factory
 
-```Python
+```py
 class Burger:
     def __init__(self, ingredients):
         self.ingredients = ingredients
@@ -80,6 +77,7 @@ burger = BurgerBuilder()
 
 ### Singleton
 - ex shared "global space"
+- or how one could implement shared mutable state like react `[count, setCount] = useState(0)` behind the scenes
 
 ```py
 class ApplicationState:
@@ -108,7 +106,9 @@ print(appState2.isLoggedIn) # prints True
 # since appState 1 and 2 both "share" the one truth of the isLoggedIn state
 ```
 
+
 ## Behavioral Patterns
+- Characterize the ways in which classes or objects interact and distribute responsibility.
 
 ### Observer
 - aka Publisher & Subscriber - Pattern
@@ -192,10 +192,9 @@ for n in myList:
 ```
 
 ### Strategy Pattern - Open-Closed Principle
-- open for extension
-- closed for modification
-- ex. filter functionality
-- easy to add additional functinaly (ex. filter by isPrime()  etc...)
+- Basically all it says make the "thing" an abstractmehod or interface. And do the Logic below/trough that interface.
+- open for extension & closed for modification
+- ex. filter functionality. Easy to add additional functinaly (ex. filter by isPrime() or by isSmallerAbs100()  etc...)
 
 ```py
 for abc import ABC, abstractmethod
@@ -226,7 +225,7 @@ print(values.filter(RemoveOddStrategy()))           # [-4, 0, 2, 6]
 ```
 
 ## Structural Patterns
-
+- Deal with the composition of objects or classes.
 ### Adapter
 
 ```py
@@ -262,6 +261,7 @@ class MicroToUsbAdapter(UsbCable):
     def __init__(self, microUsbCable):
         self.microUsbCable = microUsbCable
         self.microUsbCable.plugMicroUsb()
+    # could override Usb.Cble.plugUsb() if needed, but not needed in this case
 
 # mow MicroUsb and Usb can connect via an adapter
 microToUsbAdapter = MicroToUsbAdapter(MicroUsbCable())
@@ -270,5 +270,6 @@ usbPort2.plug(microToUsbAdapter)
 ```
 
 ### Facade
-- wrapper class to abstract lower level details. 
+- wrapper class to abstract lower level details away from the user. 
 - ex. API that is exposed over some http requests
+    - the SQL and whatever else is hidden behind those simple API calls.

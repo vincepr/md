@@ -1,6 +1,10 @@
+# Express JS
 https://www.youtube.com/watch?v=SccSCuHhOw0
 
-## create your own server with express.js (& node.js)
+## :todo auth in node:
+https://www.passportjs.org/docs/
+
+# create your own server with express.js (& node.js)
 
 # useful:
 lsof -Pi :8080          // find whatever is blocking port 8080 -> kill PID
