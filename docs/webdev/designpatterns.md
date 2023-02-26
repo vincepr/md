@@ -1,6 +1,7 @@
 # Design Patterns
 
-with short self explanatory code examples
+- with short self explanatory code examples
+- alternative for golang examples see here : https://github.com/tmrts/go-patterns
 
 ## Creational Patterns
 -  Concern the process of object creation
