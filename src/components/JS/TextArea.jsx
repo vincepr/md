@@ -10,7 +10,6 @@ import {useColorMode} from '@docusaurus/theme-common'; // to detect if were in d
 /** Text Editor for interactive JsPlayground element */
 export default function TextArea({text, setText}) {
   const {colorMode, setColorMode} = useColorMode();   // "dark" | "light"
-  console.log(colorMode)
   let theme = (colorMode ==="dark")? darkCodeTheme : lightCodeTheme
 
   const styles = {

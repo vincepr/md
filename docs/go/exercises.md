@@ -112,8 +112,61 @@ Let's have some fun with functions.
 Implement a fibonacci function that returns a function (a closure) that returns successive fibonacci numbers (0, 1, 1, 2, 3, 5, ...).
 
 ```go
+package main
+
+import "fmt"
+
+// fibonacci is a function that returns successive fibonacci numbers 0 1 1 2 3 5 8 ...
+func fibonacci() func() int {
+	prevN := 0
+	nextN := 1
+	return func() int{
+		// edge case for the start needed:
+		if prevN == 0 {
+			prevN = 1
+			return 0
+		}
+		
+		prevN, nextN = nextN, prevN+nextN
+		return prevN
+	}
+}
+
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
+}
+```
+
+
+### Exercise: Readers
+Implement a Reader type that emits an infinite stream of the ASCII character 'A'.
+
+```go
+package main
+import	"golang.org/x/tour/reader"
+
+type MyReader struct{}
+
+// TODO: Add a Read([]byte) (int, error) method to MyReader.
+func (s MyReader) Read(b []byte) (int, error) {
+	// fill all (8) bit with A's
+	for idx := range b {
+		b[idx] = byte('A')		// 'A' is the Char. String wouldnt work like this
+		// "A"[0] would also work reading the first byte of the string "A"
+	}
+    return len(b), nil
+}
+// :TODO
+
+func main() {
+	reader.Validate(MyReader{})
+}
 
 ```
+
 
 
 ## Exercise: rot13Reader
@@ -137,13 +190,13 @@ type rot13Reader struct {
 	r io.Reader
 }
 
-func (reader rot13Reader) Read(bytes []byte) (int, error) {
-	n, err := reader.r.Read(bytes)
-	for i, val := range bytes[:n] {
+func (reader rot13Reader) Read(b []byte) (int, error) {
+	n, err := reader.r.Read(b)
+	for i, val := range b[:n] {
 		if val >= 'a' && val <= 'z' {
-			bytes[i] = (val-'a'+13)%26 + 'a'
+			b[i] = (val-'a'+13)%26 + 'a'
 		} else if val >= 'A' && val <= 'Z' {
-			bytes[i] = (val-'A'+13)%26 + 'A'
+			b[i] = (val-'A'+13)%26 + 'A'
 		}
 	}
 	return n, err
@@ -156,12 +209,7 @@ func main() {
 }
 ```
 
-### Exercise: Readers
-Implement a Reader type that emits an infinite stream of the ASCII character 'A'.
 
-```go
-
-```
 
 ### Exercise: Images
 Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of image.Image instead of a slice of data.
@@ -175,10 +223,52 @@ ColorModel should return color.RGBAModel.
 At should return a color; the value v in the last picture generator corresponds to color.RGBA{v, v, 255, 255} in this one.
 
 ```go
+package main
 
+import (
+	"golang.org/x/tour/pic"
+	"image"
+	"image/color"
+)
+
+type Image struct{}
+
+// ColorModel returns the Image's color model.
+func (i Image) ColorModel() color.Model {
+	return color.RGBAModel
+}
+
+// Bounds returns the domain for which At can return non-zero color.
+// The bounds do not necessarily contain the point (0, 0).
+func (i Image) Bounds() image.Rectangle {
+	return image.Rect(0, 0, 255, 255)
+}
+
+// At returns the color of the pixel at (x, y).
+// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
+// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
+
+func (i Image) At(x, y int) color.Color {
+	return color.RGBA{uint8(x), uint8(y), 100, 255}
+}
+
+func main() {
+	m := Image{}
+	pic.ShowImage(m)
+}
 ```
 
 ### Exercise Equivalent Binary Trees
+A function to check whether two binary trees store the same sequence is quite complex in most languages. We'll use Go's concurrency and channels to write a simple solution.		
+
+This example uses the tree package, which defines the type:
+```go
+type Tree struct {
+    Left  *Tree
+    Value int
+    Right *Tree
+}
+```
 Exercise: Equivalent Binary Trees
 1. Implement the Walk function.
 
@@ -200,7 +290,51 @@ Same(tree.New(1), tree.New(1)) should return true, and Same(tree.New(1), tree.Ne
 The documentation for Tree can be found here.
 
 ```go
+package main
 
+import (
+	"fmt"
+	"golang.org/x/tour/tree"
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int) {
+    innerWalk(t, ch)
+	close(ch)
+}
+func innerWalk(t *tree.Tree, ch chan int) {
+	if t.Left != nil {	
+		innerWalk(t.Left, ch)
+    }
+    ch <- t.Value
+    if t.Right != nil {
+        innerWalk(t.Right, ch)
+    }
+}
+
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+	chan1 := make(chan int)
+	chan2 := make(chan int)
+	go Walk(t1, chan1)
+	go Walk(t2, chan2)
+	for val1 := range chan1{
+		val2 := <-chan2
+		if val1 != val2 {
+			return false
+		}
+	}
+	return true
+}
+
+
+func main() {
+	fmt.Println( Same(tree.New(1), tree.New(1)) )
+	fmt.Println( Same(tree.New(1), tree.New(20)) )
+}
 ```
 
 ### Exercise: Web Crawler
@@ -210,6 +344,131 @@ Modify the Crawl function to fetch URLs in parallel without fetching the same UR
 
 Hint: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not safe for concurrent use!
 
-```go
+```go {7-65}
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+type Fetcher interface {
+	// Fetch returns the body of URL and
+	// a slice of URLs found on that page.
+	Fetch(url string) (body string, urls []string, err error)
+}
+
+
+// create a mutex to store data savely.
+type SafeMap struct{
+	mut sync.Mutex
+	data map[string]string
+}
+
+// write to data without anyone else accessing data simultaneously
+func (mapp *SafeMap) addLink(url string, body string){
+	mapp.mut.Lock()
+	mapp.data[url] = body
+	defer mapp.mut.Unlock()
+}
+
+// read from data without anyone else accessing data simultaneously.
+func (mapp *SafeMap) readValue(key string) (string, bool) {
+    mapp.mut.Lock()
+    // Lock so only one goroutine at a time can access the map c.v.
+    defer mapp.mut.Unlock()
+    val, ok := mapp.data[key]
+    return val, ok
+}
+
+// crawls the url, getting all urls, going deeper till it reaches certain depth. 
+// adds new entries into saveMap.data and prints out errors
+func Crawl(url string, depth int, fetcher Fetcher, saveMap SafeMap) {
+	defer wg.Done()
+
+	if depth <= 0 {
+		return
+	}
+	body, urls, err := fetcher.Fetch(url)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	saveMap.addLink(url, body)
+
+	for _, url := range urls {
+		_, ok := saveMap.readValue(url); 
+		if !ok{
+			wg.Add(1)
+			go Crawl(url, depth-1, fetcher, saveMap)
+		}
+	}
+	return
+}
+
+
+var wg sync.WaitGroup										// CANT use this inside main() and pass it on(actually maybe as a pointer) it HAS TO BE GLOBAL!
+func main() {
+	wg.Add(1)												// we add() count+=1 every time we create a Crawl() instance
+	links := SafeMap{data: make(map[string]string)}			// and on defer wg.Done(), once that crawl finishes: counts-=1
+	Crawl("https://golang.org/", 4, fetcher, links)
+	wg.Wait()												//  Once total reaches 0 we know every process finished and we move on with main()
+
+	for url, body := range links.data{
+		fmt.Println("Url:", url," -> Body:", body)
+	}
+}
+
+
+
+
+// fakeFetcher is Fetcher that returns canned results.
+type fakeFetcher map[string]*fakeResult
+
+type fakeResult struct {
+	body string
+	urls []string
+}
+
+func (f fakeFetcher) Fetch(url string) (string, []string, error) {
+	if res, ok := f[url]; ok {
+		return res.body, res.urls, nil
+	}
+	return "", nil, fmt.Errorf("not found: %s", url)
+}
+
+// fetcher is a populated fakeFetcher.
+var fetcher = fakeFetcher{
+	"https://golang.org/": &fakeResult{
+		"The Go Programming Language...<html>...",
+		[]string{
+			"https://golang.org/pkg/",
+			"https://golang.org/cmd/",
+		},
+	},
+	"https://golang.org/pkg/": &fakeResult{
+		"Packages...<html>...",
+		[]string{
+			"https://golang.org/",
+			"https://golang.org/cmd/",
+			"https://golang.org/pkg/fmt/",
+			"https://golang.org/pkg/os/",
+		},
+	},
+	"https://golang.org/pkg/fmt/": &fakeResult{
+		"Package fmt...<html>...",
+		[]string{
+			"https://golang.org/",
+			"https://golang.org/pkg/",
+		},
+	},
+	"https://golang.org/pkg/os/": &fakeResult{
+		"Package os...<html>...",
+		[]string{
+			"https://golang.org/",
+			"https://golang.org/pkg/",
+		},
+	},
+}
 
 ```
