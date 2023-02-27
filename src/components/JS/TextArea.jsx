@@ -15,6 +15,7 @@ export default function TextArea({text, setText}) {
   const styles = {
     boxSizing: 'border-box',
     fontFamily: '"Dank Mono", "Fira Code", monospace',
+    minHeight: "200px",
     fontSize: 15,
     ...theme.plain,
   }

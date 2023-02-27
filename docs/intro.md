@@ -9,14 +9,14 @@ zu meiner Docusaurus Github-Pages-Site auf der ich ein paar Mitschriften hoste.
 Desweiteren:
 
 
+[JavaScript Playground](/blog/mdx-playground)
 
 [JavaScript Übungsaufgaben](/blog/tags/js-hero)
 
 [Subnetting Übungsaufgaben](https://vincepr.github.io/vite-subnetting/)
 
-[JavaScript Playground](/blog/mdx-playground)
-
 [Offline-Only Chess Demo](https://vincepr.github.io/chessjs/public/chess_in_frontend/index.html)
+
 
 
 
