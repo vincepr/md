@@ -6,11 +6,17 @@ slug: /
 # Wilkommen
 zu meiner Docusaurus Github-Pages-Site auf der ich ein paar Mitschriften hoste.
 
-```
-[Link test Blog](/blog)
-[Link test Blog](/blog/)
-[Link test Blog](/blog/mdx-interactive6)
-[Link test Blog](/blog/2023-02-20-Aufgabe6)
-[Link test Blog](../blog/mdx-interactive6)
-[Link test Blog](../blog/2023-02-20-Aufgabe6)
-```
+Desweiteren:
+
+
+
+[JavaScript Übungsaufgaben](/blog/tags/js-hero)
+
+[Subnetting Übungsaufgaben](https://vincepr.github.io/vite-subnetting/)
+
+[JavaScript Playground](/blog/mdx-playground)
+
+[Offline-Only Chess Demo](https://vincepr.github.io/chessjs/public/chess_in_frontend/index.html)
+
+
+
