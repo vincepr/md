@@ -178,7 +178,7 @@ Implement a rot13Reader that implements io.Reader and reads from an io.Reader, m
 
 The rot13Reader type is provided for you. Make it an io.Reader by implementing its Read method.
 
-```Go {13-23}
+```Go
 package main
 import (
 	"io"
@@ -344,14 +344,12 @@ Modify the Crawl function to fetch URLs in parallel without fetching the same UR
 
 Hint: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not safe for concurrent use!
 
-```go {7-65}
+```go
 package main
-
 import (
 	"fmt"
 	"sync"
 )
-
 type Fetcher interface {
 	// Fetch returns the body of URL and
 	// a slice of URLs found on that page.
@@ -371,16 +369,16 @@ func (mapp *SafeMap) addLink(url string, body string){
 	mapp.data[url] = body
 	defer mapp.mut.Unlock()
 }
-
+/*
 // read from data without anyone else accessing data simultaneously.
-func (mapp *SafeMap) readValue(key string) (string, bool) {
+func (mapp *SafeMap) readSavely(key string) (string, bool) {
     mapp.mut.Lock()
     // Lock so only one goroutine at a time can access the map c.v.
     defer mapp.mut.Unlock()
     val, ok := mapp.data[key]
     return val, ok
 }
-
+*/
 // crawls the url, getting all urls, going deeper till it reaches certain depth. 
 // adds new entries into saveMap.data and prints out errors
 func Crawl(url string, depth int, fetcher Fetcher, saveMap SafeMap) {
@@ -397,8 +395,8 @@ func Crawl(url string, depth int, fetcher Fetcher, saveMap SafeMap) {
 	saveMap.addLink(url, body)
 
 	for _, url := range urls {
-		_, ok := saveMap.readValue(url); 
-		if !ok{
+		_, ok := saveMap.data[url]; 					// we could lock data while reading with saveMap.readSavely(url) 
+		if !ok{											// but i dont think it should be a neccessary for just this usecase.
 			wg.Add(1)
 			go Crawl(url, depth-1, fetcher, saveMap)
 		}
@@ -414,6 +412,7 @@ func main() {
 	Crawl("https://golang.org/", 4, fetcher, links)
 	wg.Wait()												//  Once total reaches 0 we know every process finished and we move on with main()
 
+	// print out the stored data:
 	for url, body := range links.data{
 		fmt.Println("Url:", url," -> Body:", body)
 	}
@@ -470,5 +469,4 @@ var fetcher = fakeFetcher{
 		},
 	},
 }
-
 ```
