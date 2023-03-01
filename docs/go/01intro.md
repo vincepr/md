@@ -1073,6 +1073,40 @@ func main() {
 	}
 }
 ```
+
+### sync.WaitGroup
+- we need to make sure some goroutines have finished before we can continue. For example 3 sync goroutines getting some SQL data.
+- sync.WaitGroup makes this trivial. We put them all in one wait group. ADD() +1 to a "counter" whenever we start something that needs to be finished.
+- and on defer of the goroutine we call Done() -1 to the "counter". Once the counter reaches 0 Wait() releases and we can now grab our complete fetched data etc.
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func fetchSomeData(nr int, wg *sync.WaitGroup){
+	defer wg.Done()
+	time.Sleep(time.Second *2)
+	fmt.Println("done fetching data")
+}
+
+func main() {
+    fmt.Println("starting main")
+	wg := &sync.WaitGroup{}
+	for i :=0;i<20;i++{
+		wg.Add(1)
+		go fetchSomeData(1, wg)
+	}
+	wg.Wait()
+	fmt.Println("all waitgroups have finished")
+}
+```
+
+
 ### sync.Mutex
 - if we want to make sure only one goroutine can access a variable at a time to avoid conflicts.
 - `sync.Mutex` and its two methods `Lock` and `Unlock`
