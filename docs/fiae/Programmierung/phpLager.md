@@ -1,9 +1,9 @@
 # PHP - LAGER-Aufgabe
 
-
+## UML
 ![Alt text](./img/LagerArtikel.svg)
-````php
-
+## code: 
+```php
 class Lagerartikel{
     protected $artikelID;
     protected $name;
@@ -105,3 +105,32 @@ foreach($lager as $art){
     echo"----------------<br>";
 }
 ```
+
+## Ausgabe
+
+```
+Snickers-Warenwert : 525 €
+Snickers-VerkaufsraumsWert : 175 €
+Gesamtgewicht im Lager: 4.275 kg
+Gesamtgewicht im Verkaufsraum: 1.425 kg
+----------------
+Chips-Warenwert : 75 €
+Chips-VerkaufsraumsWert : 25 €
+Gesamtgewicht im Lager: 15 kg
+Gesamtgewicht im Verkaufsraum: 5 kg
+----------------
+cola-Warenwert : 750 €
+cola-VerkaufsraumsWert : 250 €
+PfandWert im Lager: 11.25
+PfandWert im Verkaufsraum: 3.75
+----------------
+bier-Warenwert : 300 €
+bier-VerkaufsraumsWert : 100 €
+PfandWert im Lager: 11.25
+PfandWert im Verkaufsraum: 3.75
+----------------
+wein-Warenwert : 600 €
+wein-VerkaufsraumsWert : 200 €
+PfandWert im Lager: 11.25
+PfandWert im Verkaufsraum: 3.75
+----------------```
