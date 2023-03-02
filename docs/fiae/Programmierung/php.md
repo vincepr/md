@@ -1,4 +1,5 @@
-# PHP - notes
+# PHP
+Notizen zu PHP. Sehr 
 
 ## implementing with html, css
 ```html
@@ -223,7 +224,7 @@ var_dump($paulsKonto);
 echo $paulsKonto-> einzahlen(999)."\n";
 echo $paulsKonto-> auszahlen(99)."\n";
 ```
-- another example
+### Kunde - Objekt
 
 ```php
 class Kunde{
@@ -302,4 +303,174 @@ class Programm{
     }
 }
 new Programm();
+```
+
+### Rechnungs Beispiel
+
+```php
+class Rechnung{
+    private $einzelpreis;
+    private $menge;
+
+    public function __construct(float $einzelpreis=0, int $menge=1){
+        $this->einzelpreis = round($einzelpreis,2);
+        $this->menge = $menge;
+    }
+
+    public function __destruct(){
+        $this->ausgabe();
+    }
+    
+    private function whatRabatt($gp){
+        $rabattProzent  = 0;
+        if      ($gp>200) $rabattProzent = 5;
+        else if ($gp>100) $rabattProzent = 4;
+        return $rabattProzent;
+    }
+
+    public function ausgabe(){
+        $gp = round($this->einzelpreis*$this->menge,2);
+        $rabattProzent = $this->whatRabatt($gp);
+        $rabatt = round($gp / 100 * $rabattProzent,2);
+        $gpBrutto = round(($gp - $rabatt) * 1.19,2);
+
+        echo "<h4>Rechnung:</h4><table>";
+        echo "<tr> <th>Einzelpreis: </th><th>".$this->einzelpreis."</th></tr>";
+        echo "<tr> <th>Menge: </th><th>".$this->menge."</th></tr>";
+        echo "<tr> <th>Gesamtpreis: </th><th>".$gp-$rabatt."</th></tr>";
+        echo "<tr> <th>Rabatt von $rabattProzent% : </th><th>".$rabatt."</th></tr>";
+        echo "<tr> <th>Gesamtpreis-Netto: </th><th>".$gp-$rabatt."</th></tr>";
+        echo "<tr> <th>Gesamtpreis-Brutto: </th><th>".$gpBrutto."</th></tr>";
+        echo "</table>";
+    }
+}
+
+for ($i=0;$i<50;$i++){
+    new Rechnung(rand(10,300), rand(1,20));
+}
+```
+
+### Static
+- erzeugt mit dem Keywort `public static`
+- Angesprochen mit dem Gültigkeitsbereichsoperator `::`
+
+```php
+class Firma {
+    public static $name = "C & A";
+    private static $locations = ["Bonn", "Leipzig", "München"];
+
+    public static function locationList(){
+        foreach( self::$locations as $location){
+            echo "<li>$location </li>";
+        }
+    }
+}
+
+// zugriff auf statische Elemente ohne Instanz zu erzeugen:
+echo Firma  :: $name;
+Firma::locationList();
+
+//auf statische Elemente kann man in PHP auch über eine Instanz der Klasse zugreifen:
+$firma1 = new Firma();
+echo $firma1::$name;
+$firma1::locationList();
+```
+### Konstanten
+```php
+class Kunde{
+    // Konstanten:
+    public const type = "Human";
+    //
+}
+
+echo Kunde::type;
+```
+
+### Singleton
+```php
+class SharedDataStorage{
+    private static $ich = null;
+    private $sharedDataStorage;
+    private final function __construct(){}
+    public static function getData() : SharedDataStorage{
+        if (!isset(self::$ich))
+            self::$ich = new SharedDataStorage();
+        return self::$ich;
+    }
+    public function setData($value){
+        $this->sharedDataStorage = $value;
+    }
+}
+
+$data1 = SharedDataStorage::getData();      // erste instanz des singleton wird erzeugt
+$data1 -> setData("Erster Wert");       // data wird: "Erster Wert"
+$name2 = SharedDataStorage::getData();      // name2 wird: "Erster Wert"
+$name2 -> setData(123);                 // data1 und name2 werden beide: 123
+$data3 = SharedDataStorage::getData();      // data3 wird 123
+$data3 -> setData("alle variablen");    // data1, name2 und data3 werden: "alle variablen"
+```
+
+## Vererbung
+### protected
+- Protected beschränkt den Zugang auf Elternklassen und abgeleitete Klassen (sowie die Klasse, die das Element definiert). Private grenzt die Sichtbarkeit einzig auf die Klasse ein, die das Element definiert.
+### Bsp extends
+
+![Bsp uml](./img/klassenDiagrammBsp.svg)
+```php
+class Person{
+    protected $nachname = "";
+    public function __construct(string $name){
+        $this->nachname = $name;
+    }
+    public function echoName(){
+        echo "Nachname ist: ".$this->nachname."<br>";
+    }
+}
+
+class Kunde extends Person{
+    protected $kundenNr;
+    public function __construct(string $name, int  $kundenNr){
+        parent :: __construct($name);
+        $this->kundenNr = $kundenNr;
+    }
+}
+
+class Mitarbeiter extends Person{
+    public $steuerKlasse = "default";
+    public function __construct(string $name, string $steuerKlasse){
+        $this->steuerKlasse = $steuerKlasse;
+        parent :: __construct($name);
+    }
+    public function changeKlasse(string $neueKlasse){
+        $this->steuerKlasse = $neueKlasse;
+    }
+}
+
+class Lieferant extends Person{
+    private $lieferantId;
+    public function __construct(string $name, int $lieferantId ){
+        parent :: __construct($name);
+        $this->lieferantId = $lieferantId;
+    }
+    public function echoName(){
+        echo "Lieferanten-";
+        parent::echoName();
+    }
+}
+
+$k1 = new Lieferant("Logistig gmbH", 212);
+$k1-> echoName();
+// -> Lieferanten-Nachname ist: Logistig gmbH
+
+$alleMitarbeiter = [];
+$alleMitarbeiter[] = new Mitarbeiter("Kunigunde Schöffer", "Klasse 1");
+$alleMitarbeiter[] = new Mitarbeiter("Bert Grahm", "Klasse 0");
+$alleMitarbeiter[1]->changeKlasse("Klasse 4");
+
+foreach ($alleMitarbeiter as $mitarbeiter){
+    echo $mitarbeiter->steuerKlasse." - ";
+    $mitarbeiter->echoName();
+}
+// -> Klasse 1 - Nachname ist: Kunigunde Schöffer
+// -> Klasse 4 - Nachname ist: Bert Grahm
 ```
