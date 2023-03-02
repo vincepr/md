@@ -473,4 +473,22 @@ foreach ($alleMitarbeiter as $mitarbeiter){
 }
 // -> Klasse 1 - Nachname ist: Kunigunde Schöffer
 // -> Klasse 4 - Nachname ist: Bert Grahm
+
+
+
+echo "<h4> mixed data: </h4>";
+$allePersonen = $alleMitarbeiter;
+$allePersonen[] = new Kunde("Knut Stephen", 12312);
+$allePersonen[] = $k1;
+
+foreach($allePersonen as $person){
+    if($person instanceof Mitarbeiter) echo "MITARBEITER: ";
+    $person -> echoName();
+}
+
+// -> MITARBEITER: Nachname ist: Kunigunde Schöffer
+// -> MITARBEITER: Nachname ist: Bert Grahm
+// -> Nachname ist: Knut Stephen
+// -> Lieferanten-Nachname ist: Logistig gmbH
 ```
+
