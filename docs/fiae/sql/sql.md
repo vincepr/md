@@ -57,6 +57,17 @@ SELECT * from t1 WHERE age IN (10,12,14,16,18);
 SELECT ort, count(*) as Anzahl FROM t_ma GROUP BY ort [HAVING Anzahl >10];  
 // Wenn suche nach null, dann SELECT * FROM t1 WHERE ruhestand IS Null !! benutzen  
 
+## Beispiele:
+SELECT Count(*)			
+FROM PrductData			
+GROUP BY Thickness Having Thickness =2;			
+
+SELECT Sum(Anzahl)			
+FROM ProductData			
+WHERE width=200 AND length=300			
+GROUP BY width;			
+
+
 # more Select
 SELECT * from t1 WHERE value BETWEEN 10 AND 20;  
 SELECT *, CAST(preis*1.19 AS DECIMAL(10,2)) AS Bruttopreis FROM t_lager;  

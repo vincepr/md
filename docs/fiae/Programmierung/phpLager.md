@@ -144,6 +144,7 @@ class Verkaufsterminal{
     protected static $instance = null;
 
     private function  __construct(){
+        
         // db-connection etc would/could go here
     }
 
@@ -170,8 +171,8 @@ interface KannVerkauftWerden{
 - Dann importieren wir diesen File und erweitern unser Modell:
 
 ```php
-include('lagerartikelVerkauf.php');
-class Lagerartikel{
+include('verkauf.php');
+abstract class Lagerartikel{
     protected $artikelID;
     protected $name;
     protected $menge;
@@ -182,6 +183,7 @@ class Lagerartikel{
         $this->name = $name;
         $this->menge = 0;
         $this->warenwert = rand(1,10);
+        if ($this->getPriceFromDB($name)) $this->warenwert =$this->getPriceFromDB($name);
     }
     public function einlagern(int $anzahl){
         $this->menge += $anzahl;
@@ -204,9 +206,17 @@ class Lagerartikel{
         $type = get_class($this);
         return "->".$this->name." <- Klassenname: ".$type;
     }
+    private function getPriceFromDB($name){
+        $fakeDB ["Snickers"]=1.00;
+        $fakeDB ["Chips"]=2.00;
+        $fakeDB ["cola"]=1.50;
+        $fakeDB ["bier"]=0.80;
+        if (!array_key_exists($name, $fakeDB)) return false;
+        return $fakeDB[$name];
+    }
 }
 
-class KannVerkaufsraum 
+abstract class KannVerkaufsraum 
     extends Lagerartikel 
     implements KannVerkauftWerden
 {
@@ -262,13 +272,14 @@ $lager[] = new Snack    ("Snickers",57,false);
 $lager[] = new Snack    ("Chips",200,true);
 $lager[] = new Getraenk ("cola", true);
 $lager[] = new Getraenk ("bier", false);
+$lager[] = new Getraenk ("mate", true);                 // mate nicht in fake db -> random wert.
 
 
 // befüllen unseres Lagers:
 foreach($lager as $art){
-    $art->einlagern(100);                       // 100 artikel ins Lager stellen
+    $art->einlagern(100);                               // 100 artikel ins Lager stellen
     $halbeMenge = round( $art->getMenge() / 4 );
-    $art->inVerkaufsraumStellen($halbeMenge);   //ein Viertel, also 25 in Verkaufsraum stellen
+    $art->inVerkaufsraumStellen($halbeMenge);           //ein Viertel, also 25 in Verkaufsraum stellen
 }
 
 function helperEchoLagerbestand($lager){
