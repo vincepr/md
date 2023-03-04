@@ -26,3 +26,9 @@ WantedBy=multi-user.target
 
 
 ```
+
+## alternatives
+
+- golang: https://github.com/FKSE/ip6tun
+- https://www.sixxs.net/
+- https://yggdrasil-network.github.io/
