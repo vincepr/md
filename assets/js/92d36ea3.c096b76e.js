@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmd=self.webpackChunkmd||[]).push([[8802],{7590:e=>{e.exports=JSON.parse('{"permalink":"/md/blog/tags/js-hero","page":1,"postsPerPage":10,"totalPages":1,"totalCount":8,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
