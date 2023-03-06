@@ -52,7 +52,7 @@ class TestKundenDatenbank{
 		for (let idx in this.alleKunden){
 			if (this.alleKunden[idx].vorname === vor && this.alleKunden[idx].nachname == nach){
 				// :todo	Soll den Kunden mit passendem Vor- und Nachnahmen aus dem Array entfernen
-				delete alleKunden[idx]
+				delete this.alleKunden[idx]
 				
 			}
 		}
@@ -88,6 +88,7 @@ function playgroundTest(input){
 	} else {
 		db.printInfo()
 	}
+	return db.alleKunden
 }
 
 function test(input){
@@ -104,6 +105,7 @@ function test(input){
 	} else {
 		db.printInfo()
 	}
+	return db.alleKunden
 }
 
 
