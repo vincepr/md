@@ -1,7 +1,12 @@
 # notes while learning golang
-- Ctrl + Enter to autoformat whith gofmt Shift+Enter or `go run .` to quickly run code
+
+## 0. Packages, commands etc.
+- `go mod tidy` after just writing a import like "golang.org/x/crypto/bcrypt" in a file.
+- equal-ish to `go get golang.org/x/crypto/bcrypt` 
+- `go test ./... -v` do all tests in verbose mode
+- `go test --race` for inbuild racecondition testing
 ___
-## 1. Packages, variables and functions
+## 1. imports, variables and functions
 ### variables, constants
 ```go
 var x, y, z bool
@@ -228,8 +233,8 @@ if s == nil {
 ```go
 r := []bool{true, false, true, true, false, true}
 s := []struct {
-    i int
-    b bool
+    i int	`json:"i-int"`
+    b bool	`json:"bertha"`
 }{
     {2, true},
     {3, false},
