@@ -63,7 +63,7 @@ export default function JsPlayground({importPath, defaultText}){
 }
 
 
-/** load the file and display the text */
+/**JSX-Element loads the file and display the text */
 function ConsoleLogBlock({title, text}){
     return <CodeBlock
                 title={title}

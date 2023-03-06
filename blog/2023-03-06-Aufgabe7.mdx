@@ -5,10 +5,91 @@ authors: [Vincent]
 tags: [JS-Hero]
 ---
 
-Just a test with classes and default text.
-
+Just a test with classes and default text.      
+- implement the with :todo marked functions
+``` js
+/** Speichert Kundendaten - pro Kunden nur ein Datensatz*/
+class Kunde{
+	// --Attribute--
+	vorname = "";
+	nachname = "";
+	alter = 0;
+	geschlecht = "";
+	
+	//Konstruktor
+	constructor(vor, nach, alt, gesch){
+	        this.vorname = vor;
+	        this.nachname = nach;
+	        this.alter = alt;
+	        this.geschlecht = gesch;
+        }
+        
+        
+	// --Methoden--
+    // bei Hochzeit ect kann sich Nachname ändern
+	setNachname(neuerName){
+		this.nachname = neuerName;
+	}
+	// Jedes Jahr unvermeidbar
+	hatteGeburtstag(){
+		this.alter += 1;
+	}
+	
+	// Gibt alle Kundendaten aus 
+	getInfo(){
+		let isVolljaehrig = false;
+		if (this.alter > 17){
+            isVolljaehrig = true;
+        }
+        return ("Kunde "+this.vorname
+            + " " + this.nachname
+            + " ist " + this.alter + " Jahre alt, "
+            + this.geschlecht + " und "
+            + (isVolljaehrig ? "volljährig" : "minderjährig")
+            + ". <br>"
+        );
+    }
+}
+```
 
 import JsPlayground from '/src/components/JS/JsPlayground.jsx';
-let importPath = '/md/jsAufgaben/ae6Test.js';
+let importPath = '/md/jsAufgaben/ae7Test.js';
+let text = `
+class KundenDatenbank{
+	alleKunden					// [] filled with Kunde - objects
+	constructor(){
+		this.alleKunden =[];
+	}
+	addKunde(vor, nach, alter, gesch){
+		this.alleKunden.push(new Kunde(vor, nach, alter, gesch))
+	}
+	removeKunde(vor, nach){
+		for (let k of this.alleKunden){
+			if (k.vorname === vor && k.nachname == nach){
+				// :todo	Soll den Kunden mit passendem Vor- und Nachnahmen aus dem Array entfernen
+				console.log(k.getInfo());
+			}
+		}
+	}
+	hatteGeburtstag(vor, nach){
+		// :todo	Soll für den/alle Kunden mit übereinstimmendem Namen das Alter um ein Jahr erhöhen
+	}
+	printInfo(){
+		for (let k of this.alleKunden){
+			console.log(k.getInfo());
+		}
+	}
+}
+/*
+// examples of how one could fill in Kunden:
+let db = new KundenDatenbank();
+db.printInfo();
+db.addKunde("Susanne","Schmidt",19,"weiblich");
+db.addKunde("Aron","Griebler",17,"männlich");
+db.addKunde("Dieter","Griebler",33,"männlich");
+db.addKunde("Johanna","Fürst",22,"weiblich");
+db.printInfo();
+*/
+`
 
 <JsPlayground importPath={importPath} defaultText="function xyz(y) { let x = 12 ; console.log(x); }"/>
