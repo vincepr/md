@@ -8,12 +8,13 @@ import TextArea from './TextArea';
 /**
  * returns a Playground Element, optional with a unit-Testing-mode .js import for "Js-Hero"-like interactive Elements
  * @param {*} importPath? optional import Path. linking a unitTestFile otherwise runs in Playground-Mode
+ * @param {*} defaultText? optional string if you want to initialize the element with some default-text
  */
-export default function JsPlayground({importPath}){
+export default function JsPlayground({importPath, defaultText}){
     let isWithImport = false            // playground-mode
     if(importPath) isWithImport = true  // import file to run "unit-test-with"
-
-    const [text,setText] = useState("")
+    
+    const [text,setText] = useState(defaultText ? String(defaultText) : "")     // if there is an defaultText we use it at the start ""
     const [answers, setAnswers] = useState([])
     const [errorMsg, setErrorMsg] = useState ("false")
 
@@ -22,7 +23,7 @@ export default function JsPlayground({importPath}){
     else answers.forEach(line => answersStr += line + "\n") // display console.log() output with newlines inbetween
     
     /** runs code in textInput after the importFile if that exists or just in playgroundmode without */
-    const runCode = () => {
+    const onClickRunCode = () => {
 
         if(isWithImport){
             fetch(importPath)
@@ -52,7 +53,7 @@ export default function JsPlayground({importPath}){
         <p></p>
         <button
             style={{float: "right"}}
-            onClick={runCode}
+            onClick={onClickRunCode}
         >Run Code</button>
         <ConsoleLogBlock title={"console.log"} text={answersStr}/>
         <p></p>
