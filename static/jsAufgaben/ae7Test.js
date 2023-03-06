@@ -49,13 +49,7 @@ class TestKundenDatenbank{
 		this.alleKunden.push(new Kunde(vor, nach, alter, gesch))
 	}
 	removeKunde(vor, nach){
-		for (let idx in this.alleKunden){
-			if (this.alleKunden[idx].vorname === vor && this.alleKunden[idx].nachname == nach){
-				// :todo	Soll den Kunden mit passendem Vor- und Nachnahmen aus dem Array entfernen
-				delete this.alleKunden[idx]
-				
-			}
-		}
+		this.alleKunden = this.alleKunden.filter(el => !(el.nachname===nach && el.vorname===vor) )
 	}
 	hatteGeburtstag(vor, nach){
 		// :todo	Soll für den/alle Kunden mit übereinstimmendem Namen das Alter um ein Jahr erhöhen
@@ -79,16 +73,14 @@ function playgroundTest(input){
 	db.addKunde("Susanne","Schmidt",19,"weiblich");
 	db.addKunde("Aron","Griebler",17,"männlich");
 	db.addKunde("Dieter","Griebler",33,"männlich");
-	db.addKunde("Johanna","Fürst",22,"weiblich");
 	if (input === `hatteGeburtstag("Aron", "Griebler")`){
 		db.hatteGeburtstag("Aron", "Griebler");
-	}else if (input === ``){
+	}else if (input === `removeKunde("Dieter","Griebler")`){
 		db.removeKunde("Dieter","Griebler");
 		db.removeKunde("Susanne","Griebler");
-	} else {
-		db.printInfo()
 	}
-	return db.alleKunden
+	console.log("playground: "+ JSON.stringify(db))
+	return JSON.stringify(db)
 }
 
 function test(input){
@@ -96,16 +88,14 @@ function test(input){
 	db.addKunde("Susanne","Schmidt",19,"weiblich");
 	db.addKunde("Aron","Griebler",17,"männlich");
 	db.addKunde("Dieter","Griebler",33,"männlich");
-	db.addKunde("Johanna","Fürst",22,"weiblich");
 	if (input === `hatteGeburtstag("Aron", "Griebler")`){
 		db.hatteGeburtstag("Aron", "Griebler");
 	}else if (input === `removeKunde("Dieter","Griebler")`){
 		db.removeKunde("Dieter","Griebler");
 		db.removeKunde("Susanne","Griebler");
-	} else {
-		db.printInfo()
 	}
-	return db.alleKunden
+	console.log("correct:    "+JSON.stringify(db))
+	return JSON.stringify(db)
 }
 
 
@@ -139,5 +129,5 @@ function doTest(testInputArr, testFunction, inputFunction ){
 }
 
 
-let testInputArr = ["default", `hatteGeburtstag("Aron", "Griebler")`, `removeKunde("Dieter","Griebler")`]
+let testInputArr = [`hatteGeburtstag("Aron", "Griebler")`, `removeKunde("Dieter","Griebler")`]
 doTest(testInputArr, test, playgroundTest)

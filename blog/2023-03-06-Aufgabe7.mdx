@@ -4,9 +4,8 @@ title: Aufgabe 7
 authors: [Vincent]
 tags: [JS-Hero]
 ---
-
-Just a test with classes and default text.      
-- implement the with :todo marked functions
+   
+- Implementiere die mit :todo markierten funktionen
 ``` js
 /** Speichert Kundendaten - pro Kunden nur ein Datensatz*/
 class Kunde{
@@ -54,7 +53,8 @@ class Kunde{
 
 import JsPlayground from '/src/components/JS/JsPlayground.jsx';
 let importPath = '/md/jsAufgaben/ae7Test.js';
-let text = `class KundenDatenbank{
+let text = `
+class KundenDatenbank{
 	alleKunden					// [] filled with Kunde - objects
 	constructor(){
 		this.alleKunden =[];
@@ -63,15 +63,10 @@ let text = `class KundenDatenbank{
 		this.alleKunden.push(new Kunde(vor, nach, alter, gesch))
 	}
 	removeKunde(vor, nach){
-		for (let k of this.alleKunden){
-			if (k.vorname === vor && k.nachname == nach){
-				// :todo	Soll den Kunden mit passendem Vor- und Nachnahmen aus dem Array entfernen
-				console.log(k.getInfo());
-			}
-		}
+		// :todo kunde mit Vor- und Nachnamen soll aus alleKunden gelöscht werden
 	}
 	hatteGeburtstag(vor, nach){
-		// :todo	Soll für den/alle Kunden mit übereinstimmendem Namen das Alter um ein Jahr erhöhen
+		// :todo alter des Kunden erhöht sich um ein Jahr
 	}
 	printInfo(){
 		for (let k of this.alleKunden){
@@ -79,16 +74,6 @@ let text = `class KundenDatenbank{
 		}
 	}
 }
-/*
-// examples of how one could fill in Kunden:
-let db = new KundenDatenbank();
-db.printInfo();
-db.addKunde("Susanne","Schmidt",19,"weiblich");
-db.addKunde("Aron","Griebler",17,"männlich");
-db.addKunde("Dieter","Griebler",33,"männlich");
-db.addKunde("Johanna","Fürst",22,"weiblich");
-db.printInfo();
-*/
 `
 
 <JsPlayground importPath={importPath} defaultText={text}/>
