@@ -15,3 +15,9 @@ Daraus ergeben sich Zielkonflikte wie:
 Festlegung der Schranken ist ermessenssache, üblich A-Güter die ersten 75-80% kommulierte Werte. C-Güter kummulierter Wertanteil von weniger als 5%.
 
 ![Alt text](./beschaffung.png)
+
+## Ökonomisches Prinzip und Nachhaltigkeit
+### Ökonomisches Prinzip
+Wirtschaftssubjekte setzen wegen der Güterknappheit die wirtschaftlichen Mittel möglichst effizient ein.
+- Maximalprinzip
+- Minimalprinzip

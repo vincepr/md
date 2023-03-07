@@ -5,6 +5,10 @@
 - equal-ish to `go get golang.org/x/crypto/bcrypt` 
 - `go test ./... -v` do all tests in verbose mode
 - `go test --race` for inbuild racecondition testing
+- in structs we can define default json-names and even block it from getting json-ifed with "-" :
+```go
+PasswordEnc string	`json:"-"`
+```
 ___
 ## 1. imports, variables and functions
 ### variables, constants
