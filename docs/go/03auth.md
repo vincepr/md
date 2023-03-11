@@ -11,6 +11,7 @@ jwt package for golang `go get -u github.com/golang-jwt/jwt/v5`
 
 
 ## Minimal JWT-example:
+for a bigger example, with db and login, and using the below as middleware check out: https://github.com/vincepr/gobank
 ```go
 package main
 
@@ -23,36 +24,35 @@ import (
 
 
 func main(){
-
 	// create token for user, for example when login in
-	token, err := createJWTToken("iban-12345", true)
+	token, err := createJWTToken("accountId-12345", true)
 	if err != nil{
 		fmt.Print("token creation failed")
 	}
 	fmt.Printf("token is: \n%v\n\n",token)
 
 	// now user sends his token with a new request and we validate it:
-	claims, err := getJWTClaims(token)
+	claims, err := validateJWTClaims(token)
 	if err != nil{
-		fmt.Println("Good idea to have generic Error msg here like - no access if we path it on", err)
+		fmt.Println("Good idea to have generic Error msg here like - ACCESS DENIED", err)
 	}
 
 	// now we can use this to check if his token supports his request
-	fmt.Printf("user-token says he is:%v, and isAdmin: %v, IssuerofToken was: %v \n", claims.Iban, claims.IsAdmin, claims.RegisteredClaims.Issuer)
+	fmt.Printf("user-token says he is:%v, and isAdmin: %v, IsuerofToken was: %v \n", claims.Id, claims.IsAdmin, claims.RegisteredClaims.Issuer)
 }
 
 
 
 // Claims from a Token, stores who the user is, what he can access and or and for how long 
 type JWTClaims struct {
-	Iban string `json:"iban"`
+	Id string `json:"accountId"`
 	IsAdmin bool `json:"isAdmin"`
 	jwt.RegisteredClaims
 }
 
-func NewJWTClaims(iban string, isAdmin  bool) JWTClaims{
+func NewJWTClaims(accountId string, isAdmin  bool) JWTClaims{
 	return JWTClaims{
-		Iban: iban,
+		Id: accountId,
 		IsAdmin: isAdmin,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(18 * time.Hour)),
@@ -67,15 +67,15 @@ func NewJWTClaims(iban string, isAdmin  bool) JWTClaims{
 }
 
 // creates a Token to pass to our Users after ex. Login
-func createJWTToken(iban string, isAdmin bool) (string, error){
+func createJWTToken(accountId string, isAdmin bool) (string, error){
 	mySigningKey := keyFromEnvForJWT()
-	claims := NewJWTClaims(iban, isAdmin)
+	claims := NewJWTClaims(accountId, isAdmin)
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(mySigningKey)
 }
 
 // validation happens here, returns our claims
-func getJWTClaims(tokenString string) (*JWTClaims, error){
+func validateJWTClaims(tokenString string) (*JWTClaims, error){
 	mySigningKey := keyFromEnvForJWT()
 	token, err := jwt.ParseWithClaims(tokenString, &JWTClaims{}, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {	// Validate the encrypt-Algorythm is the one what we expect 
