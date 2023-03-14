@@ -73,3 +73,13 @@ Lösung:
  - Wirtschaftswachstum
  - Hohe Beschäftigungsquote
  - Außenwirtschaftliches Gleichgewicht
+
+ # Konjunkturzyklus
+ zyklische Schwankungen des Wirtschaftswachstums.
+- Aufschwung
+- Boom - Hochkonjunktur
+- Abschwung - Rezession
+- Depression - Tiefphase
+
+## Konjukturindikatoren
+z.B. Inflation, Arbeitsmarkt, Wirtschaftswachstum
