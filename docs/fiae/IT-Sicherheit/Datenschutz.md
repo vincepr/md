@@ -30,7 +30,6 @@ Pflicht nach aktuellen Stand der Technik entsprechende Kontrollmechanismen zum S
 ### Rechenschafts und Nachweisfähigkeit
 - Pflicht zur Führung von Verarbeitungsverzeichnissen
 - Auftragsverarbeitungsvertrag
-- 
 
 
 ### Betroffenen Rechte
