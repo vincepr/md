@@ -97,3 +97,12 @@ Der Software-Lebenszyklus wird in Phase eingeteilt. In jeder Phase werden bestim
 - Prototyping-Modell
 - Spiralmodell
 - Agile Modelle
+
+# Tests
+Einfach weil Prüfungsrelevant nochmal
+## **Whitebox-Tests** 
+- prüfen das die innere Funktionsweise von Komponenten
+##  **Blckbox-Tests** 
+- prüfen das Zusammenspiel der einzelnen Komponenten.
+## **Schreibtischtest**
+-  Hierbei werden für einen deterministischen und terminierenden Programmablauf eine Eingabe- und eine mögliche Ausgabemenge festgelegt. Anschließend wird mit jedem Element der Eingabemenge durch schrittweises Durchrechnen die Korrektheit des Programmablaufs überprüft.
