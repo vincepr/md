@@ -131,7 +131,7 @@ CMD ["./mathapp"]
 - Each code merge triggers an automated build and test sequence
 - Automated Testing neccessary to check that code is save to deploy
 
-## check this for a good entrypoint
+## check this for a good entrypoint (especially for Ci/Cd)
 - https://semaphoreci.com/community/tutorials/how-to-deploy-a-go-web-application-with-docker
 - https://docs.semaphoreci.com/examples/golang-continuous-integration/
 - https://docs.semaphoreci.com/programming-languages/go/
