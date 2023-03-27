@@ -1,0 +1,29 @@
+
+/**
+ * Overriding some of the default css/Infima
+ * Just delete this file for custom css
+ */
+
+
+
+:root{
+  --doc-sidebar-width: 250px !important;
+
+  /*spacing between footer blocks:*/
+  --ifm-spacing-vertical:0.5rem;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.theme-doc-markdown h1, h2 {
+  --ifm-h2-vertical-rhythm-top:1rem;
+  border-bottom: solid  1px var(--ifm-color-emphasis-300);
+}
+.theme-doc-markdown h3 {
+  --ifm-h3-vertical-rhythm-top:1rem;
+}
+.theme-doc-markdown table td{
+  padding: 0.3rem;
+}

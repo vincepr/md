@@ -1,5 +1,4 @@
 # Bedrohungsanalyse - Threat Moddeling
-
 1. Einleitung - was ist Threat Modelling
 2. Analyse des Anwendungsfalles
 3. Datenfluss-Diagramm?
@@ -16,6 +15,7 @@ Die folgenden 3 Phasen sind in diesem Prozess Vorgesehen:
 - Zerlegen des Systems in Komponenten und Ablaufpläne 
 - Bedrohungen erkennen und einstufen
 - Bestimmungen von Gegenmaßnahmen und Entschärfungen/ Risikominderung
+
 
 ## 2. Analyse des Anwendungsfalles - Ziele festlegen
 ### allgemeine Ziele:
@@ -34,6 +34,8 @@ In der Regel sind Ziele Confidentiality, Integrity und Ability (auch im Angriffs
     - Bsp. zur Realisierung von Integrität sind z.B. Message Authentication Codes oder Tamper-Resistant Security Module.
 - Availability - Verfügbarkeit: Systeme sollen jederzeit (wenn benötigt) betriebsbereit sein.
     - im Sicherheitskontext spielt das Schutzziel Verfügbarkeit eine wichtige Rolle. Inwieweit können z.B. denial of Service Angriffe unsere Systeme blockieren, stören oder lahmlegen.
+
+
 ### Weitere Ziele
 unter anderem sind auch folgende Ziele von Bedeutung:
 - Authentizität
@@ -41,9 +43,12 @@ unter anderem sind auch folgende Ziele von Bedeutung:
 - Zurechenbarkeit
 - Privatsphäre
 - Einhalten von Datenschutzverordnung und anderen gesetzlichen Rahmenbedingungen
+
+
 ## 3. Datenfluss-Diagramm
 - Zum Anwendungsfall werden erste Datenfluss und Prozessfluss Diagramme erstellt um eine erste Übersicht zu bekommen
 ![Diagramm](./img/threat_modelling_diagramm.svg)
+
 
 ## 4. Ermittlung und Einstufung von Bedrohungen
 Grundsätzliche Herangehensweise bei Thread-modeling:
@@ -53,10 +58,14 @@ Grundsätzliche Herangehensweise bei Thread-modeling:
 
 Im Folgenden wird eine (attacker-centric) Herangehensweise gewählt. Für einige denkbare und wahrscheinliche Angriffs-Potentiale sollen im Folgenden die Bedrohungen definiert und auf ihr Risikopotential eingestuft werden.
 
+
 ### Anhand der Diagramme Bedrohungen herausarbeiten
 ![Bedrohung 1](./img/threat_modelling_bedrohung1.svg)
 
+
 ### Bedrohung Einstufen
+
+
 #### Angreifer bekommt zugang zu Zustomer-Account(s)
 |Risiko-Faktor|Einschätzung|Faktor|
 |---|---|---|
@@ -73,6 +82,7 @@ Angriffsvektoren:
 - keylogger auf Lokalen Maschienen
 - phishing, social engineering, malware angriffe auf einzelne User
 
+
 #### Zugang zu Schulungsräumen
 |Risiko-Faktor|Einschätzung|Faktor|
 |---|---|---|
@@ -87,6 +97,7 @@ Angriffsvektoren:
 - pseudo Öffentlichkeit der Schulungsräume / des geteilten Büros
 - Innerhalb der öffnungszeiten leicht zugänglich
 - Auserhalb normaler Werktage sind destruktive-Zugangsmethoden relevant (Einbruch ...)
+
 
 #### Zugang zu Serverräumen
 |Risiko-Faktor|Einschätzung|Faktor|
@@ -105,6 +116,7 @@ Angriffsvektoren:
 
 ## 5. Security Controls - Maßnahmen zur Bedrohungsabwehr
 Liste zu treffender Gegenmaßnahmen:
+
 ### - Bios Passwort aller öffentlich zugänglichen PCs setzen
 Somit wird es für einen Angreifer deutlich schwerer ohne Zugangsdaten Zugriff auf die Rechner oder Daten auf ihnen zu bekommen
 - als Erweiterung könnten auch USB Anschlüsse im Bios deaktiviert werden
@@ -127,6 +139,7 @@ Festlegen von Mindestlänge, Verwendung von Sonderzeichen und Zahlen.
 ### - Ein klares Protokoll zum Umgang mit Schlüssel für den Serverraum definieren
 Raum sollte jederzeit abgeschlossen sein und alle Zugangsmethoden nicht öffentlich zugänglich sein
 - Es muss des weiteren Sichergestellt werden, das Putzpersonal/Hausmeister soweit möglich keinen Zugang zu diesem haben.
+
 
 ## 6. Zusammenfassung
 Abschlussgedanken:

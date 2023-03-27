@@ -99,3 +99,6 @@ func main(){
 ## Best practices
 - if we need a context in a api, define the ctx context.Context as the first argument.
 - MAKE SURE context.CancelFunct is called. Otherwise the application will leak memory/goroutines.
+
+## Links
+- https://go.dev/blog/context

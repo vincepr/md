@@ -1,4 +1,5 @@
 # DHCP und DNS
+- Dynamic Host Configuration Protocol
 
 ## Warum
 Jeder Host braucht eine IP-Konfiguration (IP Adresse, DNS-Server). Dies von Hand für jedes Gerät zu machen wäre schlecht. -> DHCP macht dies automatisch.
@@ -10,19 +11,19 @@ Jeder Host braucht eine IP-Konfiguration (IP Adresse, DNS-Server). Dies von Hand
 - automatisch: adresspool -> zuordnung dann "für immer" (dann wie statisch) 
 - dynamisch: adresspool -> ip wird zugeordnet mit Leasetime. Client muss vor Ablauf der Zeit erweiterung beantragen.
 
-## Ablauf
-- DHCP-Discover: Der DHCP-Client verschickt ein UDP-Paket mit der Ziel-Adresse 255.255.255.255 und der Quell-Adresse 0.0.0.0. Dieser Broadcast dient als Adressanforderung an alle verfügbaren DHCP-Server. Im Optimalfall gibt es nur einen DHCP-Server. So vermeidet man Konflikte bei der Adressvergabe.
+## Ablauf DORA - D.O.R.A -Prinzip
+- DHCP-**Discover**: Der DHCP-Client verschickt ein UDP-Paket mit der Ziel-Adresse 255.255.255.255 und der Quell-Adresse 0.0.0.0. Dieser Broadcast dient als Adressanforderung an alle verfügbaren DHCP-Server. Im Optimalfall gibt es nur einen DHCP-Server. So vermeidet man Konflikte bei der Adressvergabe.
 
-- DHCP-Offer: Der DHCP-Server antwortet auf den Broadcast mit einer freien IP-Adresse und weiteren Parametern, um die IP-Konfiguration zu vervollständigen. Jeder angesprochene DHCP-Server schickt ein UDP-Paket mit folgenden Daten zurück:
+- DHCP-**Offer**: Der DHCP-Server antwortet auf den Broadcast mit einer freien IP-Adresse und weiteren Parametern, um die IP-Konfiguration zu vervollständigen. Jeder angesprochene DHCP-Server schickt ein UDP-Paket mit folgenden Daten zurück:
     - MAC-Adresse des Clients
     - mögliche IP-Adresse
     - Laufzeit der IP-Adresse/-Konfiguration (Lease-Time)
     - Subnetzmaske
     - IP-Adresse des DHCP-Servers / Server-ID
 
-- DHCP-Request: Aus der Auswahl von evt. mehreren DHCP-Servern sucht sich der DHCP-Client eine IP-Adresse heraus. Daraufhin verschickt er eine positive Meldung an den betreffenden DHCP-Server. Alle anderen Server erhalten die Meldung ebenso und gehen von der Annahme der IP-Adresse zugunsten eines anderen Servers aus.
+- DHCP-**Request**: Aus der Auswahl von evt. mehreren DHCP-Servern sucht sich der DHCP-Client eine IP-Adresse heraus. Daraufhin verschickt er eine positive Meldung an den betreffenden DHCP-Server. Alle anderen Server erhalten die Meldung ebenso und gehen von der Annahme der IP-Adresse zugunsten eines anderen Servers aus.
 
-- DHCP-Acknowledgement (ACK): Anschließend muss die Vergabe der IP-Adresse vom DHCP-Server bestätigt werden. Doch nicht nur die Daten zum TCP/IP-Netzwerk kann DHCP an den Client vergeben. Sofern der DHCP-Client weitere Angaben auswerten kann, übermittelt der DHCP-Server weitere Optionen:
+- DHCP-**Acknowledgement** (ACK): Anschließend muss die Vergabe der IP-Adresse vom DHCP-Server bestätigt werden. Doch nicht nur die Daten zum TCP/IP-Netzwerk kann DHCP an den Client vergeben. Sofern der DHCP-Client weitere Angaben auswerten kann, übermittelt der DHCP-Server weitere Optionen:
     - DHCP -**Not** Acknowledged: Sollte der DHCP-Server keine Adressen mehr zur Verfügung haben oder während des Vorgangs ein anderer Client diese Adresse zugesagt bekommen haben, sendet der DHCP-Server ein DHCPNAK (DHCP-Not Acknowledged).
 
 Sobald der DHCP-Client die Bestätigung erhalten hat, speichert er die Daten lokal ab. Abschließend wird der TCP/IP-Stack vollständig gestartet.
