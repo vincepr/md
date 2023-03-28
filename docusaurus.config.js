@@ -49,7 +49,7 @@ const config = {
             'https://github.com/vincepr/md/blob/main/',
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -82,7 +82,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          {to: '/blog/mdx-playground', label: 'Js-Playground', position: 'left'},
+          {to: '/playground', label: 'Js-Playground', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           
           {
@@ -113,7 +113,7 @@ const config = {
               },
               {
                 label: 'Playground',
-                to: '/blog/mdx-playground',
+                to: '/playground',
               },
             ],
           },

@@ -15,11 +15,12 @@ export default function TextArea({text, setText,}) {
   const styles = {
     boxSizing: 'border-box',
     fontFamily: '"Dank Mono", "Fira Code", monospace',
-    minHeight: "200px",
+    minHeight: "500px",
     fontSize: 15,
     ...theme.plain,
   }
 
+  // we map the code highlighting over the textfield using the default styling
   const highlight = code => (
     <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -36,13 +37,14 @@ export default function TextArea({text, setText,}) {
 
   return (
     <Editor
+      className='test'
       value={text}
       onValueChange={text => setText(text)}
       highlight={ highlight }
       padding={20}
       style={styles}
-      tabSize={1}
-      insertSpaces={false}
+      tabSize={2}
+      insertSpaces={true}
       placeholder={`console.log("write your js here")`}
     />
   );

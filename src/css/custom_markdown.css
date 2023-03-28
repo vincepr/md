@@ -27,3 +27,18 @@
 .theme-doc-markdown table td{
   padding: 0.3rem;
 }
+
+
+
+article header h1{
+  font-size: 1.6rem !important;
+}
+article header h2{
+  font-size:1.4rem !important;
+}
+article header h3{
+  font-size:1.2rem !important;
+}
+article header h4{
+  font-size:1rem !important;
+}
