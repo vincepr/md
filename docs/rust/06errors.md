@@ -131,8 +131,8 @@ fn read_data_from_file(path: &str) -> Result<String, io::Error> {
     }
 }
 ```
-### \? Operator 
-The `?` operator can only be used in functions whose return type is compatible with the value it uses. For example the Result value, or an Option.
+### ? Operator 
+The `?` operator can only be used in functions whose return type is compatible with the value it uses. For example the `Result` value, or an `Option`.
 - a shortcut for propagating errors (does same as above example):
 ```rust
 fn read_data_short(path: &str) -> Result<String, io::Error>{
@@ -148,5 +148,11 @@ fn read_data_short(path: &str) -> Result<String, io::Error>{
     let mut data = String::new();
     File::open(&path)?.read_to_string(&mut data)?;
     Ok(data)
+}
+```
+- a quick example of the ? Operator with a Option instead:
+```rust
+fn last_char_of_the_first_line(text: &str) -> Option<char> {
+    text.lines().next()?.chars().last()
 }
 ```
