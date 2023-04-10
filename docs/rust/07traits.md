@@ -95,9 +95,17 @@ impl<T: Display + PartialOrd> Pair<T> {
     }
 }
 ```
+## Lifetime syntax
+```rust
+&i32        // a reference
+&'a i32     // a reference with an explicit lifetime
+&'a mut i32 // a mutable reference with an explicit lifetime
+```
 
-## References with Lifetimes
+## References with Lifetimes (functions)
 Lifetimes ensure that a reference is valid as long as we need it. Most of the time lifetimes are implicid and inferred, compare Borrowing Rules.
+- Lifetime annotations don’t change how long any of the references live. Rather, they describe the relationships of the lifetimes of multiple references to each other without affecting the lifetimes.
+- The following will **NOT COMPILE** without the lifetime annotation `'a` added in. (we are basically asserting that s1 s2 and the return value all have the same lifetime.)
 ```rust
 fn main() {
     let str1 = String::from("1234");
@@ -107,11 +115,46 @@ fn main() {
     println!("The longest string is {}", result);
 }
 
-fn longest(s1: &str,s2: &str) -> &str {
+// fn longest(s1: &str,s2: &str) -> &str {      // would not compile
+fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
     if s1.len() > s2.len(){
         s1
     } else {
         s2
     }
 }
+```
+We just defined that the returned stringslice lives as long as the minimum between s1 and s2 lifetime.
+
+## References with Lifetimes (structs)
+As long as a struct only holds owned types there is no need for lifetime annotations. But once we define a struct to hold references we need to add those:
+```rust
+struct Excerpt<'a> {
+    part: &'a str,
+}
+
+fn main() {
+    let novel = String::from("Some Lorem Ipsum. blah blah...");
+    let first_sentence = novel.split('.').next().expect("Failed no . found");
+    let ex = Excerpt {
+        part: first_sentence
+    };
+    println!("{:?}", ex.part)
+}
+```
+
+### References with Lifetime (struct-methods)
+Lifetime names for struct fields always need to be declared after the `impl` keyword:
+```rust
+impl <'a> excerpt <'a> {
+    fn level(&self) -> i32{
+        3
+    }
+}
+```
+
+## static lifetime
+All string literals have the `'static`lifetime. The text is stored directly in the binary which is always available.
+```rust
+let s: &'static str = "I have a static lifetime.";
 ```
