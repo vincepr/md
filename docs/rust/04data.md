@@ -413,3 +413,66 @@ fn count_words(s: &str)-> HashMap<&str, i32>{
     return map;
 }
 ```
+
+# Generic Data Types
+In Rust generic Types are compiled with Monomorphization. Thus there should be no cost at runtime. Basically it generates binary code for each used variant..
+- Generics in Functions
+```rust
+fn max_i32(list: &[i32]) -> &i32 {
+    let mut max = &list[0];
+    for el in list {
+        if el > max {
+            max = el;
+        }
+    }
+    max
+}
+
+fn max_generic<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
+    let mut max = &list[0];
+    for el in list {
+        if el > max {
+            max = el;
+        }
+    }
+    max
+}
+```
+- Generics in Structs or Enums
+```rust
+// only accepts same type T
+struct Coordinate<T> {
+    x: T,
+    y: T,
+}
+// same for struct methods:
+imp<T> Coordinate<T> {
+    fn get_x(&self) -> &T {
+        &self.x
+    }
+}
+
+// accepts different types
+struct Point<T, U> {
+    a: T,
+    b: U,
+}
+// we can also specify different behavior for different T-types's like this:
+impl Point<f32> {
+    fn dist_from_zero(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
+
+enum Option<T> {
+    Some(T),
+    None
+}
+
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
