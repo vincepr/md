@@ -1,4 +1,4 @@
-# Handling errors
+# Error Handling in Rust
 Rust distinguishes between recoverable and unrecoverable errors.
 
 ## unrecoverable errors
@@ -131,6 +131,14 @@ fn read_data_from_file(path: &str) -> Result<String, io::Error> {
     }
 }
 ```
+### if Err
+if we are for example only concerned with the Err, or the Ok would wrap the empty object `()`then it might be beneficial to just use a if statement:
+```rust
+if let Err(e) = funcThatCanError(){
+    println("Error in funcThatCanError:{e}");
+}
+```
+
 ### ? Operator 
 The `?` operator can only be used in functions whose return type is compatible with the value it uses. For example the `Result` value, or an `Option`.
 - a shortcut for propagating errors (does same as above example):
@@ -156,3 +164,12 @@ fn last_char_of_the_first_line(text: &str) -> Option<char> {
     text.lines().next()?.chars().last()
 }
 ```
+
+## Writing Error Messages to Standard Error instead of Standard Output
+By default we write everything ti Standart Output.
+- To test we can redirect our Standard Output to a file: `cargo run > out.txt`
+- It is useful to print our error messages out to Standard Error instead.
+```rust
+eprintln!("Our custom Error");
+```
+- now we can `cargo run > out.txt` write to our file, while still showing errors in our main channel.

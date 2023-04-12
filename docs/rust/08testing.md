@@ -1,4 +1,4 @@
-# Testing
+# Testing in Rust
 - run all tests with `cargo test`
 
 ## Asserts

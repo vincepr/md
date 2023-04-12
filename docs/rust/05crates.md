@@ -1,4 +1,4 @@
-# projects, packages, crates and modules
+# Crates projects, packages and modules in Rust
 
 ## modules
 start from the crate root. `src/lib.rs` for a library- and `src/main.rs` for a binary-crate.

@@ -1,4 +1,4 @@
-# Ownership Principles
+# Ownership Principles in Rust
 
 ## Stack vs Heap
 ### Stack

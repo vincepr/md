@@ -1,4 +1,4 @@
-# structure related to data
+# Structures related to data in Rust
 
 ## structs
 - if a struct instance is mutable, the whole thing is mutable. (cant specify certain fields only)
