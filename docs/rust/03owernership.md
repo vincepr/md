@@ -66,7 +66,13 @@ fn get_len(s: String) -> (String, usize){
 
 #### References and Borrowing
 Unlike a pointer a reference is guaranteed to point to a valid value, for the life of that reference.
+
 This is called borrowing. By default references are immutable.
+
+Two borrowing rules that always must hold true:
+- At any given time, you can have either (but not both) one mutable reference or any number of immutable references.
+- References must always be valid.
+
 ```rust
 fn main() {
     let s1 = String::from("hello");

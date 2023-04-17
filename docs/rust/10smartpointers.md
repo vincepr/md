@@ -156,3 +156,52 @@ fn main() {
     println!("CustomSmartPointer dropped before the end of main.");
 }
 ```
+## `Rc<T>` Reference counting Smart Pointer
+`Rc<T>`is only for use in single threaded scendarios. Example: we have a graph data structure, multiple nodes might point to the same next node. That node is conceptually owned by those nodes and should be cleaned up when it has no owners left.
+
+Those immutable References allow sharing data between multiple parts of the program for reading only.
+```rust
+use std::rc::Rc;
+enum SharedList<T>{
+    Node(T, Rc<SharedList<T>>),
+    Nil,
+}
+
+fn main(){
+    use crate::SharedList::{Node, Nil};
+
+    let a = Rc::new(Node(5, Rc::new(Node(10, Rc::new(Nil)))));
+    println!("count after creating a: {}", Rc::strong_count(&a));           //-> 1
+
+    let b = Node(2, Rc::clone(&a));
+    println!("count after creating b: {}", Rc::strong_count(&a));           //-> 2
+    {
+        let c = Node(8, Rc::clone(&a));
+        println!("count after creating c: {}", Rc::strong_count(&a));       //-> 3
+    }
+    println!("count after c goes out of scope: {}", Rc::strong_count(&a));  //-> 2
+}
+```
+We could have used `a.clone()` aswell, but `Rc::clone()` is the convention in rust. This iway it is easy to distinguish between deep copy kinds of clones and the clones that increase our reference count. When looking for perfomance problems in code, all wee need is to consider is the deep copy clones and we can disregard the `Rc::clone` ones.
+
+## `RefCell<T>` and the Interior Mutability Pattern
+*Interior Mutability* is a design pattern in Rust, that allows to mutate data, even when there already an immutable refference to that data. This is accomplished with the `unsafe` package and by manually guaranteeing memory safety.
+
+The `RefCell<T>` type wraps the unsafe calls in a save to use API.
+
+With normal references the borrowing rules are enforced at compile time. With `RefCell<T>` these invariants are enforced at runtime. So if refernces break, it wont compile. If `RefCell<T>` break these rules, the programm will panic.
+
+Similar to `Rc<T>`RefCell is only for use in a single-threaded context.
+
+- `RefCell<T>` allows mutable borrows checked at runtime. You can mutate the value inside the `RefCell<T>` even when it itself is immutable.
+
+### use case: Mock Objects
+Sometimes during tesing a programmer will have to use a *test double*. This type only exists in place of another type, in order to observe particular behavior and assert it is implemented correctly.
+
+*Mock Objects* are specific types of test doubles that record what happens during a test.
+
+Here’s the scenario we’ll test: we’ll create a library that tracks a value against a maximum value and sends messages based on how close to the maximum value the current value is. This library could be used to keep track of a user’s quota for the number of API calls they’re allowed to make, for example.
+
+Consumers of the Library would have to implement the Messenger Trait and therefor the send method. (For example sending a Notification Mail etc.)
+
+For testing purpose we want a mock object that, instead of sending an mail just keeps track of the messages it is told to send. So we can assert it is the messages we expect.
