@@ -213,6 +213,24 @@ if let Coin::Quarter(state) = coin {
 }
 ```
 
+### if while statement
+```rust
+// fill a Vector with Options:
+let mut range = 10;
+let mut optional_integers: Vec<Option<i8>> = Vec::new();
+for i in 0..(range + 1) {
+    optional_integers.push(Some(i));
+}
+
+
+// - remember that vector.pop also adds another layer of Option<T>
+// You can stack `Option<T>`'s into while let and if let
+while let Some(Some(integer)) = optional_integers.pop() {
+    assert_eq!(integer, range);
+    range -= 1;
+}
+```
+
 ## std collections
 `std::collections` https://doc.rust-lang.org/std/collections/index.html offers good implementions of default data structures.
 - like vector, string, hash map, binary tree...
