@@ -165,6 +165,59 @@ fn last_char_of_the_first_line(text: &str) -> Option<char> {
 }
 ```
 
+## Handling different Error Types in the same Result
+2 Main Ways, wrapping the Error in a `Box<dyn error::Error>` or using enums.
+- really useful if we want to be able to just ? Operator all errors and handle them upstream.
+
+
+### Box with dyn Error
+Since both Errors implement the `std::error::Error` Trait we can use a box that implements that Trait inside.
+```rust
+fn number_from_file(filename: &str) -> Result<u64, Box<dyn std::error::Error>> {
+    use std::io::Read;
+    
+    /* 1: std::io::Error */
+    let mut file = std::fs::File::open(filename)?;
+    let mut buffer = String::new();
+    file.read_to_string(&mut buffer)?;
+
+    /* 2: ParseIntError */
+    let parsed: u64 = buffer.trim().parse()?;
+
+    Ok(parsed)
+}
+```
+A downside to this could be that we only will handle that error at runtime dynamically. So less savety at compile time etc.
+
+### Enums for bringing Error Types together
+Instead of having dynamic results above we can also prepare an Error enum with all possible errors.
+- That way we get full coverage of possible cases upstream when propagating errors up.
+- in short we gain accuracy in cost of some boilerplate.
+```rust
+// We just bundle our Error Types in an enum:
+enum NumFromFileErr {
+    IoErr(std::io::Error),
+    ParseErr(ParseIntError),
+}
+// Implement the conversion from the default errors to NumFromFileErr
+// This will be automatically called by the ? if needed for conversion thanks to the into Trait
+impl From<ParseIntError> for NumFromFileErr {
+    fn from(err: ParseIntError) -> Self {
+        NumFromFileErr::ParseErr(err)
+    }
+}
+
+impl From<std::io::Error> for NumFromFileErr {
+    fn from(err: std::io::Error) -> Self {
+        NumFromFileErr::IoErr(err)
+    }
+}
+
+fn number_from_file(filename: &str) -> Result<u64, NumFromFileErr> {
+    // same as above ....
+}
+```
+
 ## Writing Error Messages to Standard Error instead of Standard Output
 By default we write everything ti Standart Output.
 - To test we can redirect our Standard Output to a file: `cargo run > out.txt`

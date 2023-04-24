@@ -1,7 +1,12 @@
 # Traits and Lifetime in Rust
 
 ## Traits in Rust
-Fills a similar purpose to interfaces in other languages. The compiler will enforce that any type implementing a Trait must implement all it's methods.
+Fills a similar purpose to interfaces or abstract classes in other languages. The compiler will enforce that any type implementing a Trait must implement all it's methods.
+
+Some really common Rust traits include:
+- `Clone` the `clone()` method
+- `Display` to allow formatted display/println via `{}`
+- `Debug` to allow formatted display/println via `{:?} and {:#?}`
 ```rust
 // the trait definition
 pub trait Summary {
