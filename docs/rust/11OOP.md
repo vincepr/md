@@ -211,14 +211,14 @@ impl PendingReviewPost {
 }
 ```
 
-## Mario Exampl state machine with Enums
+## Mario state machine with Enums in Rust
 Finite State machine that implements Mario-Game's Mushrooms logic:
+
+![Mario states ](./mario-states.svg)
 - Small Mario
 - Super Mario
 - Fire Mario
 - Cape Mario
-
-![https://www.ashishvishwakarma.com/GoF-Design-Patterns-by-Example/State-Pattern/assets/mario-finite-state-machine.jpg](https://www.ashishvishwakarma.com/GoF-Design-Patterns-by-Example/State-Pattern/assets/mario-finite-state-machine.jpg)
 
 ```rust
 #[derive(Debug, PartialEq)]
