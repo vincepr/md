@@ -156,5 +156,24 @@ pub fn search_str<'a>(substr: &str, data: &'a str) -> Vec<&'a str> {
 }
 ```
 
+### Iterator with Result
+Sometimes we must collect iterators that Return Results (or Options). We usually want to propagate the Error up, or wrap each element in the Ok or Err.
+
+```rust 
+let results = [Ok(1), Err("nope"), Ok(3), Err("bad")];
+
+let result: Result<Vec<_>, &str> = results.iter().cloned().collect();
+
+// gives us the first error
+assert_eq!(Err("nope"), result);
+
+let results = [Ok(1), Ok(3)];
+
+let result: Result<Vec<_>, &str> = results.iter().cloned().collect();
+
+// gives us the list of answers
+assert_eq!(Ok(vec![1, 3]), result);
+```
+
 ### Comparing Performance: Loops vs. Iterators
 Iterators, though high level abstraction, get compiled down to roughly the same machine code in rust. (Zero-cost-abstraction principle in rust)
