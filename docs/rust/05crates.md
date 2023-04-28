@@ -124,3 +124,58 @@ use std::io::{self, Write}
 ```rust
 use std::collections::*;    // gets all items into scope
 ```
+
+## Extended Cargo features
+### Release Profiles
+Profiles provide a way to alter the compiler settings, influencing things like optimizations and debugging symbols.
+- cargo has default settings, that can be overwritten by adding `profile.*`
+```toml
+[profile.dev]
+opt-level = 0           ## 0 the lowest optimisation level possible
+overflow-checks = false ## disable integer overflow checks
+
+[profile.release]
+opt-level = 3           ## 3 is the hightest optimisation level (is default for --release)
+```
+Some noteworthy settings:
+- opt-level
+    - 0 no optimization
+    - 3 all optimizations
+    - "s" optimize for binary size
+    - "Z" optimize for binary size but also turn off loop vectorization
+- debug 
+    - 0 or false : no debug info at all (might be faster/less binary etc.)
+    - 1 : line tables only
+    - 2 or true : full debug info
+
+
+
+
+## Configuring multi-workspace structure with cargo Rust
+### creating the project structure
+```
+cargo new rs_file_tree --lib
+cd rs_file_tree
+cargo new filetree --lib
+cargo new main-unix
+cargo new main-win
+```
+In the root project's Cargo.toml we delete everything but the workspace definitions/paths:
+```
+[workspace]
+members=[
+    "main-unix",
+    "filetree",
+]
+```
+- now we can already `cargo build`
+### using code from filetree crates
+In our main crates we import our library:
+```
+[dependencies]
+filetree = { path = "../filetree" }
+```
+
+## Adding Clap crate to parse Args
+activate derive-mode-macros with the feature flag:
+- `cargo add clap --features derive`

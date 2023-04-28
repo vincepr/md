@@ -1,4 +1,9 @@
 # Some Notes while starting to learn Rust
+## Useful ressources
+- Rustonomicon: https://doc.rust-lang.org/nomicon/index.html
+- Rust-book: https://doc.rust-lang.org/book/
+- Rust-by-example: https://doc.rust-lang.org/rust-by-example/
+
 ## Setup
 ### Automatic Formatting with rustfmt
 - `cargo fmt` to format the whole project according to community code style guidelines.

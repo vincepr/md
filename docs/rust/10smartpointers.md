@@ -205,3 +205,8 @@ Here’s the scenario we’ll test: we’ll create a library that tracks a value
 Consumers of the Library would have to implement the Messenger Trait and therefor the send method. (For example sending a Notification Mail etc.)
 
 For testing purpose we want a mock object that, instead of sending an mail just keeps track of the messages it is told to send. So we can assert it is the messages we expect.
+
+## Cow - Clone-On-Write type
+Cow is a clone-on-write smart pointer.
+
+It can enclose and provide immutable access to borrowed data. (and clone the data lazily when mutation or ownership is required)
