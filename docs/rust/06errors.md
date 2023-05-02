@@ -226,3 +226,43 @@ By default we write everything ti Standart Output.
 eprintln!("Our custom Error");
 ```
 - now we can `cargo run > out.txt` write to our file, while still showing errors in our main channel.
+
+
+# A few notes after a while:
+```rust
+// handling multiple Err or failed options in one fn:
+fn get_age(mut slices: core::str::Split<char>) -> Option<usize>{
+    let age = slices.next()?;               // here we can just propagate the Failed Option up
+    let age = age.parse::<usize>().ok()?;   // here we Result->Option with .ok() then propagate up
+    if slices.count() >0 {
+        return None                         // here we manually propagate the failed uption up
+    }
+    Some(age)                               // and lastly we propagate the success+value
+}
+
+
+// handle our Results and Options:
+fn parse_string() -> Result<String, String>{
+
+    let mut slices = "hello from a string".split(' ');
+    let Some(word1) = slices.next() else {
+        return Err("Error: failed parsing 1st word".to_string())
+    };
+
+    if let Some(word2) = slices.next(){
+        println!("2nd word only lives in this closure: {word2}");
+    } else {
+        println!("is exhaustive so we have to handle this with else !");  
+    }
+    match slices.next(){
+        Ok(s) => println!("word3 is: {s}"),
+        _ => {},                                     // also exhaustive
+    }
+    let word4 = slices.next().unwrap_or_default();   // will fallback to default ""
+    let word5 = slices.next().unwrap();              // will panic, so avoid.
+    let word6 = slices.next().unwrap_or(" default"); // will fallback to custom
+
+    Ok(word1.to_string()+word3+word4+word5)          // Ok("helloa default")
+}
+
+```

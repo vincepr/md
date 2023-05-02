@@ -166,5 +166,3 @@ The `Sync` marker trait indicates that is safe to be referenced from multiple th
 
 Meaning the type reference can be sent safely to another thread.
 - Any type composed entirely of Sync types is automatically marked Sync aswell.
-
-### 
