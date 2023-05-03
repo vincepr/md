@@ -18,7 +18,7 @@ In Bezug auf ihre Implementierung, also die maschinelle Umsetzung im Prozessor, 
 | Algorithmus | Beschreibung | wann angewendet|
 
 
-## Divide and Conquer vs Dynamic programming (memoisation and tabulation)
+## Divide and Conquer vs Dynamic programming (Memoisation and Tabulation)
 - Divide and conquer is just splitting a problem up (ex recursively) into more easier to solve problems. No implication about speed initself.
     - In the example below`dacFib(n)`
 - Dynamic Programming extends the devide and conquer principle with memoisation to speed up the problem.
