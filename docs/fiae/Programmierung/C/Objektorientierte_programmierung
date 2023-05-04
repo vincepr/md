@@ -86,8 +86,6 @@ Console.WriteLine(zahl.ToString("\\#00.#E+0\\#")) // #12.35 E+2#
 - `sizeof()` returns size of the data type
 - `typeof()` returns type of object (ex. string, integer, bool ...)
 
-
-
 ### Strings
 ```C#
 Length      // returns length of string
@@ -99,6 +97,23 @@ Trim()      //remove whitespace from end & start
 ```
 - Other notable Operations:
     - Clone, CompareTo, EndsWith, GetHashCode, GetTypeCode, IndexOf, ToLower, ToUpper, Insert, IsNormalized, LastIndexOf, Remove, Replace, Split, StartsWith, Substring, ToCharArray
+#### Character Constants
+- the following symbosy need to be escaped with a `\` inside of strings to be used:
+|escape sequence| Meaning|
+|---|---|
+|`\\`|`\`|
+|`\'`|`'`|
+|`\"`|`"`|
+|`\?`|`?`|
+|`\n`|Newline|
+|`\t`|Tab|
+|`\a`|Alert or Bell|
+|`\b`|Backspace|
+|`\f`|From feed|
+|`\r`|Carriage return|
+|`\v`|Vertical Tab|
+|`\xhh`|Hexadecimal number of one or more digits|
+
 ### Type conversions
 -implicit type conversions: Werden automatisch wo Typsicher von C# vorgenommen (von i32->i63 usw)
 - explicit type conversions: Müssen explizit geschrieben werden, da hier nicht garantiert werden kann, dass daten verloren gehen.
@@ -226,3 +241,22 @@ Enumerable.Range(1, 10).Aggregate(0, (acc, x) => acc + x);
 // filter() is Where
 Enumerable.Range(1, 10).Where(x => x % 2 == 0);
 ```
+
+## Operators
+|Operator|Description|
+|---|---|
+|`&&`|Logical AND|
+|`||`|Logical OR|
+|`!`|Logical NOT|
+|`&`|Binary AND|
+|`|`|Binary OR|
+|`^`|Binary XOR|
+|`~`|Binary Bitflipping|
+|`<<`|Binary Left Shift|
+|`>>`|Binary Right Shift|
+|`&`|Returns the memory adress of an variable|
+|`*`|`*a`Creates a pointer name a to a variable|
+|`?:`|`c ? x:y`if condition c is true ? then x otherwise y|
+|`is`|`if (Ford is Car)` checks if Ford is an obj of class Car|
+|`as`|Cast without raising an exception if it fails|
+
