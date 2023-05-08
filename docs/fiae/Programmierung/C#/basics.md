@@ -1,4 +1,5 @@
-# Projektorientierte Programmierung mit C`#`
+# Grundlagen in C`#`
+
 
 ## Abgrenzung prozedurale Programmierung
 - Unter anderem: Variablen für Speicherung von Daten.
@@ -260,3 +261,170 @@ Enumerable.Range(1, 10).Where(x => x % 2 == 0);
 |`is`|`if (Ford is Car)` checks if Ford is an obj of class Car|
 |`as`|Cast without raising an exception if it fails|
 
+## Class vs Struct
+- Strukturen als **Werttypen** 
+    - werden im Stack gespeichert
+    - lassen sich z.B. nicht direkt mit `==` vergleichen
+```c#
+internal struct MitarbeiterStruct{
+    // Felder (Member) eines Objekts:
+    private  string _name;
+    double _gehalt;     // implicit private by default
+    // Konstruktor um Werte Initial festzulegen:
+    public MitarbeiterStruct(string name, double gehalt){
+        _name = name;
+        _gehalt = gehalt;
+    }
+    // Properties - Accessoren:
+    public string Name { 
+        get { return _name; }
+    }
+    public double Gehalt{
+        get { return _gehalt; }
+        set { _gehalt = value; }
+    }
+}
+internal class Program{
+    static void Main(string[] args){
+        MitarbeiterStruct ma1 = new MitarbeiterStruct("Meier", 2000);
+        // ma1.Name= "Meier";   // keine set Berechtigung
+        Console.WriteLine("Name:" + ma1.Name);
+        ma1.Gehalt = 2456;
+        Console.WriteLine("Gehalt: " + ma1.Gehalt);
+        
+        // Structs lassen sich nit mit == vergleichen
+        // (ma1 == ma2) ist NICHT zulässig
+        Console.WriteLine("they are equal:" + ma1.Equals(ma2));
+    }
+}
+```
+- Klassen sind **Referenztypen**
+    - werden im Heap gespeichert.
+    - Referenzen lassen sich mit `==` auf identität vergleichen.
+    - lassen sich Null setzen.
+```c#
+internal class MitarbeiterClass{
+    // ausführlich (feld + accessoren)
+    private string _name;
+    public string Name{
+        get { return _name; }
+    }
+    // alternativ hier als kurzform möglich:
+    public double Gehalt { get; set; }
+    // Konstruktor-overloading:
+    public MitarbeiterClass() {
+        _name = "unbekannt";
+        Gehalt = 0.1;
+    }
+    // Mit :this() haben wir zugriff auf den ersten Constructor
+    public MitarbeiterClass(string name):this()
+    {
+        _name = name;
+    }
+    public MitarbeiterClass(string name, double gehalt){
+        _name = name;
+        Gehalt = gehalt;
+    }
+}
+internal class Program{
+    static void Main(string[] args){
+        /* Class */
+        MitarbeiterClass ma3 = new MitarbeiterClass();
+        MitarbeiterClass ma4 = new MitarbeiterClass("John");
+        MitarbeiterClass ma5 = new MitarbeiterClass("Meier", 2000);
+        Console.WriteLine("Name: " + ma3.Name + " | Gehalt: " + ma3.Gehalt);
+        Console.WriteLine("Name: " + ma4.Name + " | Gehalt: " + ma4.Gehalt);
+        Console.WriteLine("Name: " + ma5.Name +" | Gehalt: "+ma5.Gehalt);
+
+        // Bei Klassen lassen sich die Objektreferenzen vergleichen
+        Console.WriteLine("Die Speicheradressen sind natürlich unterschiedlich:" + (ma3==ma4));
+
+        // Objekte lassen sich null setzten:
+        ma3 = null;
+        Console.WriteLine("trying to acess "+ma3.Name)
+            // -> NullReferenceExecption
+    }
+}
+```
+### Beispiele zu Klassen
+![KlassenDiagramm](./classdiagramm_taxi.svg)
+```c#
+internal class Taxi
+{
+    // Alle Taxen haben den gleichen Typ, kann nicht geändert werden.
+    public const string TYP = "Mercedes";
+    // Alle Taxen haben die gleiche Farbe, kann geändert werden.
+    public static string Farbe = "beige";
+    // Objekteigenschaften - individuell:
+    public string Nummer { get; set; }
+    public uint Baujahr { get; set; }
+    public double Km { get; set; }
+
+    // Implementierung einer Auto-Inkrement Funktion:
+    private static uint count = 0;
+    public static uint Count { get { return count; } }  // getter-anzahl, wieviele Taxen wurden Instanziert.
+    public Taxi(){
+        count++;
+        Nummer = "T-" + count ;
+    }
+
+    // constructor-chaining:
+    public Taxi(uint baujahr) : this(){
+        Baujahr = baujahr ;
+    }
+    public Taxi(uint baujahr, double km):this(baujahr){
+        Km = km;
+    }
+    public String GetInfo(){
+        return "Nummer: " + Nummer + " | Baujahr: " + Baujahr + " | Km: " + Km + " | TYP:" + TYP + " Farbe:" + Farbe; 
+    }
+
+    // Override the ToString and Equals Method as needed
+    override
+    public  String ToString(){
+        return GetInfo();
+    }
+
+    // because of our Autoincrement we have to ignore Taxi.Nummer while doing .Equals() so we override it
+    public override Boolean Equals(object other)
+    {
+        if (other is Taxi){
+            return this.Baujahr == ((Taxi)other).Baujahr && this.Km == ((Taxi)other).Km;
+        }
+        return base.Equals(other);          // Way to access the Original .Equals() as failback.
+    }
+}
+
+static void Main(string[] args)
+{
+    // Zugriff auf Klasseneigenschaften über Objektname.
+    Console.WriteLine(Taxi.Farbe);
+    Taxi.Farbe = "Grün";
+    Console.WriteLine(Taxi.Farbe);
+    Console.WriteLine(Taxi.TYP); 
+
+    // Objekte instanzieren:
+    Taxi t1 = new Taxi();
+    Taxi t2 = new Taxi(2022);
+    Taxi t3 = new Taxi(2013, 123456.99);
+    Taxi t4 = new Taxi(2013, 123456.99);
+
+    // Zugriff auf Objekteigenschaften immer Über instanziertes-Objekt.
+    Console.WriteLine(t1.Nummer + "<nr|km>" + t1.Km);
+
+    Console.WriteLine(t1.GetInfo());
+    Console.WriteLine(t2.GetInfo());
+    Console.WriteLine(t3.GetInfo());
+
+    Console.WriteLine("Es gibt: "+Taxi.Count +" Taxen");
+
+    // Standard Methoden von objekt und overwritten ToString()
+    Console.WriteLine("GetType() " + t1.GetType());
+    Console.WriteLine("GetHashCode() " + t2.GetHashCode());
+    Console.WriteLine("ToString() " + t3.ToString());       // ToString() manuell aufrufen
+    Console.WriteLine("ToString() " + t4);                  // ToString() wird automatisch/implizit aufrufen
+    
+    Console.WriteLine("t3==t4" + (t3 == t4) + " because different Pointers!");
+    Console.WriteLine("t3.Equals(t4)" + t3.Equals(t4)  +" because of our autoincrement we have to override .Equals()");
+}
+```

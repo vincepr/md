@@ -1,4 +1,7 @@
 # Beispiel Tabelle in C`#`
+Dargestellt werden soll eine Tabellenartige struktur.
+
+Auf diese werden verschiedene SQL-Artige abfragen gestellt.
 ```C#
 internal struct Tabelle
 {
@@ -125,6 +128,62 @@ internal class Program
             isDouble = double.TryParse(input, out value);
         }
         return value;
+    }
+}
+```
+
+## Aufgabe Kurse
+```c#
+internal class Kurs{
+    // interner Enum
+    [Flags]
+    public enum Kategorien{
+        IT = 1,
+        WIRTSCHAFT = 2,
+    }
+    // Felder:
+    public string Bezeichnung { get; private set; }
+    public double Preis { get; private set; }
+    public uint AnzahlTeilnehmer { get; set; }
+    public Kategorien Kategorie { get; private set; }
+    public double Umsatz => AnzahlTeilnehmer * Preis;       // Alt. schreibweise für public double Umsatz{get{return...}}
+    
+    // Konstruktoren:
+    public Kurs(string bezeichnung, double preis, uint anzahl, Kategorien kategorie){
+        Bezeichnung = bezeichnung;
+        Preis = preis;
+        Kategorie = kategorie;
+        AnzahlTeilnehmer = anzahl;
+    }
+    public Kurs(string bezeichnung, Kategorien kategorie) : this(bezeichnung, 500, 0, kategorie) { }
+
+    // Custom ToString Implementation
+    override
+    public String ToString(){ 
+        return $"{Bezeichnung} | Peis:{Preis} | Teilnehmer: {AnzahlTeilnehmer} | {Kategorie} | Umsatz: {Umsatz} "; 
+    }
+}
+
+internal class Program{
+    static void Main(){
+        Kurs[] tab = new Kurs[3];
+        tab[0] = new Kurs("Programmierung", 899, 15, Kurs.Kategorien.IT);
+        tab[1] = new Kurs("Buchhaltung",  Kurs.Kategorien.WIRTSCHAFT);
+        tab[2] = new Kurs("Netzwerke", 699, 10, Kurs.Kategorien.IT);
+
+        Console.WriteLine("\n1- Ausgabe Aller Kurse:");
+        foreach (Kurs kurs in tab)
+            Console.WriteLine("\t" + kurs);
+
+        double sum = 0;
+        foreach (Kurs kurs in tab)
+            sum += kurs.Umsatz;
+        Console.WriteLine("\n2- Summe Aller Umsaetze: "+sum);
+
+        Console.WriteLine("\n3- Alle Kurse der Kategorie IT:");
+        foreach (Kurs kurs in tab)
+            if (kurs.Kategorie == Kurs.Kategorien.IT) 
+                Console.WriteLine("\t" + kurs);
     }
 }
 ```
