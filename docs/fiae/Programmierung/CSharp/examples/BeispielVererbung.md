@@ -1,4 +1,5 @@
 # Beispiel Vererbung 
+
 ![Beispiel](./Beispiel_Vererbung.svg)
 ```cs
 internal class Produkt {
@@ -124,6 +125,5 @@ internal class Program
         Console.WriteLine(p.GetType() == typeof(Nahrung));    // true
         Console.WriteLine(p is Nahrung);                      // true 
     }
-
 }
 ```

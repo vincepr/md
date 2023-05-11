@@ -13,7 +13,7 @@ Variablen und Prozeduren (hier genannt Methoden) werden in Klassen zusammengefas
     - Methoden sind die Klassenspezifischen Funktionen/Prozeduren
 
 ## Default entrypoint for a (terminal) C# Program:
-```Cs
+```cs
 namespace tag01_erstes_projekt
 {
     internal class Program
@@ -59,7 +59,7 @@ namespace tag01_erstes_projekt
     used for documentation **/
 ```
 ### Formatierte Ausgabe (von Zahlen)
-```Cs
+```cs
 Console.WriteLine(zahl.ToString("00000"));      // 00123
 Console.WriteLine(zahl.ToString("#.##"));       // 12.34
 Console.WriteLine(zahl.ToString("#0.##E+0"));   // 12.35 E+2
@@ -89,7 +89,7 @@ Console.WriteLine(zahl.ToString("\\#00.#E+0\\#")) // #12.35 E+2#
 - `typeof()` returns type of object (ex. string, integer, bool ...)
 
 ### Strings
-```Cs
+```cs
 Length      // returns length of string
 Compare()   // compares two strings
 Contains()  // true if contains a substring
@@ -128,7 +128,7 @@ Trim()      //remove whitespace from end & start
 - ToConversions:
     - `ToChar()`, `ToByte()`, `ToDecimal()` ...
 - example of where it could go wrong
-```Cs
+```cs
 // nach Eingabe eines Radius soll das Programm das Volumen ausgeben
         public static void Beispiel1()
         {
@@ -175,7 +175,7 @@ Trim()      //remove whitespace from end & start
 |virtual|Declares a method or an accessor whose implementation can be changed by an overriding member in a derived class|
 |volatile|Indicates that a field can be modified in the program by something such as the operating system, the hardware, or a concurrently executing thread|
 
-```Cs
+```cs
 namespace tag01_erstes_projekt
 {
     internal class Programm{
@@ -200,7 +200,7 @@ namespace tag01_erstes_projekt
 
 
 ## Exception Handling
-```Cs
+```cs
 try{} catch (Exception e){throw;}
 ```
 
@@ -227,7 +227,7 @@ obj = 100;  // this is boxing
 dynamic variable_name = 20;
 ```
 ### Pointer Type
-```Cs
+```cs
 char* some_pointer;
 int* another_pointer;
 ```
