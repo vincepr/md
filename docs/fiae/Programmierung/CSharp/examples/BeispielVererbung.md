@@ -1,6 +1,6 @@
 # Beispiel Vererbung 
 
-![Alt text](./Beispiel_Vererbung.svg)
+![Alt text](./Beispiel_Vererbung.png)
 
 ```cs
 internal class Produkt {
