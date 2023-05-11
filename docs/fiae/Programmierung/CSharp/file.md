@@ -1,7 +1,7 @@
 # File stream in C#
 ## with Encoding
 - is slower because we have to Encode/Decode.
-```c#
+```cs
 // Example using Encoding ´to encode and decode
 public static void BeispielFileStream() {
 
@@ -27,7 +27,7 @@ public static void BeispielFileStream() {
 ```
 ## BinaryReader -BinaryWriter
 Beim Konstruktor für `BinaryWriter(Stream, Encoding?, Boolean?)` 
-```c#
+```cs
 public static void UnencodedStream()
 {
     string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Dateien/unencoded.txt";

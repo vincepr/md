@@ -1,6 +1,6 @@
 # Beispiel Vererbung 
 ![Beispiel](./Beispiel_Vererbung.svg)
-```c#
+```cs
 internal class Produkt {
     public string Bezeichnung { get; set; }
     public double Preis{ get; set; }

@@ -13,7 +13,7 @@ Variablen und Prozeduren (hier genannt Methoden) werden in Klassen zusammengefas
     - Methoden sind die Klassenspezifischen Funktionen/Prozeduren
 
 ## Default entrypoint for a (terminal) C# Program:
-```C#
+```Cs
 namespace tag01_erstes_projekt
 {
     internal class Program
@@ -45,7 +45,7 @@ namespace tag01_erstes_projekt
 
 ## Basics
 ### Comments
-```C#
+```Cs
 // Single-line comment
 
 /* Multi-line 
@@ -59,7 +59,7 @@ namespace tag01_erstes_projekt
     used for documentation **/
 ```
 ### Formatierte Ausgabe (von Zahlen)
-```C#
+```Cs
 Console.WriteLine(zahl.ToString("00000"));      // 00123
 Console.WriteLine(zahl.ToString("#.##"));       // 12.34
 Console.WriteLine(zahl.ToString("#0.##E+0"));   // 12.35 E+2
@@ -89,7 +89,7 @@ Console.WriteLine(zahl.ToString("\\#00.#E+0\\#")) // #12.35 E+2#
 - `typeof()` returns type of object (ex. string, integer, bool ...)
 
 ### Strings
-```C#
+```Cs
 Length      // returns length of string
 Compare()   // compares two strings
 Contains()  // true if contains a substring
@@ -128,7 +128,7 @@ Trim()      //remove whitespace from end & start
 - ToConversions:
     - `ToChar()`, `ToByte()`, `ToDecimal()` ...
 - example of where it could go wrong
-```C#
+```Cs
 // nach Eingabe eines Radius soll das Programm das Volumen ausgeben
         public static void Beispiel1()
         {
@@ -175,7 +175,7 @@ Trim()      //remove whitespace from end & start
 |virtual|Declares a method or an accessor whose implementation can be changed by an overriding member in a derived class|
 |volatile|Indicates that a field can be modified in the program by something such as the operating system, the hardware, or a concurrently executing thread|
 
-```C#
+```Cs
 namespace tag01_erstes_projekt
 {
     internal class Programm{
@@ -200,7 +200,7 @@ namespace tag01_erstes_projekt
 
 
 ## Exception Handling
-```C#
+```Cs
 try{} catch (Exception e){throw;}
 ```
 
@@ -217,7 +217,7 @@ try{} catch (Exception e){throw;}
 ## Reference Type
 - point to memory location (heap) instead of direct value (stack).
 - examples: object, dynamic, string.
-```C#
+```cs
 // when a value type is converted to object type this is called boxing (vs unboxing):
 object obj;
 obj = 100;  // this is boxing
@@ -227,13 +227,13 @@ obj = 100;  // this is boxing
 dynamic variable_name = 20;
 ```
 ### Pointer Type
-```C#
+```Cs
 char* some_pointer;
 int* another_pointer;
 ```
 
 ## Functional methods
-```c#
+```cs
 // map() is Select
 Enumerable.Range(1, 10).Select(x => x + 2);
 
@@ -266,7 +266,7 @@ Enumerable.Range(1, 10).Where(x => x % 2 == 0);
 - Strukturen als **Werttypen** 
     - werden im Stack gespeichert
     - lassen sich z.B. nicht direkt mit `==` vergleichen
-```c#
+```cs
 internal struct MitarbeiterStruct{
     // Felder (Member) eines Objekts:
     private  string _name;
@@ -303,7 +303,7 @@ internal class Program{
     - werden im Heap gespeichert.
     - Referenzen lassen sich mit `==` auf identität vergleichen.
     - lassen sich Null setzen.
-```c#
+```cs
 internal class MitarbeiterClass{
     // ausführlich (feld + accessoren)
     private string _name;
@@ -349,7 +349,7 @@ internal class Program{
 ```
 ### Beispiele zu Klassen
 ![KlassenDiagramm](./classdiagramm_taxi.svg)
-```c#
+```cs
 internal class Taxi
 {
     // Alle Taxen haben den gleichen Typ, kann nicht geändert werden.
@@ -432,7 +432,7 @@ static void Main(string[] args)
 
 ## Casting
 - for nullable objects like classes we can:
-```c#
+```cs
 Animal d = new Dog();
 Cat cast = d as Cat;
 

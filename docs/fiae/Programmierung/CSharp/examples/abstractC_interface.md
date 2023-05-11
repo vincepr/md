@@ -1,6 +1,6 @@
 # Abstract Class - Interface
 - Klassen.cs
-```c#
+```cs
 //internal abstract class Form
 //{
 //    public abstract double Flaeche { get;  }
@@ -78,7 +78,7 @@ internal class Tabelle{
 }
 ```
 - Programm.cs
-```c#
+```cs
 internal class Program
     {
         static void Main(string[] args)

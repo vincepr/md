@@ -2,7 +2,7 @@
 Dargestellt werden soll eine Tabellenartige struktur.
 
 Auf diese werden verschiedene SQL-Artige abfragen gestellt.
-```C#
+```cs
 internal struct Tabelle
 {
     public Hotel[] Hotels;
@@ -133,7 +133,7 @@ internal class Program
 ```
 
 ## Aufgabe Kurse
-```c#
+```cs
 internal class Kurs{
     // interner Enum
     [Flags]
