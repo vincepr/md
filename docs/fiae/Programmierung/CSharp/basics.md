@@ -1,5 +1,6 @@
 # Grundlagen in C`#`
 
+- https://learn.microsoft.com/de-de/dotnet/api/
 
 ## Abgrenzung prozedurale Programmierung
 - Unter anderem: Variablen für Speicherung von Daten.
@@ -426,5 +427,25 @@ static void Main(string[] args)
     
     Console.WriteLine("t3==t4" + (t3 == t4) + " because different Pointers!");
     Console.WriteLine("t3.Equals(t4)" + t3.Equals(t4)  +" because of our autoincrement we have to override .Equals()");
+}
+```
+
+## Casting
+- for nullable objects like classes we can:
+```c#
+Animal d = new Dog();
+Cat cast = d as Cat;
+
+if (cast != null){
+    Console.WriteLine(cast.SOUND)
+}
+```
+- for not nullable objects like structs we have to:
+```c#
+Animal d = new Dog();
+try{
+    Cat cast = (Cat)d
+} catch(Exception e){
+    Console.WriteLine("Casting Error:" + e);
 }
 ```
