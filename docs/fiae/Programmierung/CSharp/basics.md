@@ -348,7 +348,7 @@ internal class Program{
 }
 ```
 ### Beispiele zu Klassen
-![KlassenDiagramm](./classdiagramm_taxi.svg)
+![Alt text](./classdiagramm_taxi.svg)
 ```cs
 internal class Taxi
 {

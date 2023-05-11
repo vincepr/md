@@ -1,6 +1,7 @@
 # Beispiel Vererbung 
 
-![Beispiel](./Beispiel_Vererbung.svg)
+![Alt text](./Beispiel_Vererbung.svg)
+
 ```cs
 internal class Produkt {
     public string Bezeichnung { get; set; }
