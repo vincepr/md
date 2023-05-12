@@ -234,14 +234,18 @@ int* another_pointer;
 
 ## Functional methods
 ```cs
+var r = Enumerable.Range(1, 10);
+// ForEach to loop over:
+r.ForEach(x => Console.WriteLine(x) );
+
 // map() is Select
-Enumerable.Range(1, 10).Select(x => x + 2);
+r.Select(x => x + 2);
 
 // reduce() is Aggregate
-Enumerable.Range(1, 10).Aggregate(0, (acc, x) => acc + x);
+r.Aggregate(0, (acc, x) => acc + x);
 
 // filter() is Where
-Enumerable.Range(1, 10).Where(x => x % 2 == 0);
+r.Where(x => x % 2 == 0);
 ```
 
 ## Operators
@@ -348,7 +352,9 @@ internal class Program{
 }
 ```
 ### Beispiele zu Klassen
+
 ![Alt text](./classdiagramm_taxi.png)
+
 ```cs
 internal class Taxi
 {
@@ -449,3 +455,8 @@ try{
     Console.WriteLine("Casting Error:" + e);
 }
 ```
+
+## Array-ish of flexible size
+- Array is of fixed length in csharp and only takes one Type.
+- `List<Buch> list = new List<Buch>();` is of flexible size and takes one Type.
+- `ArrayList list = new ArrayList();`   takes in multiple Types at once.
