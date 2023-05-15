@@ -18,9 +18,20 @@ git remote add origin https://github.com/vincepr/minsk.git
 git push -u origin master
 ```
 
-- commit and stage all:
+- commit all modified files (but NOT new unstaged ones)
 ```
 git commit -am "added things"
+```
+
+- commit everything
+```
+git add --all && git commit -m "comment"
+```
+
+- create a custom alias to quickly add -A and commit:
+```
+git config --global alias.coa '!git add -A && git commit -m'
+git coa "some message"
 ```
 
 - change branches
