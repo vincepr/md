@@ -1,15 +1,16 @@
 # Projekt ereignisgesteuerte App in C#
-[project svg](./ProjectLieferdienst.excalidraw.svg)
+![project svg](./ProjectLieferdienst.excalidraw.svg)
 ## Setup the DB
 - using maria db MySql and Xampp
+- `sql_dump.sql`
 ```
-# login as root
+-- login as root
 mysql -u root
 
-# DEBUG ONLY DROP TABLE
-drop database lieferdienst;
+-- DEBUG ONLY DROP TABLE
+drop database lieferdienst if exists;
 
-# Datenabank erstellen
+-- Datenabank erstellen
 CREATE DATABASE lieferdienst;
 USE lieferdienst;
 
@@ -20,17 +21,17 @@ CREATE TABLE essen(
     info VARCHAR(70)
 );
 
-# ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ALTER TABLE essen CHARACTER SET = utf8;
 
-# filling some mock-data into the DB:
+-- filling some mock-data into the DB:
 INSERT INTO essen (bezeichnung, preis, info) VALUES ("Pizza Fungi", 8.89, "Mit pilzen");
 INSERT INTO essen (bezeichnung, preis, info) VALUES ("Pizza Tonno", 9.99, "veggy");
 INSERT INTO essen (bezeichnung, preis, info) VALUES ("Boulette", 3.20, "");
 INSERT INTO essen (bezeichnung, preis, info) VALUES ("Gemuesepfanne", 6.45, "veggy, kann spuren von Nuessen enthalten");
 INSERT INTO essen (bezeichnung, preis, info) VALUES ("Creme Catalan", 5.59, "kalorienbombe");
 
-# non root user with access to the table:
+-- non root user with access to the table:
 CREATE USER ronny@localhost IDENTIFIED BY "1234";
 GRANT SELECT ON lieferdienst.essen TO ronny@localhost;
 
