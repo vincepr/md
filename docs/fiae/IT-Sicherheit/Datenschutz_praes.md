@@ -1,6 +1,5 @@
----
-marp: true
----
+# Notizen zur Präsentation
+
 # Datenschutz durch Voreinstellung
 
 Unternehmen/Organisationen sind angehalten, zum frühestmöglichen Zeitpunkt der Gestaltung der Verarbeitungsvorgänge technische und organisatorische Maßnahmen zu treffen, die darauf ausgelegt sind, die Privatsphäre zu schützen und Datenschutzgrundsätze von Beginn an zu garantieren („Datenschutz durch Technikgestaltung“). Durch Voreinstellung sollen Unternehmen/Organisationen sicherstellen, dass personenbezogene Daten mit dem größtmöglichen Datenschutz (zum Beispiel sollten ausschließlich benötigte Daten verarbeitet werden, kurze Speicherfristen und begrenzte Zugänglichkeit vorgesehen werden) verarbeitet werden, damit diese Daten von vornherein nicht einer unbestimmten Zahl von Personen zugänglich gemacht werden („datenschutzfreundliche Voreinstellungen“).
