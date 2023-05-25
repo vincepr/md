@@ -33,8 +33,31 @@ z.B. Intranet, Sensible Daten (mehr Sicherheit als Softwarefirewall). Oder bei g
 
 ![dmz picture](./DMZ.excalidraw.svg)
 ![Alt text](./DMZ_noemb.svg)
+
 ## who is in a dmz network usually
 - Email servers
 - FTP servers
 - Web servers
 - Reverse-Proxy (to add another layer before the Web servers or secure content behind some auth)
+
+
+
+# Exposed Host
+- dmz für arme
+- open both directions
+- uses public ip (or via dyndns etc.)
+
+# Proxy
+Vermittler in einem Netzwerk. Jede Verbindung geht nicht direkt ins Internet, sondern an den Proxy, der dann weiterleitet.
+
+## Vorteile
+- Einsparen von Bandbreite.
+- Bessere Kontrolle (z.B. Welche Webseiten aufgerufen werden)
+    - Whitelist/Blacklist einfach implementierbar
+    - Identitäten hinter dem Proxy verborgen
+- Erhöhung des Datenschutzes/Sicherheit
+- Caching kann Geschwindigkeit erhöhen
+- Kontrolle über Bandbreite, Lastenverteilung steuerbar
+    - Kann für Loadbalancing eingesetzt werden
+
+
