@@ -1,4 +1,4 @@
-# Buildingblocks Networksecurity
+# Building blocks Networksecurity
 
 
 ## Firewall
@@ -66,3 +66,22 @@ Vermittler in einem Netzwerk. Jede Verbindung geht nicht direkt ins Internet, so
 sits in front of back-end applications and forwards client(ex. browsers) requests to those.
 - help increase scalability, performance, resilience and security. by for example caching static content, acting as load balancers, redirecting not logged in reuqests to login page etc...
 - Popular examples that include reverse proxys: nginx, apache, caddy.
+
+## IDS - Intrusion Detection System
+Sammelt daten und Analysiert diese automatisiert aus um dann nach gewissen Regel automatisiert zu benachrichtigen. (auch als moderne KI systeme möglich)
+- passives tool
+- Soll eine Ergänzung zur Firewall sein
+- Es soll Muster/Anomlien erkennen (Viele Login-Requests fehlgeschlagen, Viele Timeouts etc.)
+    - automatisierte Meldungen an Admin
+- Host-basiert / Netzwerk-basiert / Hybride-systeme
+
+## IPS
+Wie IDS, reagiert jedoch auch und meldet nicht ausschließlich.
+- aktives tool
+- automatische Abwehrmaßnahmen ergreifen
+- z.B. 
+    - Verbindung unterbrechen
+    - Pakete verwerfen
+    - Verbindungen von Zeil und Quelle
+    - grundsätzliches Blocken
+    - Admin informieren
