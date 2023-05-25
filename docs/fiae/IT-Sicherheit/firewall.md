@@ -75,7 +75,7 @@ Sammelt daten und Analysiert diese automatisiert aus um dann nach gewissen Regel
     - automatisierte Meldungen an Admin
 - Host-basiert / Netzwerk-basiert / Hybride-systeme
 
-## IPS
+## IPS - Intrusion Prevention System
 Wie IDS, reagiert jedoch auch und meldet nicht ausschließlich.
 - aktives tool
 - automatische Abwehrmaßnahmen ergreifen
