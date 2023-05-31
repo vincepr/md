@@ -274,3 +274,10 @@ usbPort2.plug(microToUsbAdapter)
 - wrapper class to abstract lower level details away from the user. 
 - ex. API that is exposed over some http requests
     - the SQL and whatever else is hidden behind those simple API calls.
+
+### Dependency Injection
+Not a `design pattern` initself but worth a sidenote.
+
+Injecting Classes that provide (additional) functionality. For example add a optional Sorting Algorithm to some class that deals with some data stored in tables.
+
+This is useful because we can decouple dependencies. For example some handlerFunction could use the `Logger class` in itself. But now it would be dependent to any chances happening there. Instead we can just decide, pass in any optional Logger class that implements some fitting Interface and we use that for logging.

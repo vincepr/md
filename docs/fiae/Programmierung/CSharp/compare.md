@@ -211,7 +211,7 @@ internal class Buch : IComparable<Buch>{
 }
 internal class Program{
     static void Main(){
-        books.Add(new Buch("Der rote Luftballon", 49.99, 2020));
+        books.Add(new Buch("Der rote Luftballon",  49.99, 2020));
         books.Add(new Buch("Blumen im Sommerwind", 39.99, 2019));
         books.Add(new Buch("Blumen im Sommerwind", 39.99, 2019));       // das sollte nicht mehr hinzugefügt werden.
         Console.WriteLine("Anzahl: " + books.Count);                    // -> Anzahl: 2
