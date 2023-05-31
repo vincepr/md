@@ -14,6 +14,37 @@ First we create the `ASP.NET Core Web Api` then the `SQL Server Database Project
 - add `StoredProcedures` for all our incoming crud requests. (more optimized than just plain incoming sql queries)
 example for the `spUser_Update.sql` (User is in squareBrackets because it is a reserved keyword)
 ```sql
+CREATE PROCEDURE [dbo].[spUser_GetAll]
+AS
+BEGIN
+	SELECT Id, FirstName, LastName
+	FROM dbo.[User];
+END
+```
+
+```sql
+CREATE PROCEDURE [dbo].[spUser_Get]
+	@Id int
+AS
+BEGIN
+	SELECT Id, FirstName, LastName
+	FROM dbo.[User]
+	WHERE Id = @Id;
+END
+```
+
+```sql
+CREATE PROCEDURE [dbo].[spUser_Insert]
+	@FirstNAme nvarchar(50),
+	@LastName nvarchar(50)
+AS
+BEGIN
+	INSERT INTO dbo.[User] (FirstName, LastName)
+	VALUES (@FirstName, @LastName);
+END
+```
+
+```sql
 CREATE PROCEDURE [dbo].[spUser_Update]
 	@Id int,
 	@FirstName nvarchar(50),
@@ -22,6 +53,17 @@ AS
 BEGIN
 	UPDATE dbo.[USER]
 	SET Firstname = @FirstName, LastName = @LastName
+	WHERE Id = @Id;
+END
+```
+
+```sql
+CREATE PROCEDURE [dbo].[spUser_Delete]
+	@Id int
+AS
+BEGIN
+	DELETE
+	FROM dbo.[User]
 	WHERE Id = @Id;
 END
 ```
