@@ -1,9 +1,32 @@
 # IT Monitoring
 goal is to have a majority of users experience adequate to good performance. Also to aviod a minority of users seeing extremely negative results.
 
-- Echtzeitüberwachung der IT Infrastruktur
-- Planung
-- Daten sammeln
+- real time monitoring and troubleshooting physical and virtual infrastructure. (like servers, network/cloud based systems or hardare)
+- better planing and IT-decision making process. (ex. identify bottlenecks, bandwith hogs etc.)
+- predicting and analyzing impact of IT operations on the business (ex. how much does a service cost vs revenue generated)
+- automated incident management / reporting
+- tracking end-user behaviors within an application. (what part of the app looses the user, metrics visited vs made purchase etc.)
+
+
+## Vorteile vs Nachteile
+Vorteile
+- Dauerhafter Überblich über gesamte It-Infrastruktur
+- Sichtbarkeit von Abhängigkeiten, Engpässen und Risiken
+- ideal/notwendig für komplexe Strukturen
+- kosten einspaarung für z.B. Bandbreiten Engpässe, falsch konfigurierte Hardware werden schneller erkannt
+
+Nachteile
+- oftmals geschlossene Lösungen mit teils Inkompatibilitäten (z.B. für bestimmte Schnitstellen)
+- initiale Kosten, bzw für Anpassung / Verwaltung
+- kontinuierliche Wartung und reagieren auf Meldungen ist aufwendig für Personal
+- Remote Monitoring kann an Dienstleister ausgelagert werden, hier jedoch sehr hohe kosten.
+
+
+## Welcke Komponenten überwachen
+- alle Hard- und Software.
+- Auslastungen / Speicherkapazitäten.
+- Anwendungen / Logs auf einem System. Prozese / Verzeichnisse.
+- Überwachung von Schnittstellen.
 
 
 ## types of monitoring
@@ -24,7 +47,6 @@ goal is to have a majority of users experience adequate to good performance. Als
 
 
 ## best practices for IT monitoring
-
 1. avoid alert fatigue, by setting up to many alerts to overwhelm the IT Team.
 
 2. categorize alerts by level of severity. Low level alerts can be handled automatically or be routed to junior analysts. While severe alerts should be routed immediately to senior staff.
