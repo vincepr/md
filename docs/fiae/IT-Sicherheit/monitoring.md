@@ -11,14 +11,15 @@ goal is to have a majority of users experience adequate to good performance. Als
 ## Vorteile vs Nachteile
 Vorteile
 - Dauerhafter Überblich über gesamte It-Infrastruktur
+- Erhöhung der Verfügbarkeit, Optimierung der Ressourcen
 - Sichtbarkeit von Abhängigkeiten, Engpässen und Risiken
 - ideal/notwendig für komplexe Strukturen
-- kosten einspaarung für z.B. Bandbreiten Engpässe, falsch konfigurierte Hardware werden schneller erkannt
+- kosten einspaarung für z.B. Bandbreiten Engpässe wegen falsch konfigurierte Hardware werden schneller erkannt
 
 Nachteile
-- oftmals geschlossene Lösungen mit teils Inkompatibilitäten (z.B. für bestimmte Schnitstellen)
 - initiale Kosten, bzw für Anpassung / Verwaltung
-- kontinuierliche Wartung und reagieren auf Meldungen ist aufwendig für Personal
+- Personalaufwand, Wissenmanagement, muss aufgebaut werden.
+- oftmals geschlossene Lösungen mit teils Inkompatibilitäten (z.B. für bestimmte Schnitstellen)
 - Remote Monitoring kann an Dienstleister ausgelagert werden, hier jedoch sehr hohe kosten.
 
 
@@ -56,3 +57,4 @@ Nachteile
 4. create good dashboards and iterate over them.
 
 5. embrace redundancy. 
+
