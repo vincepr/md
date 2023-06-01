@@ -30,7 +30,7 @@ public async Task<IActionResult> Index(){
             WHERE FirstName= 'Kevin' ";
     using (var conn = new SqlConnection(CONNECTION_STRING)){
         var persons = await conn.QueryAsync<Person>(sql);
-        return Ok(persons)
+        return Ok(persons);
     }
 }
 ```
@@ -50,7 +50,7 @@ public async Task<IActionResult> Index(){
             WHERE FirstName = @firstN ";
     using (var conn = new SqlConnection(CONNECTION_STRING)){
         var persons = await conn.QueryAsync<Person>(sql, new{firstN = "Kevin" });
-        return Ok(persons)
+        return Ok(persons);
     }
 }
 ```
@@ -74,7 +74,7 @@ public async Task<IActionResult> Index([FromQuery]string? getName){
 
     using (var conn = new SqlConnection(CONNECTION_STRING)){
         var persons = await conn.QueryAsync<Person>(sql, dynParams);    
-        return Ok(persons)
+        return Ok(persons);
     }
 }
 ```
@@ -161,7 +161,7 @@ public async Task<IActionResult> DemoWithoutTransactions(){
             }
             transaction.Commit();   // only if all 1000 inserts succeeded will we commit, otherwise it never gets put in the db.
         }
-        return Ok()
+        return Ok();
     }
 }
 ```
