@@ -1,5 +1,18 @@
 # Betriebliche Anwendungen
 
+## Definition System
+
+
+## Betriebliche Anwendungen
+ein System ist eine Zusammenfassung mehrerer Komponenten zu einer als Ganzes aufzufassenden Einheit. 
+
+Sie lösen in der Regel ein definiertes Bündel von Aufgaben.
+
+- Die Komponenten können von gleicher Art sein, homogene Systeme, z. B. Programme.
+
+- Oder sehr unterschiedlich sein, z. B. die Zusammenfassung von Hardware- und Software.
+
+
 ![pyramid svg](./pyramid.svg)
 
 Planungs und Kontrollsysteme / Administrations- und Dispositionssysteme
@@ -59,3 +72,44 @@ Querschnittssysteme:
 3. Wissensbasierte Systeme
 
 # Integrierte Informationsverarbeitung
+Integration = Wiederherstellen eines Ganzen / ergänzen.
+
+zu verknüpfende Anwendungssysteme: Administrationssysteme, Dispositionssysteme, Planungssysteme, Kontrollsysteme, sollen zusammenfunktionieren.
+
+![pyramid integration](./pyramid.svg)
+
+### Integrationsgegenstand
+#### Datenintegration
+Datenbestände werden logisch zusammengeführt. z.B. Automatische weitergabe, oder gemeinsame Datenbank.
+#### Funktionsintegration
+Aufgaben werden miteinander Verknüpft, z.B. Kalkulation
+#### Prozess- / Vorgangsintegration
+Prozesse werden aufeinander abgestimmt. Z.B. Kundenauftrag und Produktion.
+#### Methodenintegration
+Die benutzten Methoden werden aufeinander abgestimmt. z.B. Algorithmen abstimmen für berechnete Menge der Daten dynamisch abstimmen.
+#### Programmintegration
+1. Benutzerschnittstelle (Software-Ergonomie (copy-paste etc.))
+2. Medienintegration (Texte, Grafiken, Bilder, Ton)
+3. Geräteintegration (Telefon, Fax, Computer, Bluetooth)
+
+# Ziele und Probleme der Integrierten Informationsverarbeitung
+## Ziele
+- Abbau von Grenzen zwischen Abteilungen, Funktionsbereichen und Prozessen
+- Minimierung des personellen Inputaufwands (Daten nur einmal erfassen und weitergeben, Automatisches ergänzen der Daten aus Datenbank)
+- Erhöhung der Datenqualität (weniger Erfassungsfehler)
+- Erhöhung der Prozess-Sicherheit (Menschen Machen Fehler)
+- Verringerung von Speicher und Dokumentationsaufwand (weniger Redundanz)
+
+## Probleme
+- Anfälligkeit gegenüber fehlerhaften Daten
+- Zwang zur vollständigen Erfassung im System
+- Keine 100%-Igen Programmtests möglich (maximal Unittests)
+- Langer Realisierungszeitraum (Time-To-Market)
+
+## Integrationsmodelle
+### Aris-Konzept
+
+### Funktionssicht
+### Organisationssicht
+### Datensicht
+### Steuerungssicht
