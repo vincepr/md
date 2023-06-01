@@ -1,4 +1,7 @@
 # Betriebliche Anwendungen
+
+![pyramid svg](./pyramid.svg)
+
 Planungs und Kontrollsysteme / Administrations- und Dispositionssysteme
 
 - **Administrationssysteme** - z.B. Auftragsabwicklung
