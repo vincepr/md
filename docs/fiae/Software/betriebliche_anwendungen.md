@@ -93,6 +93,9 @@ Die benutzten Methoden werden aufeinander abgestimmt. z.B. Algorithmen abstimmen
 3. Geräteintegration (Telefon, Fax, Computer, Bluetooth)
 
 # Ziele und Probleme der Integrierten Informationsverarbeitung
+
+![Softwarearten](./Softwarearten.excalidraw.svg)
+
 ## Ziele
 - Abbau von Grenzen zwischen Abteilungen, Funktionsbereichen und Prozessen
 - Minimierung des personellen Inputaufwands (Daten nur einmal erfassen und weitergeben, Automatisches ergänzen der Daten aus Datenbank)
@@ -106,9 +109,8 @@ Die benutzten Methoden werden aufeinander abgestimmt. z.B. Algorithmen abstimmen
 - Keine 100%-Igen Programmtests möglich (maximal Unittests)
 - Langer Realisierungszeitraum (Time-To-Market)
 
-## Integrationsmodelle
-### Aris-Konzept
-
+# Integrationsmodelle
+## Aris-Konzept
 ### Funktionssicht
 ### Organisationssicht
 ### Datensicht
