@@ -36,18 +36,6 @@ Planungs und Kontrollsysteme / Administrations- und Dispositionssysteme
 - **Kontrollsysteme** - z.B. Vertriebsinformationssystem
     - Überwachung der Einhaltung der Pläne und Vorschlag von Korrekturmaßnahmen
 
-## Eigenentwicklung vs Standard-Software
-- **Vorteile von Standard-Software:**
-    - geringe Kosten
-    - Strategische Sicherheit
-    - Sicherheit im Support
-    - Hohe Verfügbarkeit / Qualität
-- **Vorteile von Standard-Software:**
-    - Differenzen zwischen betrieblichen Anforderungen und gegebenheiten
-    - schlechtere Performance (da allgemeiner)
-    - Anpassung der betrieblichen Prozesse an die (unveränderliche) Software
-    - Abhängigkeit vom Hersteller
-    - Motivation und Akzeptantprobleme in Fachabteilungen
 
 ## Typen von Betrieblicher Anwendungen
 - **Planungs- und Entscheidungssysteme**
@@ -190,9 +178,51 @@ ist ein Sammelbegriff für rechnergestützte/rechnerintegrierte Produktion/Ferti
     - G2B - Government to Business
     - G2G - Government to Government
 
-### 
+### Verfügbarkeit / Anbindung der Systeme
 - Geschlossenes System.
     - Firmennetze des Lieferanten und des einkaufenden Unternehmens miteinander verbinden
     - erheblicher Aufwand (Schnittstellen aneinander anzupassen)
 - Halboffene Systeme
+    - z.B. für Groshändler mit vielen Einzelhändlerkunden
+    - Systeme sind auf Lieferantenseite in das interne Netz eingebunden, in Kundenseite in 2 Varianten verfügbar. (z.B. Api zum anbinden mit Java Anwendungen und als Klassisches Website)
 - Offene Systeme
+    - Insbesonders für indirkte Güter (Maintenance, Repair)
+    - asynchron übers Internet verbunden. Der Datenaustausch finded auf Basis von Produktkatalogen statt.
+
+## Branchenabhängige Software
+Trend ist Branchensoftware als Standardlösung für einen oder mehrere Wirtschaftszweige zu gestalten.
+
+### Eigenentwicklung vs Standard-Software
+- **Vorteile von Individual-Software:**
+    - geringe Kosten
+    - Strategische Sicherheit
+    - Sicherheit im Support
+    - Hohe Verfügbarkeit / Qualität
+- **Vorteile von Standard-Software:**
+    - Differenzen zwischen betrieblichen Anforderungen und gegebenheiten
+    - schlechtere Performance (da allgemeiner)
+    - Anpassung der betrieblichen Prozesse an die (unveränderliche) Software
+    - Abhängigkeit vom Hersteller
+    - Motivation und Akzeptantprobleme in Fachabteilungen
+
+### Klassifizierung möglich nach
+- nach Branche
+- nach Unternehmensgröße
+- nach Produktions oder Dienstleistungsbezug
+- nach Zielgruppen
+
+Es gibt also z.B. Software speziell für Fertigungsindustrie etc.
+
+## Querschnittsanwendungen
+Anwendungen die als Standard-software in vielen Bereichen eines Unternehmens und oder Branchen angewendet werden kann.
+
+- Büroanwendungen - wie Excel, Word, PowerPoint
+- Grafikprogramme - wie CorrelDraw oder Photoshop
+- Workflow, Ticketsysteme, Projektplanung - Jira, Microsoft Project, Taiga, 
+- Kommunikationsanwendungen - GoogleMeet, Microsoft Teams
+- Multimediasysteme
+- Wissensmanagement
+    - Business intelligence
+    - Data Warehouse
+    - Online Analytical Processing
+    - Data Mining
