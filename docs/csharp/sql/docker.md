@@ -1,5 +1,7 @@
 # Docker with mssql server
+https://github.com/vincepr/CS_PostgreExample
 
+## setting up the basic dockerfile
 - docker images from https://hub.docker.com/_/microsoft-mssql-server
 - adventurework db samples (Lightweight 2022.bak) from: https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms
 
