@@ -75,7 +75,7 @@ Usb-Stick, CD, DVD, SSD, HDD, Magnetbänder, SD-Karte, NAS, Cloud-Speicher...
 - Flexibel/transportabel
 
 ### SSD
-- Vor allem für Voll-Backup und dauerhafte Datensicherung
+- Vor allem für Voll-Backup. Ungeeignet für Archivierung.
 - Kapazität: bis zu 5 TB
 - Kosten´: je nach Speichergröße ab ca 100Euro
 - Lebensdauer: 10 Jahre / 5k bis 10k Schreibzyklen
@@ -83,6 +83,7 @@ Usb-Stick, CD, DVD, SSD, HDD, Magnetbänder, SD-Karte, NAS, Cloud-Speicher...
 - Risiken: Relativ unempfindlich, da ohne extern bewegliche Teile
 - Voraussetzungen: Passender Anschluss am gerät.
 - Nur begrenzt wiederbeschreibbar.
+- bleibt Stromversorgung für längeren Zeitraum aus sind SSDs anfällig für Datenverlust. (ab 3 Monate ohne Strom Datenverlust möglich)
 - eingeschränkt Flexibel/transportabel
 
 ### Externe Festplatte
@@ -107,7 +108,7 @@ Usb-Stick, CD, DVD, SSD, HDD, Magnetbänder, SD-Karte, NAS, Cloud-Speicher...
 - nicht Flexibel/transportabel
 
 ### Cloud - Hybrid - NAS -Storage
-- Risiken: Angreifbar während der Datenübertragung. SErver Ausfall. Abhängig vom Anbieter.
+- Risiken: Angreifbar während der Datenübertragung. Server Ausfall. Abhängig vom Anbieter.
 - Voraussetzungen: Zugung zu Internet/Netzwerk
 - Daten lagern auf fremden Server
 - Kosten, Datensicherheit und mögliche Offline-Zugriffe sind abhängig vom Anbieter/Lösung
