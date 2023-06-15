@@ -1,7 +1,33 @@
 # Backupstrategien
 
-### automatisches Backup
+## Backup strategien
+- **Voll-Backup:** Momentaufnahme aller Daten auf der Geräte-Festplatte z. B. zur späteren Wiederherstellung nach Absturz, Beschädigung oder Verlust deines Geräts bzw. deiner Daten.
+- **Inkrementelles Backup:** Baut auf ein vorheriges Backup auf, indem es nur neue oder geänderte Dateien sichert. Falls irgendeine der Dateien beschädigt oder verloren ist, sind alle nachfolgenden Versionen dieser Datei ungültig.
+- **Differentielles Backup:** Hängt direkt mit dem Voll-Backup zusammen. Alle neuen oder geänderten Dateien werden hinzugefügt. Demzufolge beeinflusst eine zerstörte Datei nicht nicht die nachfolgenden Versionen.
+- **Archivierung:** Dauerhafte Datensicherung von Kopien der Original-Dateien im Zustand zum Zeitpunkt der Speicherung. Anschließend ist keine aktive Nutzung oder Änderung der Daten mehr ohne weiteres möglich.
 
+### Archivbit
+Das Archivbit (auch Archiv-Attribut / Archiv-Flag) wird bei incrementellen oder differenziellen Sicherungen benutzt.
+
+- Wenn der User Daten ändert wird das bit auf 1 gesetzt.
+- Nutzen des Bits je nach Strategie.
+    - Bei Inkrementeller-Strategie: 
+        - bei inc-backup: alles mit 1 wird gesichert. Danach auf 0 gesetzt.
+    - Bei Differenzieller-Strategie:    
+        - bei diff-backup: alles mit 1 wird gesichert. Wert bleibt 1.
+        - vollbackup: alles wird gesichert (egal ob bit 1 or 0). Danach bits aller dateien auf 0 setzen.
+
+### Backup vs Archivierung
+
+|**Backup**| **Archivierung**|
+|---|---|
+|kurz-mittelfristig| langfristige Sicherung|
+|regelmäßige Sicherungskopie wichtiger Daten|Daten werden dauerhaft in Archiv verschoben|
+|Sicherung im Fall von Datenverlust, Festplattenausfall, Cyberangriff...| Erfüllung gesetzlicher/brachenspezifischer Vorgaben/Regelungen|
+|Daten werden in regelmäßigen Abständen überschrieben| Daten werden archiviert und danach nicht verändert|
+
+
+### automatisches Backup
 
 
 
@@ -126,6 +152,10 @@ Eine Vollsicherung wird erstellt.
 |RingD| |   |   |   |   |   |   | x |   |
 
 ## Großvater-Vater-Sohn - Backup Strategie
+- Sohn Backup oft inkrementelles Backup
+- Vater oft diferentielles Backup
+- Großvater oft Vollbackup
+
 z.B. 
 
 - Rotiert alle Sohn Backups pro Tag

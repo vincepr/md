@@ -2,20 +2,6 @@
 
 # Sicherung und Wiederherstellung
 
-## Backup strategien
-- **Voll-Backup:** Momentaufnahme aller Daten auf der Geräte-Festplatte z. B. zur späteren Wiederherstellung nach Absturz, Beschädigung oder Verlust deines Geräts bzw. deiner Daten.
-- **Inkrementelles Backup:** Baut auf ein vorheriges Backup auf, indem es nur neue oder geänderte Dateien sichert. Falls irgendeine der Dateien beschädigt oder verloren ist, sind alle nachfolgenden Versionen dieser Datei ungültig.
-- **Differentielles Backup:** Hängt direkt mit dem Voll-Backup zusammen. Alle neuen oder geänderten Dateien werden hinzugefügt. Demzufolge beeinflusst eine zerstörte Datei nicht nicht die nachfolgenden Versionen.
-- **Archivierung:** Dauerhafte Datensicherung von Kopien der Original-Dateien im Zustand zum Zeitpunkt der Speicherung. Anschließend ist keine aktive Nutzung oder Änderung der Daten mehr ohne weiteres möglich.
-
-### Backup vs Archivierung
-
-|**Backup**| **Archivierung**|
-|---|---|
-|kurz-mittelfristig| langfristige Sicherung|
-|regelmäßige Sicherungskopie wichtiger Daten|Daten werden dauerhaft in Archiv verschoben|
-|Sicherung im Fall von Datenverlust, Festplattenausfall, Cyberangriff...| Erfüllung gesetzlicher/brachenspezifischer Vorgaben/Regelungen|
-|Daten werden in regelmäßigen Abständen überschrieben| Daten werden archiviert und danach nicht verändert|
 
 ## Arten von Speichermedien
 Beispiele für Speichermedien:
