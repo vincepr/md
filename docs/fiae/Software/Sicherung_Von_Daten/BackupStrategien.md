@@ -161,3 +161,8 @@ z.B.
 - Rotiert alle Sohn Backups pro Tag
 - Rotiert die Vater Backups pro Woche
 - Rotiert die Großvater Backups pro Monat
+
+# Kriterien Planung Backupstrategien
+
+## RTO - Recovery Time Objectives und RPO - Recovery Point Objective
+![Alt text](./RTO-RTP.excalidraw.svg)
