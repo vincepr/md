@@ -165,4 +165,14 @@ z.B.
 # Kriterien Planung Backupstrategien
 
 ## RTO - Recovery Time Objectives und RPO - Recovery Point Objective
-![Alt text](./RTO-RTP.excalidraw.svg)
+![Alt text](./RTO-RPO.excalidraw.svg)
+
+### Kriterien für Auswahl
+- Kosten (Lizenz)
+- Funktionsumfang
+- Skalierbarkeit
+- Service
+- Kompatibilität
+- Zuverlässigkeit
+- Datensicherheit und Datenschutz
+- Zentrale Verwaltung, Schnitstellen
