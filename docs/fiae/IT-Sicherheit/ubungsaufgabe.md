@@ -1,4 +1,4 @@
-#  Security Design Principles
+#  Übungsaufgabe - Security Design Principles
 - Übungsaufgabe 
 ## Szenario
 Sie sind ein Softwareentwickler, der beauftragt wurde, eine CRM (Customer 
@@ -45,14 +45,14 @@ folgenden Privilegien zu identifizieren:
 
 
 # Musterlösung
-## Least Privilege
+### Least Privilege
 - Benutzerrollen definieren mit entsprechenden geringstnötigen Privilegien. Administratoren, Vertriebsmitarbeiter, Kundendienstmitarbeiter und 
 Teamleiter.
 - Zugriffskontrolle implementieren. z.B. Rollenbasierte oder Attribut-basierte Zugriffskontrolle.
 - Berechtigungen für Zugriff auf Sensible Daten (z.B. Kundendaten) benötigt
 - Infrastruktur: Systeme bekommen nur erforderlichen Zugriffsrechte. (z.B. DB whitelist only app-server can talk to it)
 
-## Defense in Depth
+### Defense in Depth
 - Netzwerksicherheit nutzen: z.B: Firewall, IDS, IPS, Anomalie-erkennungs-Systeme...
 - Whitelisting, Blacklisting. (z.B. DB can only be reached from IP:port of app-server)
 - Verschlüsselung von Kommunikation (SSL TLS)
@@ -62,7 +62,7 @@ Teamleiter.
 - Mitarbeiter/Developer Schulen
 - Überwachung und Loging aufbauen
 
-## Fail-Safe
+### Fail-Safe
 - Update und Patch management regelmäßig durchführen
 - Fehler und ausnahmen berücksichtigen und abfangen
 - Ausfallsicherheit - durch automatisches restarten wenn prozesse/server down
@@ -70,7 +70,7 @@ Teamleiter.
 - die Datenbank hat ein Backupdatenbank, die alle Transaktionen spiegelt und bei Ausfall als Primäre DB einspringt
 
 
-## Secure by Default
+### Secure by Default
 - Verschlüsselte Kommunikation ist standard (auto upgrade to https)
 - Grundverfahren und Standards zur Absicherung von Transaktionen, Logging etc.
 - Sicherheitsempfehlungen z.B. DSGVO einhalten
@@ -79,13 +79,12 @@ Teamleiter.
 - Standardmäßige Sensibilisierung der Nutzer - z.B. Schulungen anbieten, Benutzerhandbuch mit best-practice.
 - Session Timer der inaktive Benutzer ausloggt
 
-## No Security by Obscurity
+### No Security by Obscurity
 Siegeszug der Verschlüsselung - Benutzen von Verschlüsselungen die auch noch sicher sind, wenn das Verfahren bekannt ist.
 
 - Offene Sicherheitsarchitektur. Protrokoll Standards die open-source sind. (SSL, Sha mit mehrfach salting etc...)
 - (Öffentliche) Pentests durchführen - z.B. Prämien beim finden von Sicherheitsleaks 
 
-## Security by Obscurity
 
 # Ursprüngliche Lösung (aka. meine Lösung)
 
