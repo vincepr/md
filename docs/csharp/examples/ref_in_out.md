@@ -50,3 +50,7 @@ void Example(in int x){
     Console.WriteLine(x);   // is allowed
 }
 ```
+
+### When to use
+- if the struct is bigger than pointer size
+- if using `in` with a struct make sure the struct is **readonly** or defensive copies will degrade performance benefits.
