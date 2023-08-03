@@ -93,3 +93,61 @@ Another way would be some Middleware to at one single point of contact handle th
 
  
 ## Cancellation Token in a Console App
+Example to show how to handle the Token yourself.
+
+- The token itself cant be cancelled.
+- Instead it is a byproduct of a `new CancellationTokenSource()`
+- this Source provides a Token, and this source can then cancell tokens.
+
+### How it can cancel
+- the source can manually Cancel`: `cancellationTokenSource.Cancel()`
+- the source can manually Cancel`: `cancellationTokenSource.CancelAfter(someTimeStamp)`
+    - this way we could cancel Requests that take longer than 2 seconds etc.
+- you can also set it in the TokenSource Constructor, to trigger a timeout-like cancellation.
+
+```cs
+var cancellationTokenSource = new CancellationTokenSource();
+var token = cancellationTokenSource.Token;      // gets the Token to pass down
+cancellationTokenSource.CancelAfter(3000);      // cancels after 3 seconds
+
+// keep doing things while Token is active:
+while (!token.IsCancellationRequested){
+    Console.WriteLine("working");
+}
+
+// another strategy is to throw on cancellation (works with token and tokenSource)
+token.ThrowIfCancellationRequested();   // -> OperationCancelledException
+cancellationTokenSource.Token.ThrowIfCancellationRequested()
+```
+
+#### Example running a loop
+```cs
+public class Program{
+    static async Task Main(string[] args){
+        var cancellationTokenSource = new CancellationTokenSource();
+        await ExampleWithLoop(cancellationTokenSource);
+    }
+
+    public static async Task ExampleWithLoop(CancellationTokenSource cancellationTokenSource){
+        // this task runs on its own and waits for C to be pressed -> cancels
+        Task.Run(() =>
+        {
+            var key = Console.ReadKey();
+            if (key.Key == ConsoleKey.C){
+                cancellationTokenSource.Cancel();
+                Console.WriteLine("Cancelling the task after C was pressed");
+            }
+        });
+
+        // so this can run synchronous and will keep running all 3 seconds.
+        while (!cancellationTokenSource.Token.IsCancellationRequested){
+            Console.WriteLine("Doing some work for 3 seconds.");
+            await Task.Delay(3000);
+        }
+        Console.WriteLine("We exited the loop");
+        
+        // it is important to dispose of the TokenSource after it is done:
+        cancellationTokenSource.Dispose();
+    }
+}
+```
