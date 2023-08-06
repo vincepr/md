@@ -179,3 +179,41 @@ internal record WeatherForecastSlim(DateOnly Date, int TemperatureC) {
     "Endpoints_GetWeatherForecastSlim": false
   },
 ```
+
+## More Advanced Filtering techniques
+
+### Canary with a Percantagefilter
+Canary ish functionality. Immagine we want to test a feature on only a percantage of requests. While monitoring closely if we break something (or if performance improves etc.)
+
+```cs
+builder.Services.AddFeatureManagement()
+    .AddFeatureFilter<Percantagefilter>();
+//    .AddSessionManager<>              // for more features
+```
+- now we could specify to only enable the new slim variant for 50% of all requests:
+```json
+  "FeatureManagement": {
+    "Endpoints_GetWeatherForecastSlim": {
+        "EnabledFor": [
+            {
+                "Name": "Percantage",
+                "Parameters":{
+                    "Value": 50
+                }
+            }
+        ]
+    }
+  },
+```
+
+### TargetingFilter
+- example only target non subscription users. Or Only users that are in the platform for over 2 years. To access those features.
+```cs
+builder.Services.AddFeatureManagement().AddFeatureFilter<TargetingFilter>();
+```
+
+### TimeWindowFilter
+- Feature is only available for a limited time period.
+```cs
+builder.Services.AddFeatureManagement().AddFeatureFilter<TimeWindowFilter>();
+```
