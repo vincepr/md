@@ -1,4 +1,4 @@
-# ref, in, out keyword in C#
+# ref, in, out keyword in Csharp
 Basically like `ref` keyword. Instead of copying like normally for stack-values a reference gets passed.
 
 ## ref-keyword

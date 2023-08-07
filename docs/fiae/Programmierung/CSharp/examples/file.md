@@ -1,4 +1,4 @@
-# File stream in C#
+# File stream in Csharp
 ## with Encoding
 - is slower because we have to Encode/Decode.
 ```cs
@@ -73,6 +73,3 @@ public static void LineByLine()
 ## BufferedStream
 - Lesen und Schreiben erfolgt Blockweise mit Zwischenpuffer. Dies Minimiert Reibung mit den IO-System Calls des Betriebssystems.
 - ``stream.Flush()` leert den Puffer und erzwingt schreiben des nächsten Blockes.
-```c#
-
-```

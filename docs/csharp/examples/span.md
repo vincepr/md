@@ -1,6 +1,6 @@
-# Span and Benchmarking in C#
+# Span and Benchmarking in Csharp
 
-## Span instead of String in C#
+## Span instead of String in Csharp
 By using Span (in combination with fitting methods like Slice()) we can remove expensive Allocation on the heap alltogether.
 
 ```cs
@@ -39,7 +39,7 @@ class Program
 ```
 - Span will only need to store a pointer and some data about the length of the slice. this can all stay on the Stack. So it will always outperform heap allocations by a ton.
 
-# Benchmarking Class in C#
+# Benchmarking Class in Csharp
 1. Add the BenchmarkDotNet Nu Get package. `dotnet add package BenchmarkDotNet`
 2. create a class having one more more methods decorated with the `Benchmark` attribute.
 3. Run your benchmark project in `Release mode` using the Run method of the `BenchmarkRunner`

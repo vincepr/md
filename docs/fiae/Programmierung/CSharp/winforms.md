@@ -2,7 +2,7 @@
 
 ![Event Handler svg](./EventHandlers.excalidraw.svg)
 
-## Typen in C#
+## Typen in Csharp
 - Event
 - Delegate
 

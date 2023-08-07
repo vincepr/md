@@ -12,7 +12,7 @@ internal struct Tabelle
         Hotels = hotels;
     }
 
-    //  print function using the reduce() version of c#
+    //  print function using the reduce() version of Csharp
     public string Print()
     {
         return Hotels.Aggregate("", (acc, x) =>  acc + x.Print()+"\n") ;

@@ -112,7 +112,7 @@ func (h *Heap)swap(i1 int, i2 int){
 }
 ```
 
-## Min and Max Heap in C#
+## Min and Max Heap in Csharp
 ```cs
 internal static class Example
 {

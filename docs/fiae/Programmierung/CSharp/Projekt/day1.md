@@ -1,4 +1,4 @@
-# Projekt ereignisgesteuerte App in C#
+# Projekt ereignisgesteuerte App in Csharp
 ![project svg](./ProjectLieferdienst.excalidraw.svg)
 ## Setup the DB
 - using maria db MySql and Xampp
@@ -86,7 +86,7 @@ namespace HTTP_to_JSON
             Method().Wait();        
         }
 
-        // Task are the async "Threads" of C#
+        // Task are the async "Threads" of Csharp
         static async Task Method()
         {
             // make a HTTP request
@@ -120,7 +120,7 @@ namespace HTTP_to_JSON
 ```
 
 ## Application Layer
-- were using a wpf C# Application
+- were using a wpf Csharp Application
 - xaml format (a bit like html)
 - Goal is to separate the User Interface from other Logic/Dataflow
 
@@ -166,7 +166,7 @@ namespace Wpf_Lieferdienst
             InitializeComponent();
         }
 
-        // Task are the async "Threads" of C# 
+        // Task are the async "Threads" of Csharp 
         private async Task RequestDataFromPhp() {
             // make a HTTP request
             HttpClient client = new HttpClient();

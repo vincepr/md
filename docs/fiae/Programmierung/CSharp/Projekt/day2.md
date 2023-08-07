@@ -22,7 +22,7 @@ $request = "SELECT eid, bezeichnung, preis, info, bild FROM essen";
 $text = json_encode($data, JSON_UNESCAPED_SLASHES);
 ```
 
-### Update the C# App
+### Update the Csharp App
 we use 2 Stack Panels to divide space horizontally and vertically.
 ```xml
 <StackPanel Orientation="Horizontal">
@@ -55,7 +55,7 @@ GRANT SELECT,INSERT ON lieferdienst.bestellung TO ronny@localhost;
 - To avoid SQL-Injection we use the `?` Placeholders instead of direct values.
 
 ```php
-    // TODO: add incoming data from C# App instead of fixed example values
+    // TODO: add incoming data from Csharp App instead of fixed example values
     $eid = 2;
     $anzahl = 3;
 
@@ -67,11 +67,11 @@ GRANT SELECT,INSERT ON lieferdienst.bestellung TO ronny@localhost;
     $insert = $db->prepare($request);
     $insert->bind_param("ii", $eid, $anzahl);
     $insert->execute();
-    // so we can check for successful requests in our C# App. Will return nr-of affected rows:
+    // so we can check for successful requests in our Csharp App. Will return nr-of affected rows:
     print mysqli_affected_rows($db);    
     $db->close();
 ```
-### C# Application
+### Csharp Application
 #### Double Click
 - ad the Event Handler for the double click on a list element
 ```xml

@@ -1,4 +1,4 @@
-# CancellationToken in C#
+# CancellationToken in Csharp
 To stop wasting ressources on for example disconnected Http-Requests, Websockets etc. a often used strategy is to use CancellationTokens. (like golang's ctx Context)
 - this can stop the running process (ex a Sql query taking time with more following after) and free those ressources.
 

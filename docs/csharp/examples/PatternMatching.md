@@ -1,4 +1,4 @@
-# Pattern Matching in C#
+# Pattern Matching in Csharp
 
 Just some Examples to show the syntax
 
@@ -40,7 +40,7 @@ public static class Example{
                 break;
         }
 
-        /*      C# 8 and ondward    */
+        /*      Csharp 8 and ondward    */
 
         // pattern matching in if statement
         if (rngShape is Circle {Radius : 10, Diameter : 20}) 
@@ -54,7 +54,7 @@ public static class Example{
             _ => "Not implemented Shape."
         };
 
-        /*      C# 9 and ondward    */
+        /*      Csharp 9 and ondward    */
         if (rngShape is not Circle {Area: < 100 and >=20}){ }
 
         shapeDetails = rngShape switch {
@@ -71,7 +71,7 @@ public static class Example{
         if (rngShape is ShapeWithShape {Nested: {Area: > 100}}) 
             Console.WriteLine("");
 
-        /*      C# 9 and ondward    */ 
+        /*      Csharp 9 and ondward    */ 
         // simplyfing access in nested situations:
         if (rngShape is ShapeWithShape {Nested.Area: > 100}) 
             Console.WriteLine("");

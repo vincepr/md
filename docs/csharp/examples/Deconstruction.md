@@ -1,4 +1,4 @@
-# Deconstruction in C#
+# Deconstruction in Csharp
 Short syntax to get values out of Touples as expected.
 - `Deconstruct` named function to enable custom deconstructing syntax.
 - Records implement Deconstructing by default.

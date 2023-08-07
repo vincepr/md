@@ -1,4 +1,4 @@
-# Parallel For foreach and Task.WhenAll in C#
+# Parallel For foreach and Task.WhenAll in Csharp
 
 ```cs
 
