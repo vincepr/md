@@ -1,4 +1,4 @@
-# Refactoring exercise in Csharp part 1
+# Part 2 - Unit Testing
 create a new Project. Type `Unit Test Project` named RefactoringTest.UnitTest, with xUnit and the same dotnet version as the project.
 
 ## Definition Mocking
