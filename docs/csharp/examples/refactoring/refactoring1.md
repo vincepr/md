@@ -1,4 +1,4 @@
-# Refactoring in Csharp part 1
+# Refactoring exercise in Csharp part 1
 goal is to refactor to make code testable.
 
 - Immagine for a given codebase we want to make some logic-changes to `UserServices.cs` but cant most other parts of the codebase.
@@ -81,13 +81,13 @@ Avoid `DateTime.Now` as it is really hard to write tests like this. Since tests 
 - create a new `/Services/IDateTimeProvider.cs`
 ```cs
 public interface IDateTimeProvider{
-    public DateTimeNow { get; }
+    public DateTime DateTimeNow { get; }
 }
 ```
 - and an implementaitonw `/Services/DateTimeProvider.cs`
 ```cs
 public interface DateTimeProvider : IDateTimeProvider{
-    public DateTimeNow => DateTime.Now
+    public DateTime DateTimeNow => DateTime.Now
 }
 ```
 Now the DateTimeProvider is mockable in our unit tests.
@@ -119,13 +119,13 @@ So we again just put it in an readonly attribute and directly call that without 
 A solution for a Situation like this is: to create an Interface and a Proxy- /wrapper- Class for UserDataAcess.
 
 The Proxy Class will call the static-method but it itself becomes testable/mockable. Without actually changing the underlying class.
-- `IUserDataAccess`
+- `DataAccess/IUserDataAccess`
 ```cs
 public interface IUserDataAccess{
     void AddUser(User user);
 }
 ```
-- `UserDataAccessProxy`
+- `DataAccess/UserDataAccessProxy`
 ```cs
 public class UserDataAccessProxy : IUserDataAccess{
     void AddUser(User user)
@@ -139,27 +139,6 @@ as per request we are not allowed to change the Code that calls our UserService.
 This means we cant just do a Constructor and inject our 4 new Interface Implementations.
 
 The best way here is to add 2 constructors, one where one can provivde the 4 Implementors. And one without any params that just implements our above created ones.
-```cs
-public class UserService{
-    private readonly IDateTimeProvider _dateTimeProvider;
-    private readonly IClientRepository _clientRepository;
-    private readonly IUserCreditService _userCreditService;
-    private readonly IUserDataAccess _userDataAccess;
-
-    public UserService() :
-        this(
-            new DateTimeProvider(),
-            new ClientRepository(),
-            new UserCreditService(),
-            new UserDataAccessProxy()
-        ){}
-
-    public UserService(IDateTimeProvider t, IClientRepository c, IUserCreditService u, IUserDataAccess d){
-        ///...
-    }
-    ///...
-}
-```
 
 ## new code so far
 ```cs
@@ -182,7 +161,7 @@ public class UserService{
         _dateTimeProvider = dateTimeProvider;
         _clientRepository = clientRepository;
         _userCreditService = userCreditService;
-        _userDataAccess = userDataAccess
+        _userDataAccess = userDataAccess;
     }
 
     public bool AddUser(string firstname, string surname, string email, DateTime dateOfBirth, int clientId){
@@ -226,14 +205,14 @@ public class UserService{
             user.CreditLimit = creditLimit;
         }else {
             // normal credit check
-            user.HashcCreditLimit = true;
+            user.HasCreditLimit = true;
 
             var creditLimit = _userCreditService.GetCreditLimit(user.Firstname, user.Surname, user.DateOfBirth);
             user.CreditLimit = creditLimit;
         }
 
         if (user.HasCreditLimit && user.CreditLimit < 500)
-            return false
+            return false;
         
         _userDataAccess.AddUser(user);
         return true;
