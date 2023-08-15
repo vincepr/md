@@ -53,7 +53,72 @@ Action<string, int> printAdress = (adr, nr) => Console.Writeline(addr+nr);
 ```csharp
 System.Func<int, int, int> add (int x, int y) => x + y;
 add(1,100).Dump();  // Prints 101
+```
+## Example
+```csharp
+# Delegates in Csharp
+- Can reference both static methods and instance methods
+## Basic Examples
 
-// 
-System.Func<int, int>
+```csharp
+namespace Delegates1;
+
+internal class Program {
+    // We describe our Logger-Delegate 'blueprint', a bit like an interface
+    public delegate void LogDel(string text);
+    
+    public static void Main(string[] args) {
+        Example1();
+        Example2();
+        Example3();
+        Example4();
+    }
+
+    public static void Example1() {
+        LogDel logDel = new LogDel(TextToScreen);
+        logDel("Hello World.");
+        logDel.Invoke("Same as line above, in this case.");
+    }
+
+    public static void Example2() {
+        Logger logger = new Logger();
+        LogDel logDel = new LogDel(logger.TextToFile);
+        logDel("Hello World.");
+        logDel.Invoke("Same as line above, in this case.");
+    }
+
+    public static void Example3() {
+        // muticasting combines multiple delegates
+        LogDel logDelScreen = new LogDel(TextToScreen);
+        Logger logger = new Logger();
+        LogDel logDelFile = new LogDel(logger.TextToFile);
+        LogDel multiLogDel = logDelScreen + logDelFile;
+        // we can now call both TextToScreen and TextToFile in one call.
+        multiLogDel("We log it all.");
+    }
+    
+    public static void Example4() {
+        LogDel logDel = new LogDel(TextToScreen);
+        Wrapper(logDel, "We pass in a delegate at runtime. A bit like dependency injection");
+    }
+    
+    // passing an delegate at runtime:
+    public static void Wrapper(LogDel logDel, string txt) {
+        logDel(txt);
+    }
+    
+    // static reference used by our delegate
+    static void TextToScreen(string text) {
+        Console.WriteLine($"{DateTime.Now.ToString()}: {text}");
+    }
+    
+    // instanced methods (also work with delegates)
+    public class Logger {
+         public void TextToFile(string text) {
+            using (StreamWriter sw = new StreamWriter(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log.txt"),
+                       true))
+                sw.WriteLine($"{DateTime.Now.ToString()}: {text}");
+        }
+    }
+}
 ```
