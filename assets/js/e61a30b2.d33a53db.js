@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmd=self.webpackChunkmd||[]).push([[8393],{4245:e=>{e.exports=JSON.parse('{"title":"webdev","slug":"/category/webdev","permalink":"/md/category/webdev","navigation":{"previous":{"title":"blogs, tutorials etc.","permalink":"/md/tools/tutorials"},"next":{"title":"Design Patterns","permalink":"/md/webdev/designpatterns"}}}')}}]);
