@@ -18,3 +18,6 @@
 ## blogs
 - versioning for minimalAPI https://dotnetthoughts.net/aspnetcore-api-versioning-with-net-6-minimal-apis/
 - learn microsoft official https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-7.0
+
+## teraform
+- 7h teraform-course https://www.youtube.com/watch?v=SPcwo0Gq9T8
