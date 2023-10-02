@@ -15,3 +15,7 @@
 - Postman
 - Thunder Client - VSCode Addon - like Postman
 
+## developer roadmaps
+Ideas about what to learn next / what projects could be good:
+- https://roadmap.sh/
+    - api-security-checklist https://roadmap.sh/best-practices/api-security
