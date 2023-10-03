@@ -21,3 +21,7 @@
 
 ## teraform
 - 7h teraform-course https://www.youtube.com/watch?v=SPcwo0Gq9T8
+
+## short
+- 36min Generics https://www.youtube.com/watch?v=Q1Tv7vj3Txo
+- 29min Async/Await/Task https://www.youtube.com/watch?v=3GhKdDCvtKE
