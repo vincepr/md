@@ -1,5 +1,5 @@
 # Async Await Task in csharp
-- https://github.com/davidfowl/AspNetCoreDiagnosticScenarios more indepth examples on what to do and what not: [general]("https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AspNetCoreGuidance.md") / [async]("https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md")
+- https://github.com/davidfowl/AspNetCoreDiagnosticScenarios more indepth examples on what to do and what not: [general](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AspNetCoreGuidance.md) / [async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md)
 
 - Task is the Promise/Future equivalent of Csharp.
     - Something that will take time to finish. Ex. a DB-Query or a API call.
