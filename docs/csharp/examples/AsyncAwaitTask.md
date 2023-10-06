@@ -1,4 +1,6 @@
 # Async Await Task in csharp
+- https://github.com/davidfowl/AspNetCoreDiagnosticScenarios more indepth examples on what to do and what not: [general]("https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AspNetCoreGuidance.md") / [async]("https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md")
+
 - Task is the Promise/Future equivalent of Csharp.
     - Something that will take time to finish. Ex. a DB-Query or a API call.
 
@@ -108,3 +110,22 @@ public static async Task FetchFromApi(string msg){
     }
 }
 ```
+
+## Examples on what to do and avoid
+- prefer `await` over `ContinueWith`. In Short it does not capture SynchronisationContext because it comes from a time before async/await in csharp.
+```csharp
+static async Task Maain(string[] args) {
+    var service = new SomeService();
+    //BAD:
+    var number1 = await service
+        .GetValueAsync()
+        .ContinueWith(task => task.Result + 2);
+    // GOOD:
+    var number2 = await service.GetValueAsync();
+    var finalNr = number2 + 2; 
+}
+```
+
+- prefer async over Task
+    - usually the performance hit for the extra state machine is negligible against benefits like code-readability and ease of use
+- Don't use async in constructors. make a `CreateAsync` function instead where any neccessary await etc. happens
