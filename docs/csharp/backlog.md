@@ -1,8 +1,8 @@
-# a backlog of videos / tutorials that look promising
+# backlog
+of videos / tutorials that look promising
 ## for csharp and microservies
 - Full course (1year old) 11h -  https://www.youtube.com/watch?v=DgVjEo3OGBI
 - Full course (looks decent) 8h -  https://www.youtube.com/watch?v=CqCDOosvZIk
-- Async 1h -  https://www.youtube.com/watch?v=LCbR58sCmvQ
 - minimalAPi Auth and Validation 30min - https://www.youtube.com/watch?v=XKN0084p7WQ
 - EntityFramework 2h -  https://www.youtube.com/watch?v=qkJ9keBmQWo
 - Shoping+Login+MVC+MongoDb 7h - https://www.youtube.com/watch?v=Nw4AZs1kLAs
@@ -23,5 +23,6 @@
 - 7h teraform-course https://www.youtube.com/watch?v=SPcwo0Gq9T8
 
 ## short
-- 36min Generics https://www.youtube.com/watch?v=Q1Tv7vj3Txo
-- 29min Async/Await/Task https://www.youtube.com/watch?v=3GhKdDCvtKE
+- [x] Async 1h -  https://www.youtube.com/watch?v=LCbR58sCmvQ
+- [x] 36min Generics https://www.youtube.com/watch?v=Q1Tv7vj3Txo
+- [x] 29min Async/Await/Task https://www.youtube.com/watch?v=3GhKdDCvtKE
