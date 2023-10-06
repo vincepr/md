@@ -5,6 +5,7 @@ This should take so long, as that we want to decouple the your post received and
 
 So in that sense being Asynchronous in it's response.
 
+![example img](./AsynchronousApi.svg)
 ## setup
 ```
 dotnet add package Microsoft.EntitiyFrameworkCore.Design
@@ -111,7 +112,7 @@ app.MapGet("api/vi/products/{resourceId}", (string resourceId) => {
 async static void takesSomeTimeAsync(AppDbContext ctx, int id){
     int timeoutMs = 5000;
     await Task.Delay(timeoutMs);
-
+    
     var entry = ctx.ListingRequests.FirstOrDefault(e => e.Id == id);
     if (entry is not null) {
         entry.RequestStatus = "COMPLETED";
