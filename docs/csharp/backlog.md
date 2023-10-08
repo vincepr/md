@@ -10,7 +10,7 @@ of videos / tutorials that look promising
 ## mvc
 - mvc rest api (3year old) 2h -   https://www.youtube.com/watch?v=fmvcAzHpsk8&t=2s
 - mvc rest api (4year old) 2h -  https://www.youtube.com/watch?v=mUAZ-EbGBOg&list=RDCMUCIMRGVXufHT69s1uaHHYJIA&index=16
-- Full MVC-Application (Blazor) - 28part playlist https://www.youtube.com/watch?v=D7R_ToqDKHg&list=PL4LFuHwItvKZ6Mz5W5wzD9uo3w6tNChhX
+- Full MVC-Application (Blazor frontend) - 28part playlist https://www.youtube.com/watch?v=D7R_ToqDKHg&list=PL4LFuHwItvKZ6Mz5W5wzD9uo3w6tNChhX
 
 ## Advanced Csharp Course
 - Playlist-Course, Delegates, Generics, Async, LINQ etc... (looks really good to go trough) https://www.youtube.com/watch?v=3cfVmcAkR2w&list=PL4LFuHwItvKaOi-bN1E2WUVyZbuRhVokL&index=1
@@ -20,7 +20,8 @@ of videos / tutorials that look promising
 - learn microsoft official https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-7.0
 
 ## teraform
-- 7h teraform-course https://www.youtube.com/watch?v=SPcwo0Gq9T8
+- 2h  https://www.youtube.com/watch?v=Ff0DoAmpv6w
+- 7h hashicorp-teraform-course https://www.youtube.com/watch?v=SPcwo0Gq9T8
 
 ## short
 - [x] Async 1h -  https://www.youtube.com/watch?v=LCbR58sCmvQ
