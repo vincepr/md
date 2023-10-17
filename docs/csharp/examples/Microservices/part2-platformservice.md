@@ -1,4 +1,5 @@
-# Part 2 - creating the basic PlatformService Api
+# part2 - Platform Service
+part of the https://github.com/vincepr/CS_Microservices Project
 
 ## setup
 ```
@@ -201,5 +202,57 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 PrepDb.PrepPopulation(app);
 
 app.Run();
+```
+
+# Dockerize this service
+- https://docs.docker.com/language/dotnet/build-images/
+
+- `Dockerfile`
+```Dockerfile
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as build-envFROM
+WORKDIR /app
+
+COPY *.csproj ./
+RUN dotnet restore
+
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+WORKDIR /app
+COPY --from=build-envFROM /app/out .
+ENTRYPOINT [ "dotnet", "PlatformService.dll" ]
+```
 
 ```
+// build our docker container
+docker build -t vincepr/platformservice .
+
+// run our created container listening on port 8080 mapped to inside the container 80 (so http).
+docker run -p 8080:80 -d vincepr/platformservice
+
+// show running containers, then use containerID to kill the container
+docker ps
+docker stop 4edfbdeac6e9
+// if we docker run -p 8080:80 -d vincepr/platformservice we create A NEW container
+// we can restart the the same container using the id
+docker start 4edfbdeac6e9
+// or using the vscode-extension/docker-desktop etc
+```
+![Alt text](./img/docker.png)
+
+```
+// pushing up to hub.docker.com
+docker push vincepr/platformservice
+// now the docker repo should show up on your hub.docker.com account:
+```
+![Alt text](./img/dockerhub.png)
+
+
+
+
+
+
+
+
+

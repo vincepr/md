@@ -1,11 +1,15 @@
 # backlog
 of videos / tutorials that look promising
+
 ## for csharp and microservies
 - Full course (1year old) 11h -  https://www.youtube.com/watch?v=DgVjEo3OGBI
 - Full course (looks decent) 8h -  https://www.youtube.com/watch?v=CqCDOosvZIk
 - minimalAPi Auth and Validation 30min - https://www.youtube.com/watch?v=XKN0084p7WQ
 - EntityFramework 2h -  https://www.youtube.com/watch?v=qkJ9keBmQWo
 - Shoping+Login+MVC+MongoDb 7h - https://www.youtube.com/watch?v=Nw4AZs1kLAs
+
+## Asp.net - clean Architecture
+- 7h https://www.youtube.com/watch?v=gGa7SLk1-0Q
 
 ## mvc
 - mvc rest api (3year old) 2h -   https://www.youtube.com/watch?v=fmvcAzHpsk8&t=2s
