@@ -13,7 +13,7 @@ After=nginx.service
 
 [Service]
 Type=simple
-ExecStart=code-server --host 0.0.0.0 --port 3333 
+ExecStart=code-server --port 3333 
 Restart=always
 User=vince
 
@@ -25,6 +25,19 @@ sudo systemctl daemon-reload
 sudo systemctl start codeserver
 sudo systemctl enable codeserver
 ```
+
+### hashed password for codeserver
+```
+echo -n "thisismypassword" | npx argon2-cli -e
+nano ~/.config/code-server/config.yaml
+```
+- we copy the hashed password **enclosed by quotes**:
+```yaml
+auth: password
+hashed-password: "$argon2i$v=19$m=4096,t=3,p=1$wst5qhbgk2lu1ih4dmuxvg$ls1alrvdiwtvzhwnzcm1dugg+5dto3dt1d5v9xtlws4
+"
+```
+
 ## add nginx reroute to codeserver and tls it
 ```
 sudo nano /etc/nginx/sites-avaliable/codeserver.conf
