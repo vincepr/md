@@ -1,8 +1,45 @@
 # basic vim motions
 
-remapping idea: capslock to esc when pressed alone. and ctrl when pressed in combination with any other key. For a more natural hand position for ctrl+xyz etc...
+## vim settings for vscode
+- keyboard shortcuts - disable both `extension.vim_shift+tab` and `extension.vim_tab`
+- ctrl shift p "settings json"
+```json
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 1000,
+    "vim.handleKeys": {
+        "<C-d>": false,
+        "<C-v>": false,
+        "<C-x>": false,
+    },
+    // For visual mode
+    "vim.visualModeKeyBindings": [
+        {
+        "before": ["<C-c>"],
+        "after": ["\"", "+", "y"]
+        },
+        {
+        "before": ["<C-v>"], 
+        "after":  ["\"", "+", "p"]
+        }
+    ],
+    // For normal mode
+    "vim.normalModeKeyBindings": [
+        {
+        "before": ["<C-c>"],
+        "after": ["\"", "+", "y"]
+        },
+        {
+        "before": ["<C-v>"], 
+        "after":  ["\"", "+", "p"]
+        }
+    ],
+    "vim.overrideCopy": false,
+    "vim.sneak": true,
+```  
 
-- ctrl+P autocomplete (tab to switch suggestions
+
+## autocomplete
+- ctrl+P autocomplete tab to switch suggestions
 
 ## insert-modes
 - `i` - insert before cursor. (`I` start of line) 
