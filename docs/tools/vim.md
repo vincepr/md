@@ -98,7 +98,25 @@ alt+5		Other/Tabs/select tab #5
 // useful but default
 alt `	version controll
 
+
+// create .ideavimrc
 ```
+- create an `C\Users\vincepr\.ideavimrc`
+```
+set sneak
+
+set visualbell
+set noerrorbells
+
+nnoremap ge :action ShowErrorDescription<cr>
+nnoremap gh :action QuickJavaDoc<cr>
+nnoremap <C-c> "+y<Esc>
+
+vnoremap <C-c> "+y<Esc>
+xnoremap <C-c> "+y<Esc>
+snoremap <C-c> "+y<Esc>
+```
+
 ## autocomplete
 - ctrl+P autocomplete tab to switch suggestions
 
