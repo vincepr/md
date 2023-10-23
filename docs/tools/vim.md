@@ -2,14 +2,31 @@
 
 ## vim settings for vscode
 - keyboard shortcuts - disable both `extension.vim_shift+tab` and `extension.vim_tab`
+- keybindings.json (easiest to reach via Manage-KeyboardShortcuts-open keyboard shortcuts). Enable default shift tab behavior
+```json
+
+    {
+        "key": "shift+tab",
+        "command": "-extension.vim_shift+tab",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "tab",
+        "command": "-extension.vim_tab",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    }
+```
+
 - ctrl shift p "settings json"
 ```json
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.duration": 1000,
     "vim.handleKeys": {
-        "<C-d>": false,
-        "<C-v>": false,
         "<C-x>": false,
+        "<C-v>": false,
+        "<C-a>": false,
+        "<C-d>": false,
+        "<C-f>": false,
     },
     // For visual mode
     "vim.visualModeKeyBindings": [
@@ -36,8 +53,52 @@
     "vim.overrideCopy": false,
     "vim.sneak": true,
 ```  
+## settings for IntelliJ/Rider
+```
+// vim specific
+ctrl c - vim
+ctrl d - vim
+ctrl j - vim
+ctrl u - vim
+ctrl i - vim
+ctrl o - vim
+ctrl s - vim
+ctrl r - vim
+
+rest use IDE
 
 
+// non default Keybindings(us keyboard layout)
+ctrl+\		Tool Windows/Terminal
+ctrl+p		Main Menu/View/Quick Documentation && Version Control Systems/Log/Show Commmit Tooltip && Database/DatabaseExplorer/QuickDocumentation
+f1		Main Menu/Navigate/Goto Error/Bookmark Actions/Next Highlighted Error
+f2		rename
+			MainMenu/Refactor/Rename
+			Version Control Systems/Shelve/Rename
+			Version Control Systems/Shelve/Edit Changelist
+			Datbase Explorer/Rename
+			Datbase Explorer/Sessions/Rename Session
+			Git/EditCommitMessage
+			Other/Bookmaks/Edit
+			Other/TableActions/EditTableCell
+			Other/TreeActions/EditTreeNode
+ctrl+alt+e	rebind what ctrl+e did before
+ctrl+e		Navigate/Goto by Name Actions/Go to File
+ctrl+alt+1	rebind alt+1
+ctrl+alt+2	rebind alt+2
+ctrl+alt+3	rebind alt+3
+ctrl+alt+4	rebind alt+4
+ctrl+alt+5	rebind alt+5
+alt+Enter -> ALSO ctrl+.
+
+alt+1		Other/Tabs/select tab #1
+...
+alt+5		Other/Tabs/select tab #5
+
+// useful but default
+alt `	version controll
+
+```
 ## autocomplete
 - ctrl+P autocomplete tab to switch suggestions
 
