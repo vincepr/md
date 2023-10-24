@@ -112,11 +112,12 @@ public static async Task FetchFromApi(string msg){
 ```
 
 ## Examples on what to do and avoid
+### prefer await usually
 - prefer `await` over `ContinueWith`. In Short it does not capture SynchronisationContext because it comes from a time before async/await in csharp.
 ```csharp
 static async Task Maain(string[] args) {
     var service = new SomeService();
-    //BAD:
+    // BAD:
     var number1 = await service
         .GetValueAsync()
         .ContinueWith(task => task.Result + 2);
@@ -129,3 +130,73 @@ static async Task Maain(string[] args) {
 - prefer async over Task
     - usually the performance hit for the extra state machine is negligible against benefits like code-readability and ease of use
 - Don't use async in constructors. make a `CreateAsync` function instead where any neccessary await etc. happens
+
+### if we dont care about staying in the same thread
+- if it doesnt matter if we stay on the main thread or not (ex for UI/Frontend it might matter) we can use `ConfigureAwait(false)`
+```csharp
+async Task<List<StoryModel>> GetTopStories(int numberOfStoires) {
+    List<StoryModel> topStoryList = new();
+    // BAD:
+    var topStoryIds = await GetTopStoryIDs();
+    // GOOD:
+    var topStoryIds = await GetTopStoryIDs().ConfigureAwait(false);
+    // whatever gets run after here we dont care about if it's in the same threat!
+}
+```
+### if we do something return a Task we can do the awaiting upstream
+- every function with async gets compiled to a state machine, so if we can easily reduce the number we always should. 
+- This saves overhead and also saves the context switch (so switching the threat it runs on) that will automatically happen with awaiting
+```csharp
+// BAD:
+async Task<StorModel> GetStory(string storyId){
+    return await GetDataObjectFromAPI<StoryModel>(_someUrl);
+}
+// GOOD:
+Task<StoryModel> GetStory(string storyId){
+    return GetDataObjectFromAPI<StoryModel>(_someUrl);
+}
+```
+#### special case of the above
+- unlike in the above case, we explicitly want to catch the error in this place. So we have to await it.
+- If we were to just pass down the task as in the above case, the possible exeption would happen in some unknown threat. AND SO WE MIGHT NEVER KNOW ABOUT IT.
+```csharp
+async Task<List<string>> GetTopStoryIDs() {
+    try {
+        return await GetDataObjectFromAPI<List<string>>(_someUrl);
+    } catch (Exception e) {
+        Debug.WriteLine(e.Message);
+        return null;
+    }
+}
+```
+### TValueTask - optimizing for the hot path 
+- immagine we want to optimize the function for performance
+- our goal is to return return cachedValues if we have them, else get them from some api
+- in this second call to our api we never have to await, so awaiting only happens in the unimportant first call.
+```csharp
+// BAD:
+async Task<List<string>> GetTopStoryIDs() {
+    if (HasCachedValues.Count > 0) return HasCachedValues;
+    try {
+        return await GetDataObjectFromAPI<List<string>>(_someUrl);
+    } catch (Exception e) {
+        Debug.WriteLine(e.Message);
+        return null;
+    }
+}
+```
+- ValueTask is a valuetype unlike a Task, which is a reference type.
+- So we can use all those benefits of a quick stackallocation vs a expensive heap one that needs to get gc'd
+```csharp
+// Better:
+async ValueTask<List<string>> GetTopStoryIDs() {
+    if (HasCachedValues.Count > 0) return HasCachedValues;
+    try {
+        return await GetDataObjectFromAPI<List<string>>(_someUrl);
+    } catch (Exception e) {
+        Debug.WriteLine(e.Message);
+        return null;
+    }
+}
+```
+- so to summarize, if we find a spot where the hot-path does not use the async keyword, while the other less frequent paths might do. A ValueTask can be an improvement here.
