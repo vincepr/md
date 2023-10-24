@@ -69,13 +69,14 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 ```
 
 ## Settings for Rider, Settings for Intellij-products
+- disable auto new line on toggle comment - uncheck: AdvancedSettings/Move caret down after comment 
 - choose vim over IDE for the following keys:
 ```
 // vim specific
 ctrl c - vim    // we make this copy and esc in our .ideavim
 ctrl d - vim    // move down a half page
 ctrl i - vim    // next mouse cursor position
-ctrl m - vim    // enables enter in insert mode
+ctrl m - vim    // enables newline in insert mode
 ctrl n - vim    // autocomplete next option
 ctrl o - vim    // prev mouse cursor position
 ctrl p - vim    // autocomplete prev option
@@ -121,10 +122,7 @@ alt+1		Other/Tabs/select tab #1
 alt+5		Other/Tabs/select tab #5
 
 // useful but default
-alt `	version controll
-
-
-// create .ideavimrc
+alt `	    version control (use ^ for germanlyout)
 ```
 
 - create an `C\Users\vincepr\.ideavimrc`
