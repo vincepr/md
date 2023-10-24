@@ -93,7 +93,9 @@ rest use IDE
 - next some added keybindings for my preference:
 ```
 // non default Keybindings(us keyboard layout)
-ctrl+\		Tool Windows/Terminal
+ctrl+\		Tool Windows/Terminal (GERMAN-LAYOUT: ctrl+^)
+ctrl+-  (GERMAN-ONLY) toggle comment
+
 f1		Main Menu/Navigate/Goto Error/Bookmark Actions/Next Highlighted Error
 f2		rename
 			MainMenu/Refactor/Rename
@@ -106,6 +108,7 @@ f2		rename
 			Other/TableActions/EditTableCell
 			Other/TreeActions/EditTreeNode
 f3      Git/VCS Group/VCS Operations Popup
+
 ctrl+alt+e	rebind what ctrl+e did before
 ctrl+e		Navigate/Goto by Name Actions/Go to File
 ctrl+alt+1	rebind alt+1
@@ -120,9 +123,6 @@ ctrl+shift+enter -> also ctrl+,     // want this quick complete easy to reach
 alt+1		Other/Tabs/select tab #1
 ...
 alt+5		Other/Tabs/select tab #5
-
-// useful but default
-alt `	    version control (use ^ for germanlyout)
 ```
 
 - create an `C\Users\vincepr\.ideavimrc`
