@@ -9,7 +9,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 {
 	"files.autoSave": "afterDelay",
     "files.simpleDialog.enable": true,
-    "thunder-client.defaultUrl": "http://127.0.0.1:3000/",
+    "thunder-client.defaultUrl": "http://127.0.0.1:5555/",
     "terminal.integrated.allowChords": false,
     "git.autofetch": true,
     "git.enableSmartCommit": true,
@@ -21,7 +21,6 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "<C-x>": false,
         "<C-v>": false,
         "<C-a>": false,
-        "<C-d>": false,
         "<C-f>": false,
     },
     // For visual mode
@@ -37,10 +36,10 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
     ],
     // For normal mode
     "vim.normalModeKeyBindings": [
-        {
-        "before": ["<C-c>"],
-        "after": ["\"", "+", "y"]
-        },
+        // {
+        // "before": ["<C-c>"],
+        // "after": ["\"", "+", "y"]
+        // },
         {
         "before": ["<C-v>"], 
         "after":  ["\"", "+", "p"]
