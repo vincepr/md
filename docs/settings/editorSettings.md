@@ -94,7 +94,7 @@ rest use IDE
 ```
 // non default Keybindings(us keyboard layout)
 ctrl+\		Tool Windows/Terminal (GERMAN-LAYOUT: ctrl+^)
-ctrl+-  (GERMAN-ONLY) toggle comment
+ctrl+#  (GERMAN-ONLY) toggle comment
 
 f1		Main Menu/Navigate/Goto Error/Bookmark Actions/Next Highlighted Error
 f2		rename
