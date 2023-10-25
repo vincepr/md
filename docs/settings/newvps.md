@@ -1,6 +1,10 @@
 # install codeserver
 
 - install codeserver/openvscodeserver
+## update npm version in ubuntu
+```
+https://github.com/nodesource/distributions
+```
 ## add codeserver to startup
 ```
 sudo nano /etc/systemd/system/codeserver.service
@@ -40,7 +44,7 @@ hashed-password: "$argon2i$v=19$m=4096,t=3,p=1$wst5qhbgk2lu1ih4dmuxvg$ls1alrvdiw
 
 ## add nginx reroute to codeserver and tls it
 ```
-sudo nano /etc/nginx/sites-avaliable/codeserver.conf
+sudo nano /etc/nginx/sites-available/code-server.conf
 ```
 
 ```                               
@@ -68,9 +72,4 @@ sudo systemctl restart nginx
 
 sudo apt install -y nginx certbot python3-certbot-nginx
 sudo certbot --nginx
-```
-
-## update npm version in ubuntu
-```
-https://github.com/nodesource/distributions
 ```
