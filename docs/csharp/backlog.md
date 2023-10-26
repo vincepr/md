@@ -1,4 +1,32 @@
 # backlog
+## book
+* codecrafters.io
+
+* The ray tracer challenge - **prio**
+
+* Distributed Services with go - **prio**
+
+* Mazes for Programmers (by the same author of The Ray Tracer Challenge but is not as language agnostic) - **prio**
+
+* The Elements of Computing Systems: Building a Modern Computer from First Principles
+
+* Programming Machine Learning: From Coding to Deep Learning - **prio**
+
+* Writing an Interpreter in Go and Writing a Compiler in Go (both by the same author)
+
+* Introducing Blockchain with Lisp: Implement and Extend Blockchains with the Racket Language
+
+* Exploring Language with Logo
+
+* Visual Modeling with Logo
+
+* Turtle Geometry: The Computer as a Medium for Exploring
+
+* Thinking as Computation: A First Course (uses Prolog to solve various problems in small projects)
+
+* Functional Web Development with Elixir, OTP, and Phoenix: Rethink the Modern Web App
+
+# csharp backlog
 of videos / tutorials that look promising
 
 - entityFramework from scrach - 5h - https://www.youtube.com/watch?v=GDkA28nu9SM&t=12556s
