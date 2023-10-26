@@ -6,65 +6,54 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 `settings.json`
 ```json
 {
-	"files.autoSave": "afterDelay",
-    "files.simpleDialog.enable": true,
     "thunder-client.defaultUrl": "http://127.0.0.1:5555/",
+    /// base settings
+    "workbench.colorTheme": "Default Dark Modern",
+    // "files.autoSave": "afterDelay",  // enable this if hotreloading is killing performance for remote work
+    "files.simpleDialog.enable": true,
     "terminal.integrated.allowChords": false,
-    "git.autofetch": true,
+    "window.commandCenter": false,
+    /// git settings
     "git.enableSmartCommit": true,
-    "workbench.colorTheme": "Default High Contrast",
-    // vim settings
+    "git.autofetch": true,
+    /// vim settings
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.duration": 1000,
+    "vim.sneak": true,
     "vim.handleKeys": {
         "<C-x>": false,
         "<C-v>": false,
         "<C-a>": false,
         "<C-f>": false,
+        "<C-e>": false,
     },
-    // For visual mode
-    "vim.visualModeKeyBindings": [
+    "editor.emptySelectionClipboard": false,    // stop copy empty line on ctrl+c exit input mode
+    "vim.insertModeKeyBindings": [
         {
-        "before": ["<C-c>"],
-        "after": ["\"", "+", "y"]
-        },
-        {
-        "before": ["<C-v>"], 
-        "after":  ["\"", "+", "p"]
+            "before": ["<C-c>"],
+            "commands": ["editor.action.clipboardCopyAction", "extension.vim_escape"]
         }
     ],
-    // For normal mode
-    "vim.normalModeKeyBindings": [
-        // {
-        // "before": ["<C-c>"],
-        // "after": ["\"", "+", "y"]
-        // },
-        {
-        "before": ["<C-v>"], 
-        "after":  ["\"", "+", "p"]
-        }
-    ],
-    "vim.overrideCopy": false,
-    "vim.sneak": true,
 }
 ```
-- keyboard shortcuts - disable both `extension.vim_shift+tab` and `extension.vim_tab`
+- ctrl shift P and `open keyboard shortcuts (json)`
 
-`keybindings.json`
 ```json
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "shift+tab",
-        "command": "-extension.vim_shift+tab",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-    },
-    {
         "key": "tab",
         "command": "-extension.vim_tab",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+tab",
+        "command": "-extension.vim_shift+tab",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     }
 ]
+´´´
+
 ```
 
 ## Settings for Rider, Settings for Intellij-products
