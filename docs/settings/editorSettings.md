@@ -1,5 +1,4 @@
 # editor Settings
-
 ## Settings for Vscode
 
 openvscode-server location for the global settings: `~/.vscode-remote/data/Machine/settings.json`
