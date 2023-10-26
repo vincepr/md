@@ -9,6 +9,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
     "thunder-client.defaultUrl": "http://127.0.0.1:5555/",
     /// base settings
     "workbench.colorTheme": "Default Dark Modern",
+    "editor.codeLens": false,
     // "files.autoSave": "afterDelay",  // enable this if hotreloading is killing performance for remote work
     "files.simpleDialog.enable": true,
     "terminal.integrated.allowChords": false,
