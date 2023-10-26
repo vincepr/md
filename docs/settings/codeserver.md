@@ -1,6 +1,24 @@
 # install codeserver
 
+## create a non root user and set up ufw
+´´´
+adduser vince
+usermod -aG sudo vince
+´´´
+
+## set up ufw
+´´´
+sudo apt-get update -y
+sudo apt-get install nginx ufw -y
+sudo ufw allow ssh
+sudo ufw allow 'Nginx Full'
+sudo ufw allow 5000:6000/tcp
+sudo ufw enable
+´´´
+
+## install codeserver
 - install codeserver/openvscodeserver
+- https://github.com/coder/code-server
 ## update npm version in ubuntu
 ```
 https://github.com/nodesource/distributions
@@ -17,7 +35,7 @@ After=nginx.service
 
 [Service]
 Type=simple
-ExecStart=code-server --port 3333 
+ExecStart=code-server
 Restart=always
 User=vince
 
@@ -51,7 +69,7 @@ sudo nano /etc/nginx/sites-available/code-server.conf
 server {
         listen 80;
         listen [::]:80;
-        server_name vs.vprobst.de;
+        server_name vs.vincepr.de;
 
         location / {
                 proxy_pass http://localhost:3333;
