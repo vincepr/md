@@ -9,11 +9,10 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
     "thunder-client.defaultUrl": "http://127.0.0.1:5555/",
     /// base settings
     "workbench.colorTheme": "Default Dark Modern",
-    "editor.codeLens": false,
     // "files.autoSave": "afterDelay",  // enable this if hotreloading is killing performance for remote work
     "files.simpleDialog.enable": true,
-    "terminal.integrated.allowChords": false,
-    "window.commandCenter": false,
+    // "terminal.integrated.allowChords": false,
+    // "window.commandCenter": false,
     /// git settings
     "git.enableSmartCommit": true,
     "git.autofetch": true,
@@ -27,6 +26,8 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "<C-a>": false,
         "<C-f>": false,
         "<C-e>": false,
+        "<C-y>": false,
+        "<C-z>": false, 
     },
     "editor.emptySelectionClipboard": false,    // stop copy empty line on ctrl+c exit input mode
     "vim.insertModeKeyBindings": [
@@ -35,6 +36,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
             "commands": ["editor.action.clipboardCopyAction", "extension.vim_escape"]
         }
     ],
+    "editor.codeLens": false,
 }
 ```
 - ctrl shift P and `open keyboard shortcuts (json)`
