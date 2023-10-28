@@ -28,6 +28,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "<C-e>": false,
         "<C-y>": false,
         "<C-z>": false, 
+        "<C-b>": false,
     },
     "editor.emptySelectionClipboard": false,    // stop copy empty line on ctrl+c exit input mode
     "vim.insertModeKeyBindings": [
