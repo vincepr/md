@@ -84,8 +84,15 @@ rest use IDE
 - next some added keybindings for my preference:
 ```
 // non default Keybindings(us keyboard layout)
-ctrl+\		Tool Windows/Terminal (GERMAN-LAYOUT: ctrl+^)
-ctrl+#  (GERMAN-ONLY) toggle comment
+ctrl+\		Tool Windows/Terminal (English only)
+ctrl+ö      Tool Windows/Terminal (german only)
+ctrl+#      (GERMAN-ONLY) toggle comment
+
+
+ctrl+shift+e    RecentLocation->FileExplorer
+ctrl+alt+f      RecentLocatoin
+ctrl+shift+g    Git/VCS Group/VCS Operations Popup
+ctrl+b          MainMenu/Window/ActiveToolwindow/HideAllToolWindows
 
 f1		Main Menu/Navigate/Goto Error/Bookmark Actions/Next Highlighted Error
 f2		rename
@@ -98,7 +105,6 @@ f2		rename
 			Other/Bookmaks/Edit
 			Other/TableActions/EditTableCell
 			Other/TreeActions/EditTreeNode
-f3      Git/VCS Group/VCS Operations Popup
 
 ctrl+alt+e	rebind what ctrl+e did before
 ctrl+e		Navigate/Goto by Name Actions/Go to File
