@@ -105,6 +105,8 @@ f2		rename
 			Other/Bookmaks/Edit
 			Other/TableActions/EditTableCell
 			Other/TreeActions/EditTreeNode
+f5      MainMenu/Run/Run/Debug/Debug (shift+f9 ONE)
+f6       MainMenu/Run/Run/Debug/Run (shift+f10 ONE)
 
 ctrl+alt+e	rebind what ctrl+e did before
 ctrl+e		Navigate/Goto by Name Actions/Go to File
