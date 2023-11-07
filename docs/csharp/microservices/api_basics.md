@@ -344,7 +344,7 @@ public async Task<ActionResult> PartialCommandUpdate(int id, JsonPatchDocument<C
 	if (commandModelFromRepo == null) return NotFound();
 
 	var commandToPatch = _mapper.Map<CommandUpdateDto>(commandModelFromRepo
-	patchDoc.ApplyTo(commandToPatch);
+	patchDoc.ApplyTo(commandToPatch));
 
 	if (!TryValidateModel(commandtoPatch))
 	{
