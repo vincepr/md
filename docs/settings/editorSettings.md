@@ -85,6 +85,8 @@ ctrl+l right
 set visualbell
 set noerrorbells
 
+" ! manually install sneak extension from marketplace
+set sneak
 
 Plug 'tpope/vim-surround'
 set surround
@@ -92,13 +94,10 @@ set surround
 Plug 'tpope/vim-commentary'
 set commentary
 
-" manually install sneak extension from marketplace
-set sneak
-
 Plug 'terryma/vim-multiple-cursors'
 set multiple-cursors
 
-" manually rebind keybinding in rider:
+" ! manually rebind keybinding in rider:
 " map <C-d> <Action>(ActivateTerminalToolWindow)
 " map <C-ä> <Action>(CompleteCurrentStatement)
 " map <C-h> <Action>(Left)
@@ -146,6 +145,12 @@ map <C-.> :action ShowIntentionActions<cr>
 " using idea history over vim (seems dodgy)
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
+
+" move lines up/down
+map <A-j> <Action>(MoveLineDown)
+map <A-k> <Action>(MoveLineUp)
+map <Tab> <Action>(EditorIndentSelection)
+map <S-Tab> <Action>(EditorUnindentSelection)
 
 " Tab homerow navigation
 map <A-l> <Action>(NextTab)
@@ -204,6 +209,6 @@ map <Leader>R <Action>(Refactorings.QuickListPopupAction)
 
 map <Leader>a <Action>(AnalyzeActionsPopup)
 
-" map <BS> <Action>(GotoRelated)
+" incase we need backspace: map <BS> <Action>(GotoRelated)
 ```
 
