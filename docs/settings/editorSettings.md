@@ -180,6 +180,7 @@ map gf <Action>(ReformatCode)
 map gF <Action>(ShowReformatFileDialog)
 
 map gl <Action>(InsertLiveTemplate)
+map gw <Action>(EditorSelectWord)
 
 map <Leader>s <Action>(FileStructurePopup)
 map <Leader>S <Action>(GotoRelated)
