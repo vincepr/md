@@ -62,40 +62,11 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 
 ## Settings for Rider, Settings for Intellij-products
 - disable auto new line on toggle comment - uncheck: AdvancedSettings/Move caret down after comment 
-- choose vim over IDE for the following keys:
-```
-// vim specific
-ctrl c - vim    // we make this copy and esc in our .ideavim
-ctrl d - vim    // move down a half page
-ctrl i - vim    // next mouse cursor position
-ctrl m - vim    // enables newline in insert mode
-ctrl n - vim    // autocomplete next option
-ctrl o - vim    // prev mouse cursor position
-ctrl p - vim    // autocomplete prev option
-ctrl q - vim    // box selection mode
-ctrl r - vim    // undo changes gone back with u
-ctrl s - vim    // vim sneak
-ctrl u - vim    // move up a half page
-ctrl [ - vim    // move quickly
-ctrl ] - vim    // move quickly
-
-rest use IDE
-```
-
 - next some added keybindings for my preference:
 ```
 // non default Keybindings(us keyboard layout)
-ctrl+\		Tool Windows/Terminal (English only)
 ctrl+ö      Tool Windows/Terminal (german only)
 ctrl+#      (GERMAN-ONLY) toggle comment
-
-
-ctrl+shift+e    RecentLocation->FileExplorer
-ctrl+alt+f      RecentLocatoin
-ctrl+shift+g    Git/VCS Group/VCS Operations Popup
-ctrl+b          MainMenu/Window/ActiveToolwindow/HideAllToolWindows
-
-f1		Main Menu/Navigate/Goto Error/Bookmark Actions/Next Highlighted Error
 f2		rename
 			MainMenu/Refactor/Rename
 			Version Control Systems/Shelve/Rename
@@ -109,38 +80,134 @@ f2		rename
 f5      MainMenu/Run/Run/Debug/Debug (shift+f9 ONE)
 f6       MainMenu/Run/Run/Debug/Run (shift+f10 ONE)
 
-ctrl+alt+e	rebind what ctrl+e did before
-ctrl+e		Navigate/Goto by Name Actions/Go to File
-ctrl+alt+1	rebind alt+1
-ctrl+alt+2	rebind alt+2
-ctrl+alt+3	rebind alt+3
-ctrl+alt+4	rebind alt+4
-ctrl+alt+5	rebind alt+5
-
-alt+Enter   -> ALSO ctrl+.          // like in vscode
-ctrl+shift+enter -> also ctrl+,     // want this quick complete easy to reach
-
-alt+1		Other/Tabs/select tab #1
-...
-alt+5		Other/Tabs/select tab #5
+ctrl+shift+enter -> also ctrl+ä     // want this quick complete easy to reach
 ```
 
 - create an `C\Users\vincepr\.ideavimrc`
 ```
-set sneak
-
+"set relativenumber
+"set number
 set visualbell
 set noerrorbells
 
-nnoremap ge :action ShowErrorDescription<cr>
-nnoremap gh :action QuickJavaDoc<cr>
-nnoremap gf :action QuickImplementations<cr>
 
+Plug 'tpope/vim-surround'
+set surround
+
+Plug 'tpope/vim-commentary'
+set commentary
+
+" manually install sneak extension from marketplace
+set sneak
+
+Plug 'terryma/vim-multiple-cursors'
+set multiple-cursors
+
+" manually rebind keybinding in rider:
+" map <C-ö> <Action>(ActivateTerminalToolWindow)
+" map <C-ä> <Action>(CompleteCurrentStatement)
+" map <C-ä> <Action>(ToggleComment)
+" map <C-h> <Action>(Left)
+" map <C-j> <Action>(Down)
+" map <C-k> <Action>(Up)
+" map <C-l> <Action>(Right)
+" map <C-h> QuickJavaDoc - REBIND IN VIM DOESNT OPEN 2ndWINDOW - just overwrite all of ctrl+q
+" map f2 <Action>(Refactor-Rename)
+
+sethandler <C-.> a:vim
+sethandler <C-2> a:ide
+sethandler <C-6> a:ide
+sethandler <C-a> a:ide
+sethandler <C-b> a:vim
+sethandler <C-c> a:vim
+sethandler <C-d> a:vim
+sethandler <C-e> a:ide
+sethandler <C-f> a:ide
+sethandler <C-g> a:vim
+sethandler <C-h> a:ide
+sethandler <C-i> a:vim
+sethandler <C-j> a:ide
+sethandler <C-k> a:ide
+sethandler <C-l> a:ide
+sethandler <C-m> a:vim
+sethandler <C-n> i:vim
+sethandler <C-o> a:vim
+sethandler <C-p> i:vim
+sethandler <C-q> a:vim
+sethandler <C-r> a:vim
+sethandler <C-s> a:vim
+sethandler <C-t> a:ide
+sethandler <C-u> a:vim
+sethandler <C-v> a:ide
+sethandler <C-w> a:vim
+sethandler <C-x> a:ide
+sethandler <C-y> a:ide
+sethandler <C-z> a:ide
+sethandler <C-[> a:ide
+sethandler <C-]> a:ide
+sethandler <C-\> a:ide
+
+map <C-.> :action ShowIntentionActions<cr>
+
+" using idea history over vim (seems dodgy)
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+
+" Tab homerow navigation
+map <A-l> <Action>(NextTab)
+map <A-h> <Action>(PreviousTab)
+map <A-g> <Action>(CloseEditor)
+
+" cycling autocomplete (might remove)
+imap <C-n> <ESC>:action HippieCompletion<CR>a
+imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+
+" is this ever useful (might remove)
+map <Leader>k <Action>(EditorCodeBlockStart)
+map <Leader>j <Action>(EditorCodeBlockEnd)
+
+" want vim-window-splitting but replace old ctrl-q, ctrl-b is available with gd
+map <A-w> <Action>(EditorSelectWord)
+map <C-b> <Action>(HideAllWindows)
+
+" copy behavior + exit mode
 nnoremap <C-c> "+y<Esc>
 vnoremap <C-c> "+y<Esc>
 xnoremap <C-c> "+y<Esc>
 snoremap <C-c> "+y<Esc>
 
-remap <C-n> <Action>(GotoClass)
+nnoremap ge :action ShowErrorDescription<cr>
+nnoremap gE :action GotoPreviousError<cr>
+nnoremap gh :action QuickJavaDoc<cr>
+nnoremap gH :action QuickImplementations<cr>
+nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+
+" map g; <Action>(JumpToLastChange)
+" map g, <Action>(JumpToNextChange)
+
+let mapleader = ","
+
+map gs <Action>(SelectIn)
+map gk <Action>(Vcs.QuickListPopupAction)
+
+map <Leader>s <Action>(FileStructurePopup)
+
+map <Leader>f <Action>(FindUsages)
+map <Leader>F <Action>(HighlightUsagesInFile)
+
+map <Leader>g <Action>(Generate)
+map <Leader>G <Action>(GotoSymbol)
+
+map <Leader>w <Action>(HideAllWindows)
+map <Leader>W <Action>(JumpToLastWindow)
+
+map <Leader>r <Action>(ChooseRunConfiguration)
+map <Leader>R <Action>(Refactorings.QuickListPopupAction)
+
+map <Leader>a <Action>(AnalyzeActionsPopup)
+
+map <Space> <Action>(GotoNextError)
+map <Leader><Space> <Action>(GotoPreviousError)
+" map <BS> <Action>(GotoRelated)
 ```
 
