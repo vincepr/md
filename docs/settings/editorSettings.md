@@ -67,20 +67,15 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 // non default Keybindings(us keyboard layout)
 ctrl+ö      Tool Windows/Terminal (german only)
 ctrl+#      (GERMAN-ONLY) toggle comment
-f2		rename
-			MainMenu/Refactor/Rename
-			Version Control Systems/Shelve/Rename
-			Version Control Systems/Shelve/Edit Changelist
-			Datbase Explorer/Rename
-			Datbase Explorer/Sessions/Rename Session
-			Git/EditCommitMessage
-			Other/Bookmaks/Edit
-			Other/TableActions/EditTableCell
-			Other/TreeActions/EditTreeNode
-f5      MainMenu/Run/Run/Debug/Debug (shift+f9 ONE)
-f6       MainMenu/Run/Run/Debug/Run (shift+f10 ONE)
+ctrl+shift+enter ->   also ctrl+ä     // want this quick complete easy to reach
 
-ctrl+shift+enter -> also ctrl+ä     // want this quick complete easy to reach
+shift+f6         ->   f2		rename
+f1                  -> next error
+
+ctrl+h left
+ctrl+j down
+ctrl+k up
+ctrl+l right
 ```
 
 - create an `C\Users\vincepr\.ideavimrc`
