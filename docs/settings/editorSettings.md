@@ -104,9 +104,8 @@ Plug 'terryma/vim-multiple-cursors'
 set multiple-cursors
 
 " manually rebind keybinding in rider:
-" map <C-ö> <Action>(ActivateTerminalToolWindow)
+" map <C-d> <Action>(ActivateTerminalToolWindow)
 " map <C-ä> <Action>(CompleteCurrentStatement)
-" map <C-ä> <Action>(ToggleComment)
 " map <C-h> <Action>(Left)
 " map <C-j> <Action>(Down)
 " map <C-k> <Action>(Up)
@@ -191,6 +190,10 @@ map gs <Action>(SelectIn)
 map gk <Action>(Vcs.QuickListPopupAction)
 
 map <Leader>s <Action>(FileStructurePopup)
+map <Leader>S <Action>(GotoRelated)
+
+map <Leader>e <Action>(GotoNextError)
+map <Leader>E <Action>(GotoPreviousError)
 
 map <Leader>f <Action>(FindUsages)
 map <Leader>F <Action>(HighlightUsagesInFile)
@@ -206,8 +209,6 @@ map <Leader>R <Action>(Refactorings.QuickListPopupAction)
 
 map <Leader>a <Action>(AnalyzeActionsPopup)
 
-map <Space> <Action>(GotoNextError)
-map <Leader><Space> <Action>(GotoPreviousError)
 " map <BS> <Action>(GotoRelated)
 ```
 
