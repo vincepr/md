@@ -64,22 +64,6 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 - disable auto new line on toggle comment - uncheck: AdvancedSettings/Move caret down after comment 
 - next some added keybindings for my preference:
 ```
-// non default Keybindings(us keyboard layout)
-ctrl+ö      Tool Windows/Terminal (german only)
-ctrl+#      (GERMAN-ONLY) toggle comment
-ctrl+shift+enter ->   also ctrl+ä     // want this quick complete easy to reach
-
-shift+f6         ->   f2		rename
-f1                  -> next error
-
-ctrl+h left
-ctrl+j down
-ctrl+k up
-ctrl+l right
-```
-
-- create an `C\Users\vincepr\.ideavimrc`
-```
 "set relativenumber
 "set number
 set visualbell
@@ -106,6 +90,8 @@ set multiple-cursors
 " map <C-l> <Action>(Right)
 " map <C-h> QuickJavaDoc - REBIND IN VIM DOESNT OPEN 2ndWINDOW - just overwrite all of ctrl+q
 " map f2 <Action>(Refactor-Rename)
+
+" https://gist.github.com/tuxfight3r/0dca25825d9f2608714b
 
 sethandler <C-.> a:vim
 sethandler <C-2> a:ide
@@ -141,6 +127,7 @@ sethandler <C-]> a:ide
 sethandler <C-\> a:ide
 
 map <C-.> :action ShowIntentionActions<cr>
+map <A-f> <Action>(FindNext)
 
 " using idea history over vim (seems dodgy)
 map <C-o> <Action>(Back)
@@ -189,6 +176,8 @@ let mapleader = ","
 map gs <Action>(SelectIn)
 map gk <Action>(Vcs.QuickListPopupAction)
 
+map gl <Action>(InsertLiveTemplate)
+
 map <Leader>s <Action>(FileStructurePopup)
 map <Leader>S <Action>(GotoRelated)
 
@@ -209,6 +198,7 @@ map <Leader>R <Action>(Refactorings.QuickListPopupAction)
 
 map <Leader>a <Action>(AnalyzeActionsPopup)
 
-" incase we need backspace: map <BS> <Action>(GotoRelated)
+" in case we need backspace: map <BS> <Action>(GotoRelated)
+
 ```
 
