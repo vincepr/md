@@ -176,6 +176,9 @@ let mapleader = ","
 map gs <Action>(SelectIn)
 map gk <Action>(Vcs.QuickListPopupAction)
 
+map gf <Action>(ReformatCode)
+map gF <Action>(ShowReformatFileDialog)
+
 map gl <Action>(InsertLiveTemplate)
 
 map <Leader>s <Action>(FileStructurePopup)
