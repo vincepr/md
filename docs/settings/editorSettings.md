@@ -64,24 +64,40 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 - disable auto new line on toggle comment - uncheck: AdvancedSettings/Move caret down after comment 
 - next some added keybindings for my preference:
 ```
+" https://gist.github.com/tuxfight3r/0dca25825d9f2608714b
+
+""" Custom Settings  ----------------------------------------
+let mapleader = ","
+
 "set relativenumber
 "set number
 set visualbell
 set noerrorbells
+set scrolloff=10
+" default->ignorecase. if Upper->searchSensitive. searchQuicker. highlighSearch.
+set ignorecaseset smartcaseset incsearchset hlsearch
 
+""" Plugins -------------------------------------------------
 " ! manually install sneak extension from marketplace
 set sneak
 
+" https://raw.githubusercontent.com/wiki/JetBrains/ideavim/NERDTree-support.md
 Plug 'tpope/vim-surround'
 set surround
 
+" https://github.com/tpope/vim-commentary/blob/master/doc/commentary.txt
 Plug 'tpope/vim-commentary'
 set commentary
 
+" https://github.com/terryma/vim-multiple-cursors/blob/master/doc/multiple_cursors.txt
 Plug 'terryma/vim-multiple-cursors'
 set multiple-cursors
 
-" ! manually rebind keybinding in rider:
+Plug 'machakann/vim-highlightedyank'
+set highlightedyank
+
+
+""" ! manually rebind keybinding in rider   -------------------
 " map <C-d> <Action>(ActivateTerminalToolWindow)
 " map <C-ä> <Action>(CompleteCurrentStatement)
 " map <C-h> <Action>(Left)
@@ -91,8 +107,7 @@ set multiple-cursors
 " map <C-h> QuickJavaDoc - REBIND IN VIM DOESNT OPEN 2ndWINDOW - just overwrite all of ctrl+q
 " map f2 <Action>(Refactor-Rename)
 
-" https://gist.github.com/tuxfight3r/0dca25825d9f2608714b
-
+""" set if ide or vim should handle keybinding:
 sethandler <C-.> a:vim
 sethandler <C-2> a:ide
 sethandler <C-6> a:ide
@@ -126,7 +141,11 @@ sethandler <C-[> a:ide
 sethandler <C-]> a:ide
 sethandler <C-\> a:ide
 
+""" One-Key-Bindings ----------------------------------------
+" the alt+enter with less movement
 map <C-.> :action ShowIntentionActions<cr>
+imap <C-.> <Action>(ShowIntentionActions)
+
 map <A-f> <Action>(FindNext)
 
 " using idea history over vim (seems dodgy)
@@ -162,6 +181,7 @@ vnoremap <C-c> "+y<Esc>
 xnoremap <C-c> "+y<Esc>
 snoremap <C-c> "+y<Esc>
 
+""" Two-Key-Bindings ----------------------------------------
 nnoremap ge :action ShowErrorDescription<cr>
 nnoremap gE :action GotoPreviousError<cr>
 nnoremap gh :action QuickJavaDoc<cr>
@@ -171,16 +191,16 @@ nnoremap gr :action Refactorings.QuickListPopupAction<cr>
 " map g; <Action>(JumpToLastChange)
 " map g, <Action>(JumpToNextChange)
 
-let mapleader = ","
 
 map gs <Action>(SelectIn)
 map gk <Action>(Vcs.QuickListPopupAction)
+
+map gw <Action>(EditorSelectWord)
 
 map gf <Action>(ReformatCode)
 map gF <Action>(ShowReformatFileDialog)
 
 map gl <Action>(InsertLiveTemplate)
-map gw <Action>(EditorSelectWord)
 
 map <Leader>s <Action>(FileStructurePopup)
 map <Leader>S <Action>(GotoRelated)
@@ -203,6 +223,5 @@ map <Leader>R <Action>(Refactorings.QuickListPopupAction)
 map <Leader>a <Action>(AnalyzeActionsPopup)
 
 " in case we need backspace: map <BS> <Action>(GotoRelated)
-
 ```
 
