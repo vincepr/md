@@ -147,10 +147,13 @@ map <C-.> :action ShowIntentionActions<cr>
 imap <C-.> <Action>(ShowIntentionActions)
 
 map <A-f> <Action>(FindNext)
+imap <A-f> <Action>(FindNext)
 
 " using idea history over vim (seems dodgy)
 map <C-o> <Action>(Back)
+imap <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
+imap <C-i> <Action>(Forward)
 
 " move lines up/down
 map <A-j> <Action>(MoveLineDown)
@@ -160,12 +163,15 @@ map <S-Tab> <Action>(EditorUnindentSelection)
 
 " Tab homerow navigation
 map <A-l> <Action>(NextTab)
+imap <A-l> <Action>(NextTab)
 map <A-h> <Action>(PreviousTab)
+imap <A-h> <Action>(PreviousTab)
 map <A-g> <Action>(CloseEditor)
+imap <A-g> <Action>(CloseEditor)
 
 " cycling autocomplete (might remove)
-imap <C-n> <ESC>:action HippieCompletion<CR>a
-imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+imap <C-n> :action HippieCompletion<CR>
+imap <C-p> :action HippieBackwardCompletion<CR>
 
 " is this ever useful (might remove)
 map <Leader>k <Action>(EditorCodeBlockStart)
@@ -223,5 +229,6 @@ map <Leader>R <Action>(Refactorings.QuickListPopupAction)
 map <Leader>a <Action>(AnalyzeActionsPopup)
 
 " in case we need backspace: map <BS> <Action>(GotoRelated)
+
 ```
 
