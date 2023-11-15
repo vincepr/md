@@ -177,9 +177,13 @@ imap <C-p> :action HippieBackwardCompletion<CR>
 map <Leader>k <Action>(EditorCodeBlockStart)
 map <Leader>j <Action>(EditorCodeBlockEnd)
 
-" want vim-window-splitting but replace old ctrl-q, ctrl-b is available with gd
-map <A-w> <Action>(EditorSelectWord)
+" toggle extra-panels with b
 map <C-b> <Action>(HideAllWindows)
+imap <C-b> <Action>(HideAllWindows)
+
+" select between braces/statement really quickly
+map <A-w> <Action>(EditorSelectWord)
+imap <A-w> <Action>(EditorSelectWord)
 
 " copy behavior + exit mode
 nnoremap <C-c> "+y<Esc>
@@ -229,6 +233,5 @@ map <Leader>R <Action>(Refactorings.QuickListPopupAction)
 map <Leader>a <Action>(AnalyzeActionsPopup)
 
 " in case we need backspace: map <BS> <Action>(GotoRelated)
-
 ```
 
