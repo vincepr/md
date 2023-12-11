@@ -9,7 +9,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
     "thunder-client.defaultUrl": "http://127.0.0.1:5555/",
     /// base settings
     "workbench.colorTheme": "Default Dark Modern",
-    // "files.autoSave": "afterDelay",  // enable this if hotreloading is killing performance for remote work
+    "files.autoSave": "afterDelay",  // enable this if hotreloading is killing performance for remote work
     "files.simpleDialog.enable": true,
     // "terminal.integrated.allowChords": false,
     // "window.commandCenter": false,
@@ -43,7 +43,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 - ctrl shift P and `open keyboard shortcuts (json)`
 
 ```json
-// Place your key bindings in this file to override the defaults
+// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "tab",
@@ -54,7 +54,45 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "key": "shift+tab",
         "command": "-extension.vim_shift+tab",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-    }
+    },
+    {
+        "key": "shift shift",
+        "command": "search.action.openEditor"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+h",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction"
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "f1",
+        "command": "editor.action.marker.next",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+f1",
+        "command": "editor.action.marker.nextInFiles",
+        "when": "editorFocus"
+    },
 ]
 ´´´
 
