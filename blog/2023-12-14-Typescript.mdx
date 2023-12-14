@@ -1,0 +1,65 @@
+---
+slug: typescript
+title: Typescript
+authors: [Vincent]
+---
+   
+Typescript examples where the Typesystem fails
+- from https://www.youtube.com/watch?v=u1WmiqlrqL0
+
+```typescript
+function shouldMutateArray(items: (number | string)[]) {
+    items.push("woops");
+}
+const calculationOnNumbers = (items: number[]) => items.reduce((a, b) => a - b, 0)
+
+const items: number[] = [1, 2, 3]; // only numbers allowed in here
+
+console.log(items); // -> [1, 2, 3]
+console.log(calculationOnNumbers(items)); // -6
+
+shouldMutateArray(items);
+// ! we now have a STRING in our array of NUMBERS...
+
+console.log(items); // -> [1, 2, 3, "woops"]
+console.log(calculationOnNumbers(items)); // -> NAN
+```
+
+   
+```typescript
+
+type ReadonlyStruct = {
+    readonly a: number;
+    readonly b: number;
+}
+
+type NormalStruct = {
+    a: number;
+    b: number;
+}
+
+function newReadonly(): ReadonlyStruct {
+    return {
+        a: 1,
+        b: 2,
+    };
+}
+
+function willMutateNormalStruct(item: NormalStruct) {
+    item.a = 99;
+    item.b = 88;
+}
+
+const item = newReadonly();
+
+console.log(item); // { a: 1, b: 2 }
+
+//  item.a = 1; // <- this is not allowed. Not Allowed to mutate readonly field
+
+willMutateNormalStruct(item);
+
+console.log(item); // { a: 99, b: 88 }
+
+// ! typescript can't properly differentiate between the 2 Structs with same name fields
+// !!! typescript just ignore the readonly annotation and mutation of those fields becomes possible
+```
