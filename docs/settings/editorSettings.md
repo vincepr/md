@@ -223,11 +223,13 @@ imap <C-b> <Action>(HideAllWindows)
 map <A-w> <Action>(EditorSelectWord)
 imap <A-w> <Action>(EditorSelectWord)
 
-" copy behavior + exit mode
-nnoremap <C-c> "+y<Esc>
-vnoremap <C-c> "+y<Esc>
-xnoremap <C-c> "+y<Esc>
-snoremap <C-c> "+y<Esc>
+"" copy behavior for vim/neovim
+"nnoremap <C-c> "+y<Esc>
+"vnoremap <C-c> "+y<Esc>
+"xnoremap <C-c> "+y<Esc>
+"snoremap <C-c> "+y<Esc>
+" copy behavior + exit mode for idea:
+map <C-c> <Action>($Copy) <Action>(EditorEscape)
 
 """ Two-Key-Bindings ----------------------------------------
 nnoremap ge :action ShowErrorDescription<cr>
@@ -235,6 +237,8 @@ nnoremap gE :action GotoPreviousError<cr>
 nnoremap gh :action QuickJavaDoc<cr>
 nnoremap gH :action QuickImplementations<cr>
 nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+
+map gb :action ToggleLineBreakpoint<cr>
 
 " map g; <Action>(JumpToLastChange)
 " map g, <Action>(JumpToNextChange)
