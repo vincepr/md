@@ -93,6 +93,16 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "command": "editor.action.marker.nextInFiles",
         "when": "editorFocus"
     },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
 ]
 ´´´
 
