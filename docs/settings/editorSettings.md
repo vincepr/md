@@ -110,7 +110,23 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 
 ## Settings for Rider, Settings for Intellij-products
 - disable auto new line on toggle comment - uncheck: AdvancedSettings/Move caret down after comment 
+- Appearance - New Ui - Compact Mode
+- Editor - Color Scheme - Visual Studio Dark
+- Editor - Font - Consolas, size:14.0, Lineheight:0.9 (might have to set in Color-Scheme)
+- right click tabs - Configure Editor Tabs 
+    - SqueezeTabs
+    - disable show file-icon
+    - disable show file extension
+    - disable show close X
+    - open new tabs at the end
+    - OPENDING_POLICY - Enable preview tab
+
+- left of code:
+    - appearance - breadcrumbs - none
+    - appearance - configure-gutter-icons - disable
+
 - next some added keybindings for my preference:
+
 ```
 " https://gist.github.com/tuxfight3r/0dca25825d9f2608714b
 
@@ -154,6 +170,12 @@ set highlightedyank
 " map <C-l> <Action>(Right)
 " map <C-h> QuickJavaDoc - REBIND IN VIM DOESNT OPEN 2ndWINDOW - just overwrite all of ctrl+q
 " map f2 <Action>(Refactor-Rename)
+
+" map <A-1> <Action>(ToggleExplorer)
+" map <A-2> <Action>(ToggleCommit)
+" map <A-3> <Action>(PullRequest)
+" map <A-4> <Action>(UnitTests)
+" map <A-5> <Action>(ToggleGitHistory)
 
 """ set if ide or vim should handle keybinding:
 sethandler <C-.> a:vim
