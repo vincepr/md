@@ -269,6 +269,7 @@ nnoremap gE :action GotoPreviousError<cr>
 nnoremap gh :action QuickJavaDoc<cr>
 nnoremap gH :action QuickImplementations<cr>
 nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+nnoremap gp :action ParameterInfo<cr>
 
 map gb :action ToggleLineBreakpoint<cr>
 
