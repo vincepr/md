@@ -1,7 +1,7 @@
 # TokenCachingGeneric - multiple key-token-pairs to cache
 - some ideas about token caching since IMemoryCache sucks
 
-```
+```csharp
 using System.Collections.Concurrent;
 using System.Net;
 using Microsoft.Extensions.DependencyInjection;
