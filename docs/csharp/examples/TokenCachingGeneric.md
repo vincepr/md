@@ -190,13 +190,12 @@ public class TokenCache<TToken, TKey> : ITokenStore<TToken, TKey> where TKey : n
 
 ### Token Caching with refresh Token
 ```csharp
-
 // interfaces
-public interface ITokenStore
+public interface ITokenCache
 {
     Task<MyToken> GetTokenAsync(string key, CancellationToken cancellationToken = default);
     Task<MyToken> ForceTokenRefreshAsync(string key, CancellationToken cancellationToken = default);
-    Task<MyToken[]> GetCredentialsAsync(IEnumerable<string> ids, CancellationToken token = default);
+    Task<MyToken[]> GetMultTokensAsync(IEnumerable<string> ids, CancellationToken token = default);
 }
 
 public interface IToken
@@ -206,15 +205,15 @@ public interface IToken
 
 public class MyToken : IToken
 {
-    public string AccessToken { get; init; }
-    public DateTimeOffset ExpiresAt { get; init; }
+    public required string AccessToken { get; init; }
+    public required DateTimeOffset ExpiresAt { get; init; }
     public bool IsExpired() => DateTimeOffset.UtcNow >= ExpiresAt.AddSeconds(10);
 }
 
 
 public interface IRefreshTokenProvider
 {
-    public Task<RefreshToken> FetchToken(string key, CancellationToken cancellationToken = default);
+    public Task<RefreshToken> GetTokenAsync(string key, CancellationToken cancellationToken = default);
 }
 
 public record RefreshToken : IToken
@@ -229,86 +228,86 @@ public interface ITokenClient<TToken, TKey>
     public Task<TToken> GetTokenAsync(TKey key, CancellationToken cancellationToken = default);
 }
 
-public class TokenCache : ITokenStore
+public class TokenCache : ITokenCache
 {
-
-    private readonly ConcurrentDictionary<string, (SemaphoreSlim IndividualLock, MyToken? Entry)> _cache = new(); 
-    private readonly IRefreshTokenProvider _refreshProvider;
     // to avoid any race condition when creating new cache-entries we lock for it. We could also seed our ConcurrentDictionary instead.
     private readonly SemaphoreSlim _cacheCreationLock = new (1,1);
+    private readonly ConcurrentDictionary<string, (SemaphoreSlim IndividualLock, MyToken? Token)> _cache = new(); 
+    private readonly IRefreshTokenProvider _refreshProvider;
     private readonly ITokenClient<MyToken, RefreshToken> _tokenClient;
 
     public TokenCache(ITokenClient<MyToken, RefreshToken> tokenClient, IRefreshTokenProvider refreshProvider)
     {
         _tokenClient = tokenClient;
         _refreshProvider = refreshProvider;
+        // // alt way of seeding the _cache. Then whole _cacheCreatingLock and FindAccountOrCreate() can be removed with _cache[key].
+        // _cache = new(
+        //     [
+        //         new("normal", (new SemaphoreSlim(1, 1), null)),
+        //         new("deluxe", (new SemaphoreSlim(1, 1), null)),
+        //     ]);
     }
 
+    /// <summary>
+    /// Gets token from cache if exists. Gets new from AuthApi if not found or IsExpired.
+    /// </summary>
     public async Task<MyToken> GetTokenAsync(string key, CancellationToken cancellationToken = default)
     {
+        var cachedAccount = await FindAccountOrCreate(key, cancellationToken);
         
-        if (!_cache.TryGetValue(key, out var cachedElement))
+        if (cachedAccount.Token is not null && !cachedAccount.Token.IsExpired())
         {
-            await _cacheCreationLock.WaitAsync(cancellationToken);
-            try
-            {
-                cachedElement = _cache.GetOrAdd(key, (new SemaphoreSlim(1, 1), null));
-            }
-            finally
-            {
-                _cacheCreationLock.Release();
-            }
-        }
-        
-        if (cachedElement.Entry is not null && !cachedElement.Entry.IsExpired())
-        {
-            return cachedElement.Entry;
+            return cachedAccount.Token;
         }
 
-        await cachedElement.IndividualLock.WaitAsync(cancellationToken);
+        await cachedAccount.IndividualLock.WaitAsync(cancellationToken);
         try
         {
-            // check if while we were locked someone else initialized the token:
-            if (cachedElement.Entry is not null && !cachedElement.Entry.IsExpired())
+            // some other process might have already refreshed while we were stuck in lock:
+            if (cachedAccount.Token is not null && !cachedAccount.Token.IsExpired())
             {
-                return cachedElement.Entry;
+                return cachedAccount.Token;
             }
             
-            // initialize token for the first time:
-            cachedElement.Entry = await FetchNewAccessToken(key, cancellationToken);
-            return cachedElement.Entry;
+            // initialize token for the first time or take care of refreshing because it was expired:
+            cachedAccount.Token = await FetchAccessToken(key, cancellationToken);
+            return cachedAccount.Token;
         }
         finally
         {
-            cachedElement.IndividualLock.Release();
+            cachedAccount.IndividualLock.Release();
         }
     }
 
+    /// <summary>
+    /// Always gets new Token from AuthApi. Writes it to cache and returns Token.
+    /// </summary>
     public async Task<MyToken> ForceTokenRefreshAsync(string key, CancellationToken cancellationToken)
     {
-        var cachedElement = await CachedElement(key, cancellationToken);
+        var cachedAccount = await FindAccountOrCreate(key, cancellationToken);
         
-        await cachedElement.IndividualLock.WaitAsync(cancellationToken);
+        await cachedAccount.IndividualLock.WaitAsync(cancellationToken);
         try
         {
-            cachedElement.Entry = await FetchNewAccessToken(key, cancellationToken);
-            return cachedElement.Entry;
+            cachedAccount.Token = await FetchAccessToken(key, cancellationToken);
+            return cachedAccount.Token;
         }
         finally
         {
-            cachedElement.IndividualLock.Release();
+            cachedAccount.IndividualLock.Release();
         }
     }
     
-    // all awaiting and token fetching happens in here. Should only happen in a locked state for that key:
-    private async Task<MyToken> FetchNewAccessToken(string key, CancellationToken cancellationToken)
+    // all awaiting and token fetching happens in here. Should only happen in a locked state for that IndividualKey:
+    private async Task<MyToken> FetchAccessToken(string key, CancellationToken cancellationToken)
     {
-        var refreshToken = await _refreshProvider.FetchToken(key, cancellationToken);
+        var refreshToken = await _refreshProvider.GetTokenAsync(key, cancellationToken);
         return await _tokenClient.GetTokenAsync(refreshToken, cancellationToken);
     }
 
     // we create empty Dictionary entry if if Cached-Element does not already exist: 
-    private async Task<(SemaphoreSlim IndividualLock, MyToken? Entry)> CachedElement(string key, CancellationToken cancellationToken)
+    private async Task<(SemaphoreSlim IndividualLock, MyToken? Token)> FindAccountOrCreate
+        (string key, CancellationToken cancellationToken)
     {
         if (_cache.TryGetValue(key, out var cachedElement))
         {
@@ -327,10 +326,11 @@ public class TokenCache : ITokenStore
         }
     }
 
-    public async Task<MyToken[]> GetCredentialsAsync(IEnumerable<string> ids, CancellationToken token = default)
+    public async Task<MyToken[]> GetMultTokensAsync(IEnumerable<string> ids, CancellationToken token = default)
     {
         var tasks = ids.Select(id => GetTokenAsync(id, token));
         return await Task.WhenAll(tasks);
     }
 }
+
 ```
