@@ -273,6 +273,7 @@ nnoremap gr :action Refactorings.QuickListPopupAction<cr>
 nnoremap gp :action ParameterInfo<cr>
 
 map gb :action ToggleLineBreakpoint<cr>
+map gi : action GotoImplementation<cr>
 
 " map g; <Action>(JumpToLastChange)
 " map g, <Action>(JumpToNextChange)
