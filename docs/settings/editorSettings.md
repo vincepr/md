@@ -109,6 +109,7 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
 ```
 
 ## Settings for Rider, Settings for Intellij-products
+- For those who would want simple completion (no deletion) upon hitting tab - you need to change `Choose Lookup Item` and `Choose Lookup Item and Replace` in Settings | Keymap.
 - disable auto new line on toggle comment - uncheck: AdvancedSettings/Move caret down after comment 
 - Appearance - New Ui - Compact Mode
 - Editor - Color Scheme - Visual Studio Dark
