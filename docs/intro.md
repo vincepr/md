@@ -8,6 +8,8 @@ zu meiner Docusaurus Github-Pages-Site auf der ich ein paar Mitschriften hoste.
 
 Desweiteren:
 
+[Editor Settings](/settings/editorSettings)
+
 [JavaScript Playground](/playground)
 
 [JavaScript Übungsaufgaben](/blog/tags/js-hero)
