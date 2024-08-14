@@ -104,7 +104,6 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "when": "editorTextFocus && !editorReadonly"
     },
 ]
-´´´
 
 ```
 
