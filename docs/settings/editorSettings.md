@@ -67,10 +67,6 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
-        "key": "shift shift",
-        "command": "search.action.openEditor"
-    },
-    {
         "key": "alt+l",
         "command": "workbench.action.nextEditor"
     },
