@@ -67,6 +67,14 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
+        "key": "ctrl+j",
+        "command": "list.focusDown",
+    },
+    {
+        "key": "ctrl+k",
+        "command": "list.focusUp",
+    },
+    {
         "key": "alt+l",
         "command": "workbench.action.nextEditor"
     },
@@ -111,7 +119,6 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "when": "editorTextFocus && !editorReadonly"
     },
 ]
-
 ```
 
 ## Settings for Rider, Settings for Intellij-products
