@@ -29,26 +29,39 @@ openvscode-server location for the global settings: `~/.vscode-remote/data/Machi
         "<C-y>": false,
         "<C-z>": false, 
         "<C-b>": false,
-        "<C-c>": false,
     },
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["g", "i"],
-            "commands": ["editor.action.goToImplementation"]
-        },
-        {
-            "before": ["g", "f"],
-            "commands": ["editor.action.formatDocument"]
-        },
-    ],
     "editor.emptySelectionClipboard": false,    // stop copy empty line on ctrl+c exit input mode
     "vim.insertModeKeyBindings": [
         {
             "before": ["<C-c>"],
             "commands": ["editor.action.clipboardCopyAction", "extension.vim_escape"]
-        },
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<C-c>"],
+            "commands": ["editor.action.clipboardCopyAction", "extension.vim_escape"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<C-c>"],
+            "commands": ["editor.action.clipboardCopyAction", "extension.vim_escape"]
+        }
     ],
     "editor.codeLens": false,
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "terminal.integrated.allowedLinkSchemes": [
+        "file",
+        "http",
+        "https",
+        "mailto",
+        "vscode",
+        "vscode-insiders",
+        "ms-settings"
+    ],
 }
 ```
 - ctrl shift P and `open keyboard shortcuts (json)`
