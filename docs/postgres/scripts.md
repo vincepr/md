@@ -126,7 +126,7 @@ CREATE TABLE internal.Users (
 );
 ```
 
-Alternative minimal variant to save tokens:
+#### Alternative minimal variant to save tokens
 ```sql
 SELECT 'CREATE TABLE ' || relname || E' (\n' ||
        string_agg(
@@ -140,4 +140,81 @@ WHERE c.relkind = 'r'
   AND a.attnum > 0
   AND NOT a.attisdropped
 GROUP BY relname;
+```
+
+#### Adding comment support
+```sql
+WITH table_defs AS (
+    SELECT
+        n.nspname AS schema_name,
+        c.relname AS table_name,
+        'CREATE TABLE ' || n.nspname || '.' || c.relname || E' (\n' ||
+        string_agg(definition, E',\n' ORDER BY sort_order) ||
+        E'\n);' AS create_table_sql,
+        c.oid AS table_oid
+    FROM pg_class c
+             JOIN pg_namespace n ON n.oid = c.relnamespace
+             JOIN (
+        -- column definitions
+        SELECT
+            a.attrelid,
+            '  ' || a.attname || ' ' ||
+            pg_catalog.format_type(a.atttypid, a.atttypmod) ||
+            CASE WHEN a.attnotnull THEN ' NOT NULL' ELSE '' END AS definition,
+            a.attnum AS sort_order
+        FROM pg_attribute a
+        WHERE a.attnum > 0
+          AND NOT a.attisdropped
+
+        UNION ALL
+
+        -- primary key constraints
+        SELECT
+            con.conrelid AS attrelid,
+            '  ' || pg_get_constraintdef(con.oid) AS definition,
+            100000 * 1 + row_number() OVER (PARTITION BY con.conrelid ORDER BY con.oid) AS sort_order
+        FROM pg_constraint con
+        WHERE con.contype = 'p'
+
+        UNION ALL
+
+        -- foreign key constraints
+        SELECT
+            con.conrelid AS attrelid,
+            '  ' || pg_get_constraintdef(con.oid) AS definition,
+            100000 * 2 + row_number() OVER (PARTITION BY con.conrelid ORDER BY con.oid) AS sort_order
+        FROM pg_constraint con
+        WHERE con.contype = 'f'
+    ) defs ON defs.attrelid = c.oid
+    WHERE c.relkind = 'r'
+      AND n.nspname NOT IN ('pg_catalog', 'information_schema')
+    GROUP BY n.nspname, c.relname, c.oid
+)
+SELECT
+    td.create_table_sql || E'\n' ||
+    COALESCE(string_agg(
+                     'COMMENT ON TABLE ' || td.schema_name || '.' || td.table_name ||
+                     ' IS ' || quote_literal(d.description) || ';', E'\n'
+             ), '') ||
+    E'\n' ||
+    COALESCE(string_agg(
+                     'COMMENT ON COLUMN ' || td.schema_name || '.' || td.table_name || '.' || a.attname ||
+                     ' IS ' || quote_literal(d.description) || ';', E'\n'
+             ), '') AS full_ddl
+FROM table_defs td
+         LEFT JOIN pg_description d ON d.objoid = td.table_oid AND d.classoid = 'pg_class'::regclass
+         LEFT JOIN pg_attribute a ON a.attrelid = td.table_oid AND a.attnum = d.objsubid
+GROUP BY td.schema_name, td.table_name, td.create_table_sql
+ORDER BY td.schema_name, td.table_name;
+```
+
+Output would be
+```
+CREATE TABLE public.Users (
+  Id integer NOT NULL,
+  Email text NOT NULL,
+  CreatedAt timestamp with time zone NOT NULL,
+  PRIMARY KEY ("Id")
+);
+COMMENT ON TABLE public.Users IS 'Hidden table for internal use only';
 ```
