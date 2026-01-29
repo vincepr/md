@@ -191,16 +191,23 @@ WITH table_defs AS (
     GROUP BY n.nspname, c.relname, c.oid
 )
 SELECT
-    td.create_table_sql || E'\n' ||
-    COALESCE(string_agg(
-                     'COMMENT ON TABLE ' || td.schema_name || '.' || td.table_name ||
-                     ' IS ' || quote_literal(d.description) || ';', E'\n'
-             ), '') ||
-    E'\n' ||
-    COALESCE(string_agg(
-                     'COMMENT ON COLUMN ' || td.schema_name || '.' || td.table_name || '.' || a.attname ||
-                     ' IS ' || quote_literal(d.description) || ';', E'\n'
-             ), '') AS full_ddl
+    td.create_table_sql ||
+    CASE
+        WHEN COUNT(d.description) > 0 THEN
+            E'\n' ||
+            string_agg(
+                    CASE
+                        WHEN d.objsubid = 0 THEN
+                            'COMMENT ON TABLE ' || td.schema_name || '.' || td.table_name ||
+                            ' IS ' || quote_literal(d.description) || ';'
+                        ELSE
+                            'COMMENT ON COLUMN ' || td.schema_name || '.' || td.table_name || '.' || a.attname ||
+                            ' IS ' || quote_literal(d.description) || ';'
+                        END,
+                    E'\n'
+            )
+        ELSE ''
+        END AS full_ddl
 FROM table_defs td
          LEFT JOIN pg_description d ON d.objoid = td.table_oid AND d.classoid = 'pg_class'::regclass
          LEFT JOIN pg_attribute a ON a.attrelid = td.table_oid AND a.attnum = d.objsubid
